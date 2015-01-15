@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707D9E41A653BE5000D75FE /* LoginViewController.swift */; };
 		E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728621A5F879A00D92301 /* AppDelegate.swift */; };
 		E72728651A5F879A00D92301 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728641A5F879A00D92301 /* ViewController.swift */; };
 		E72728681A5F879B00D92301 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72728661A5F879B00D92301 /* Main.storyboard */; };
 		E727286A1A5F879B00D92301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E72728691A5F879B00D92301 /* Images.xcassets */; };
 		E727286D1A5F879B00D92301 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E727286B1A5F879B00D92301 /* LaunchScreen.xib */; };
 		E72728791A5F879B00D92301 /* CloudstaffTeamManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728781A5F879B00D92301 /* CloudstaffTeamManagerTests.swift */; };
+		E72B9E461A619C450083BE2A /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9E441A619C450083BE2A /* SideBar.swift */; };
+		E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */; };
+		E72B9E4C1A61AEE50083BE2A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9E4B1A61AEE50083BE2A /* FirstViewController.swift */; };
+		E7494F8F1A64A6E800ED2853 /* icon_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = E7494F8E1A64A6E800ED2853 /* icon_refresh.png */; };
+		E7494F911A64A76900ED2853 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = E7494F901A64A76900ED2853 /* icon_menu.png */; };
+		E7AC481D1A67811A005E2B72 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC481C1A67811A005E2B72 /* Login.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E707D9E41A653BE5000D75FE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E727285D1A5F879900D92301 /* CloudstaffTeamManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudstaffTeamManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72728611A5F879A00D92301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E72728621A5F879A00D92301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +44,12 @@
 		E72728721A5F879B00D92301 /* CloudstaffTeamManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudstaffTeamManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72728771A5F879B00D92301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E72728781A5F879B00D92301 /* CloudstaffTeamManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudstaffTeamManagerTests.swift; sourceTree = "<group>"; };
+		E72B9E441A619C450083BE2A /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideBar.swift; path = SidebarLibrary/SideBar.swift; sourceTree = "<group>"; };
+		E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideBarTableViewController.swift; path = SidebarLibrary/SideBarTableViewController.swift; sourceTree = "<group>"; };
+		E72B9E4B1A61AEE50083BE2A /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		E7494F8E1A64A6E800ED2853 /* icon_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_refresh.png; path = images/icon_refresh.png; sourceTree = "<group>"; };
+		E7494F901A64A76900ED2853 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_menu.png; path = images/icon_menu.png; sourceTree = "<group>"; };
+		E7AC481C1A67811A005E2B72 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +92,15 @@
 			isa = PBXGroup;
 			children = (
 				E72728621A5F879A00D92301 /* AppDelegate.swift */,
+				E707D9E41A653BE5000D75FE /* LoginViewController.swift */,
+				E7AC481C1A67811A005E2B72 /* Login.swift */,
 				E72728641A5F879A00D92301 /* ViewController.swift */,
+				E72B9E4B1A61AEE50083BE2A /* FirstViewController.swift */,
+				E72B9E481A619C4C0083BE2A /* Sidebar */,
 				E72728661A5F879B00D92301 /* Main.storyboard */,
 				E72728691A5F879B00D92301 /* Images.xcassets */,
 				E727286B1A5F879B00D92301 /* LaunchScreen.xib */,
+				E72B9E431A619AF60083BE2A /* images */,
 				E72728601A5F879A00D92301 /* Supporting Files */,
 			);
 			path = CloudstaffTeamManager;
@@ -110,6 +129,24 @@
 				E72728771A5F879B00D92301 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E72B9E431A619AF60083BE2A /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E7494F901A64A76900ED2853 /* icon_menu.png */,
+				E7494F8E1A64A6E800ED2853 /* icon_refresh.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		E72B9E481A619C4C0083BE2A /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				E72B9E441A619C450083BE2A /* SideBar.swift */,
+				E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */,
+			);
+			name = Sidebar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +231,8 @@
 			files = (
 				E72728681A5F879B00D92301 /* Main.storyboard in Resources */,
 				E727286D1A5F879B00D92301 /* LaunchScreen.xib in Resources */,
+				E7494F911A64A76900ED2853 /* icon_menu.png in Resources */,
+				E7494F8F1A64A6E800ED2853 /* icon_refresh.png in Resources */,
 				E727286A1A5F879B00D92301 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,7 +251,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7AC481D1A67811A005E2B72 /* Login.swift in Sources */,
+				E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */,
+				E72B9E4C1A61AEE50083BE2A /* FirstViewController.swift in Sources */,
+				E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */,
 				E72728651A5F879A00D92301 /* ViewController.swift in Sources */,
+				E72B9E461A619C450083BE2A /* SideBar.swift in Sources */,
 				E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +451,7 @@
 				E727287E1A5F879B00D92301 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E727287F1A5F879B00D92301 /* Build configuration list for PBXNativeTarget "CloudstaffTeamManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +460,7 @@
 				E72728811A5F879B00D92301 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
