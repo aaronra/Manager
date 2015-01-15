@@ -13,7 +13,7 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        println("First view controller")
+        println("First view caontroller")
         
 
         
