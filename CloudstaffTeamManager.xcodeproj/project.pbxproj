@@ -7,19 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D005DBF1A6F831900D66B79 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D005DBE1A6F831900D66B79 /* PinViewController.swift */; };
+		5D1EDDD31A76FA9E005A92B3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */; };
 		E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707D9E41A653BE5000D75FE /* LoginViewController.swift */; };
 		E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728621A5F879A00D92301 /* AppDelegate.swift */; };
-		E72728651A5F879A00D92301 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728641A5F879A00D92301 /* ViewController.swift */; };
 		E72728681A5F879B00D92301 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72728661A5F879B00D92301 /* Main.storyboard */; };
 		E727286A1A5F879B00D92301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E72728691A5F879B00D92301 /* Images.xcassets */; };
 		E727286D1A5F879B00D92301 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E727286B1A5F879B00D92301 /* LaunchScreen.xib */; };
 		E72728791A5F879B00D92301 /* CloudstaffTeamManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728781A5F879B00D92301 /* CloudstaffTeamManagerTests.swift */; };
 		E72B9E461A619C450083BE2A /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9E441A619C450083BE2A /* SideBar.swift */; };
 		E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */; };
-		E72B9E4C1A61AEE50083BE2A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9E4B1A61AEE50083BE2A /* FirstViewController.swift */; };
 		E7494F8F1A64A6E800ED2853 /* icon_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = E7494F8E1A64A6E800ED2853 /* icon_refresh.png */; };
 		E7494F911A64A76900ED2853 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = E7494F901A64A76900ED2853 /* icon_menu.png */; };
-		E7AC481D1A67811A005E2B72 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC481C1A67811A005E2B72 /* Login.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,11 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D005DBE1A6F831900D66B79 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
+		5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		E707D9E41A653BE5000D75FE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E727285D1A5F879900D92301 /* CloudstaffTeamManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudstaffTeamManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72728611A5F879A00D92301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E72728621A5F879A00D92301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E72728641A5F879A00D92301 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E72728671A5F879B00D92301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E72728691A5F879B00D92301 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E727286C1A5F879B00D92301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -46,10 +46,8 @@
 		E72728781A5F879B00D92301 /* CloudstaffTeamManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudstaffTeamManagerTests.swift; sourceTree = "<group>"; };
 		E72B9E441A619C450083BE2A /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideBar.swift; path = SidebarLibrary/SideBar.swift; sourceTree = "<group>"; };
 		E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideBarTableViewController.swift; path = SidebarLibrary/SideBarTableViewController.swift; sourceTree = "<group>"; };
-		E72B9E4B1A61AEE50083BE2A /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		E7494F8E1A64A6E800ED2853 /* icon_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_refresh.png; path = images/icon_refresh.png; sourceTree = "<group>"; };
 		E7494F901A64A76900ED2853 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_menu.png; path = images/icon_menu.png; sourceTree = "<group>"; };
-		E7AC481C1A67811A005E2B72 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,11 +89,10 @@
 		E727285F1A5F879900D92301 /* CloudstaffTeamManager */ = {
 			isa = PBXGroup;
 			children = (
+				5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */,
 				E72728621A5F879A00D92301 /* AppDelegate.swift */,
 				E707D9E41A653BE5000D75FE /* LoginViewController.swift */,
-				E7AC481C1A67811A005E2B72 /* Login.swift */,
-				E72728641A5F879A00D92301 /* ViewController.swift */,
-				E72B9E4B1A61AEE50083BE2A /* FirstViewController.swift */,
+				5D005DBE1A6F831900D66B79 /* PinViewController.swift */,
 				E72B9E481A619C4C0083BE2A /* Sidebar */,
 				E72728661A5F879B00D92301 /* Main.storyboard */,
 				E72728691A5F879B00D92301 /* Images.xcassets */,
@@ -198,6 +195,7 @@
 				TargetAttributes = {
 					E727285C1A5F879900D92301 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 826GYCV8FQ;
 					};
 					E72728711A5F879B00D92301 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -251,11 +249,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7AC481D1A67811A005E2B72 /* Login.swift in Sources */,
+				5D005DBF1A6F831900D66B79 /* PinViewController.swift in Sources */,
+				5D1EDDD31A76FA9E005A92B3 /* DashboardViewController.swift in Sources */,
 				E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */,
-				E72B9E4C1A61AEE50083BE2A /* FirstViewController.swift in Sources */,
 				E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */,
-				E72728651A5F879A00D92301 /* ViewController.swift in Sources */,
 				E72B9E461A619C450083BE2A /* SideBar.swift in Sources */,
 				E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */,
 			);
@@ -316,6 +313,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -382,7 +380,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CloudstaffTeamManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -392,7 +392,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CloudstaffTeamManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

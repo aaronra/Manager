@@ -13,14 +13,15 @@ class LoginViewController: UIViewController {
     var Umail = "totep"
     var Pword = "123"
     
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var btnLogin: UIButton!
-
     
-    let ipad = UIDevice.currentDevice().userInterfaceIdiom == .Pad
-    let iphone = UIDevice.currentDevice().userInterfaceIdiom == .Phone
-    let unknown = UIDevice.currentDevice().userInterfaceIdiom == .Unspecified
+    @IBOutlet weak var scrollView: UIScrollView!
+ 
+    @IBOutlet weak var username: UITextField!
+    
+    @IBOutlet weak var password: UITextField!
+    
+    @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var forgot: UIButton!
     
     
     ///////////////////////  KEYBOARD DISMISS  /////////////////////////
@@ -36,30 +37,42 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
+        
+        // prevents the scroll view from swallowing up the touch event of child buttons
+        tapGesture.cancelsTouchesInView = false
+        
+        scrollView.addGestureRecognizer(tapGesture)
     }
     
-    @IBAction func login(sender: AnyObject) {
-        
-        loginfunc()
-        
-        var login = Login()
-        login.EmailfromLogin = email.text
-        login.PwordfromLogin = password.text
-        println("\(login.EmailfromLogin) + \(login.PwordfromLogin)")
-        
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.registerForKeyboardNotifications()
         
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.deregisterFromKeyboardNotifications()
+        super.viewWillDisappear(true)
+        
+    }
+    
 
+    @IBAction func login(sender: AnyObject) {
+        loginfunc()
+    
+    }
 
     func loginfunc() {
         
-        if email.text == "" && password.text == "" {
+        if username.text == "" && password.text == "" {
             println("null")
             registerNull()
-        }else if email.text != Umail && password.text != Pword{
+        }else if username.text != Umail && password.text != Pword{
             println("Both Wrong")
 
-        }else if email.text != Umail || email.text == ""{
+        }else if username.text != Umail || username.text == ""{
             println("Wrong Email")
             wrongEmail()
         }else if password.text != Pword || password.text == "" {
@@ -67,13 +80,13 @@ class LoginViewController: UIViewController {
             wrongPassword()
         }else {
             println("Correct")
-            self.performSegueWithIdentifier("toDashBoard", sender: self)
+            self.performSegueWithIdentifier("toPinEntry", sender: self)
         }
         
     }
     
     func registerNull() {
-        let getname = email.text
+        let getname = username.text
         let gettnum = password.text
         var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Please fill up the required information.", preferredStyle: .Alert)
         let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
@@ -84,7 +97,7 @@ class LoginViewController: UIViewController {
     }
     
     func wrongEmail() {
-        let getname = email.text
+        let getname = username.text
         let gettnum = password.text
         var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong email address.", preferredStyle: .Alert)
         let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
@@ -94,7 +107,7 @@ class LoginViewController: UIViewController {
     }
     
     func wrongPassword() {
-        let getname = email.text
+        let getname = username.text
         let gettnum = password.text
         var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong password.", preferredStyle: .Alert)
         let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
@@ -104,7 +117,7 @@ class LoginViewController: UIViewController {
     }
     
     func bothWrong() {
-        let getname = email.text
+        let getname = username.text
         let gettnum = password.text
         var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong email and password.", preferredStyle: .Alert)
         let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
@@ -112,17 +125,39 @@ class LoginViewController: UIViewController {
         alertController.addAction(ok)
         presentViewController(alertController, animated: true, completion: nil)
     }
+     
     
-
+    func registerForKeyboardNotifications() -> Void {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
+        
+    }
     
-    func device() {
-        if ipad.boolValue {
-            println("im on ipad")
-            login(btnLogin)
-        }else if iphone.boolValue {
-            println("im on iphone")
-        }else {
-            println("unknown")
+    func deregisterFromKeyboardNotifications() -> Void {
+        println("Deregistering!")
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillHideNotification, object: nil)
+        
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        var info: Dictionary = notification.userInfo!
+        var keyboardSize: CGSize = (info[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue().size)!
+        var buttonOrigin: CGPoint = self.forgot.frame.origin;
+        var buttonHeight: CGFloat = self.forgot.frame.size.height;
+        var visibleRect: CGRect = self.view.frame
+        visibleRect.size.height -= keyboardSize.height
+        
+        if (!CGRectContainsPoint(visibleRect, buttonOrigin)) {
+            var scrollPoint: CGPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight + 4)
+            self.scrollView.setContentOffset(scrollPoint, animated: true)
+            
         }
+    }
+    
+    func hideKeyboard() {
+        username.resignFirstResponder()   //FirstResponder's must be resigned for hiding keyboard.
+        password.resignFirstResponder()
+        self.scrollView.setContentOffset(CGPointZero, animated: true)
     }
 }
