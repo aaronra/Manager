@@ -4,7 +4,11 @@
 //
 //  Created by t0tep on 27/1/15.
 //  Copyright (c) 2015 CLOUDSTAFF. All rights reserved.
+<<<<<<< HEAD
+// asasasasas
+=======
 //  
+>>>>>>> CSTM_branch
 
 import UIKit
 
