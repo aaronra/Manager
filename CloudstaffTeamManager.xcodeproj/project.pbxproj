@@ -89,8 +89,8 @@
 		E727285F1A5F879900D92301 /* CloudstaffTeamManager */ = {
 			isa = PBXGroup;
 			children = (
-				5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */,
 				E72728621A5F879A00D92301 /* AppDelegate.swift */,
+				5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */,
 				E707D9E41A653BE5000D75FE /* LoginViewController.swift */,
 				5D005DBE1A6F831900D66B79 /* PinViewController.swift */,
 				E72B9E481A619C4C0083BE2A /* Sidebar */,
