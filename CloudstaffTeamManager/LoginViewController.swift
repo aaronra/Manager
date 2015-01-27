@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var forgot: UIButton!
     
     
-    ///////////////////////  KEYBOARD DISMISS  /////////////////////////asas
+    ///////////////////////  KEYBOARD DISMISS  /////////////////////////
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
         return true

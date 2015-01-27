@@ -2,9 +2,9 @@
 //  DashboardViewController.swift
 //  CloudstaffTeamManager
 //
-//  Created by RitcheldaV on 27/1/15.
+//  Created by t0tep on 27/1/15.
 //  Copyright (c) 2015 CLOUDSTAFF. All rights reserved.
-//  this is my branch
+//  
 
 import UIKit
 
