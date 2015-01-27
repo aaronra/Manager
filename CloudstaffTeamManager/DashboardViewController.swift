@@ -37,7 +37,7 @@ class DashboardViewController: UIViewController, SideBarDelegate {
         if index == 0{
             
             println("first")
-            self.performSegueWithIdentifier("first", sender: self)
+//            self.performSegueWithIdentifier("first", sender: self)
             
             
         } else if index == 1{
