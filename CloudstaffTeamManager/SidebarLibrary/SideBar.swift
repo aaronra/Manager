@@ -18,7 +18,7 @@ import UIKit
 
 class SideBar: NSObject, SideBarTableViewControllerDelegate {
    
-    let barWidth:CGFloat = 180.0
+    let barWidth:CGFloat = 165.0
     let barHeight:CGFloat = 10.0
     let sideBarTableViewTopInset:CGFloat = 74.0
     let sideBarContainerView:UIView = UIView()
@@ -102,7 +102,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         isSideBarOpen = shouldOpen
         
         let gravityX:CGFloat = (shouldOpen) ? 1 : -1
-        let magnitude:CGFloat = (shouldOpen) ? 50 : -50
+        let magnitude:CGFloat = (shouldOpen) ? 60 : -60
         let boundaryX:CGFloat = (shouldOpen) ? barWidth : -barWidth - 1
         
         
