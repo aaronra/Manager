@@ -2,7 +2,7 @@
 //  PinViewController.swift
 //  CloudstaffTeamManager
 //
-//  Created by RitcheldaV on 21/1/15.
+//  Created by t0tep on 21/1/15.
 //  Copyright (c) 2015 CLOUDSTAFF. All rights reserved.
 //
 
@@ -40,21 +40,18 @@ class PinViewController: UIViewController, UITextFieldDelegate {
             self.txtPIN = self.txtPin1.text
             txtPin1.resignFirstResponder()
             txtPin2.becomeFirstResponder()
-            println(self.txtPIN)
         }
         
         if self.txtPin2.hasText() {
             self.txtPIN = self.txtPIN + self.txtPin2.text
             txtPin2.resignFirstResponder()
             txtPin3.becomeFirstResponder()
-            println(self.txtPIN)
         }
         
         if self.txtPin3.hasText() {
             self.txtPIN = self.txtPIN + self.txtPin3.text
             txtPin3.resignFirstResponder()
             txtPin4.becomeFirstResponder()
-            println(self.txtPIN)
         }
         
         if self.txtPin4.hasText() {
@@ -67,6 +64,18 @@ class PinViewController: UIViewController, UITextFieldDelegate {
                 self.performSegueWithIdentifier("toDashboard", sender: self)
             } else {
                 println("FALSE")
+                self.txtPin1.text = ""
+                self.txtPin2.text = ""
+                self.txtPin3.text = ""
+                self.txtPin4.text = ""
+                self.txtPin1.becomeFirstResponder()
+                
+                var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong PIN", preferredStyle: .Alert)
+                let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                })
+                alertController.addAction(ok)
+                presentViewController(alertController, animated: true, completion: nil)
+                
             }
         }
 
@@ -74,37 +83,7 @@ class PinViewController: UIViewController, UITextFieldDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        if self.txtPin1.hasText() {
-//            self.txtPIN = self.txtPin1.text
-//            txtPin1.resignFirstResponder()
-//            txtPin2.becomeFirstResponder()
-//            println(self.txtPIN)
-//        }
-//        
-//        if self.txtPin2.hasText() {
-//            self.txtPIN = self.txtPIN + self.txtPin2.text
-//            txtPin2.resignFirstResponder()
-//            txtPin3.becomeFirstResponder()
-//            println(self.txtPIN)
-//        }
-//        
-//        if self.txtPin3.hasText() {
-//            self.txtPIN = self.txtPIN + self.txtPin3.text
-//            txtPin3.resignFirstResponder()
-//            txtPin4.becomeFirstResponder()
-//            println(self.txtPIN)
-//        }
-//        
-//        if self.txtPin4.hasText() {
-//            self.txtPIN = self.txtPIN + self.txtPin4.text
-//            txtPin4.resignFirstResponder()
-//            println(self.txtPIN)
-//        }
-//
-//        return true
-//    }
+
     }

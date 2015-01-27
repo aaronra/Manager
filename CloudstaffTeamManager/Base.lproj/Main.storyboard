@@ -118,7 +118,22 @@
                     <view key="view" contentMode="scaleToFill" id="fRM-is-pvQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nmh-78-Kah">
+                                <rect key="frame" x="0.0" y="522" width="600" height="78"/>
+                                <color key="backgroundColor" red="0.1092937301" green="0.59644269920000004" blue="0.83455274469999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LRx-LC-B8l">
+                                <rect key="frame" x="0.0" y="64" width="600" height="456"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mci-Jg-JAL" firstAttribute="top" secondItem="nmh-78-Kah" secondAttribute="bottom" id="Ktg-p8-kkw"/>
+                            <constraint firstItem="nmh-78-Kah" firstAttribute="leading" secondItem="fRM-is-pvQ" secondAttribute="leadingMargin" constant="-16" id="nvd-99-bA5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nmh-78-Kah" secondAttribute="trailing" constant="-16" id="oRw-WV-7tY"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cloudstaff Team Manager" id="teg-Xg-8vc">
                         <barButtonItem key="leftBarButtonItem" image="icon_menu.png" id="5LV-St-YfM">
