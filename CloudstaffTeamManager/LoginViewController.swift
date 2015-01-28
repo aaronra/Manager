@@ -15,11 +15,8 @@ class LoginViewController: UIViewController {
     
     
     @IBOutlet weak var scrollView: UIScrollView!
- 
     @IBOutlet weak var username: UITextField!
-    
     @IBOutlet weak var password: UITextField!
-    
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var forgot: UIButton!
     
