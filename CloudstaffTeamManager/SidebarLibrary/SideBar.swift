@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 @objc protocol SideBarDelegate{
     func sideBarDidSelectButtonAtIndex(index:Int)
     optional func sideBarWillClose()
