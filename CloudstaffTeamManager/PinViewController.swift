@@ -89,11 +89,25 @@ class PinViewController: UIViewController, UITextFieldDelegate {
                 self.txtPin4.text = ""
                 self.txtPin1.becomeFirstResponder()
                 
-                var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong PIN", preferredStyle: .Alert)
-                let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-                })
-                alertController.addAction(ok)
-                presentViewController(alertController, animated: true, completion: nil)
+                switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+                case .OrderedSame, .OrderedDescending:
+                    
+                    println("8 above")
+                    
+                    var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong PIN", preferredStyle: .Alert)
+                    let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                    })
+                    
+                    alertController.addAction(ok)
+                    presentViewController(alertController, animated: true, completion: nil)
+                    
+                case .OrderedAscending:
+                    let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "Wrong PIN", delegate: self, cancelButtonTitle: "OK")
+                    alertView.alertViewStyle = .Default
+                    alertView.show()
+                    
+                    println("8 below")
+                }
                 
             }
         }
