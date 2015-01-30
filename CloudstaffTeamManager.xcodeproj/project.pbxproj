@@ -17,7 +17,6 @@
 		6EBC23381A7901200043C743 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC23371A7901200043C743 /* JSONParser.swift */; };
 		E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707D9E41A653BE5000D75FE /* LoginViewController.swift */; };
 		E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728621A5F879A00D92301 /* AppDelegate.swift */; };
-		E72728681A5F879B00D92301 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72728661A5F879B00D92301 /* Main.storyboard */; };
 		E727286A1A5F879B00D92301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E72728691A5F879B00D92301 /* Images.xcassets */; };
 		E727286D1A5F879B00D92301 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E727286B1A5F879B00D92301 /* LaunchScreen.xib */; };
 		E72728791A5F879B00D92301 /* CloudstaffTeamManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728781A5F879B00D92301 /* CloudstaffTeamManagerTests.swift */; };
@@ -48,7 +47,6 @@
 		E727285D1A5F879900D92301 /* CloudstaffTeamManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudstaffTeamManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72728611A5F879A00D92301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E72728621A5F879A00D92301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E72728671A5F879B00D92301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E72728691A5F879B00D92301 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E727286C1A5F879B00D92301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E72728721A5F879B00D92301 /* CloudstaffTeamManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudstaffTeamManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +130,6 @@
 				6EBC23391A7903890043C743 /* HTTPFunctions */,
 				6EBC23341A78D4140043C743 /* TableItems */,
 				E72B9E481A619C4C0083BE2A /* Sidebar */,
-				E72728661A5F879B00D92301 /* Main.storyboard */,
 				E72728691A5F879B00D92301 /* Images.xcassets */,
 				E727286B1A5F879B00D92301 /* LaunchScreen.xib */,
 				E72728601A5F879A00D92301 /* Supporting Files */,
@@ -255,7 +252,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E72728681A5F879B00D92301 /* Main.storyboard in Resources */,
 				E727286D1A5F879B00D92301 /* LaunchScreen.xib in Resources */,
 				E727286A1A5F879B00D92301 /* Images.xcassets in Resources */,
 			);
@@ -309,14 +305,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E72728661A5F879B00D92301 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E72728671A5F879B00D92301 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E727286B1A5F879B00D92301 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

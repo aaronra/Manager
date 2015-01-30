@@ -4,7 +4,7 @@
 //
 //  Created by t0tep on 1/13/15.
 //  Copyright (c) 2015 CLOUDSTAFF. All rights reserved.
-// QWERTY
+// QWERTYqqgit
 
 import UIKit
 
@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
             registerNull()
         }else if username.text != Umail && password.text != Pword{
             println("Both Wrong")
-
+            bothWrong()
         }else if username.text != Umail || username.text == ""{
             println("Wrong Email")
             wrongEmail()
@@ -83,46 +83,105 @@ class LoginViewController: UIViewController {
     }
     
     func registerNull() {
+        
         let getname = username.text
         let gettnum = password.text
-        var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Please fill up the required information.", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-        })
         
-        alertController.addAction(ok)
-        presentViewController(alertController, animated: true, completion: nil)
+        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+        case .OrderedSame, .OrderedDescending:
+            
+            println("8 above")
+            
+            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Please fill up the required information.", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            })
+            
+            alertController.addAction(ok)
+            presentViewController(alertController, animated: true, completion: nil)
+            
+        case .OrderedAscending:
+            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "Please fill up the required information.", delegate: self, cancelButtonTitle: "OK")
+            alertView.alertViewStyle = .Default
+            alertView.show()
+            
+            println("8 below")
+        }
+        
     }
     
     func wrongEmail() {
         let getname = username.text
         let gettnum = password.text
-        var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong email address.", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-        })
-        alertController.addAction(ok)
-        presentViewController(alertController, animated: true, completion: nil)
+        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+        case .OrderedSame, .OrderedDescending:
+            
+            println("8 above")
+            
+            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong email address.", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            })
+            
+            alertController.addAction(ok)
+            presentViewController(alertController, animated: true, completion: nil)
+            
+        case .OrderedAscending:
+            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "Wrong email address.", delegate: self, cancelButtonTitle: "OK")
+            alertView.alertViewStyle = .Default
+            alertView.show()
+            
+            println("8 below")
+        }
     }
     
     func wrongPassword() {
         let getname = username.text
         let gettnum = password.text
-        var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong password.", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-        })
-        alertController.addAction(ok)
-        presentViewController(alertController, animated: true, completion: nil)
+        
+        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+        case .OrderedSame, .OrderedDescending:
+            
+            println("8 above")
+            
+            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong password.", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            })
+            
+            alertController.addAction(ok)
+            presentViewController(alertController, animated: true, completion: nil)
+            
+        case .OrderedAscending:
+            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "Wrong password.", delegate: self, cancelButtonTitle: "OK")
+            alertView.alertViewStyle = .Default
+            alertView.show()
+            
+            println("8 below")
+        }
     }
     
     func bothWrong() {
         let getname = username.text
         let gettnum = password.text
-        var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong email and password.", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-        })
-        alertController.addAction(ok)
-        presentViewController(alertController, animated: true, completion: nil)
+        
+        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+        case .OrderedSame, .OrderedDescending:
+            
+            println("8 above")
+            
+            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong email and password.", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            })
+            
+            alertController.addAction(ok)
+            presentViewController(alertController, animated: true, completion: nil)
+            
+        case .OrderedAscending:
+            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "Wrong email and password.", delegate: self, cancelButtonTitle: "OK")
+            alertView.alertViewStyle = .Default
+            alertView.show()
+            
+            println("8 below")
+        }
     }
-     
     
     func registerForKeyboardNotifications() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
