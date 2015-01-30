@@ -18,6 +18,7 @@ class DashboardCell: UITableViewCell {
     @IBOutlet weak var value: UILabel!
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

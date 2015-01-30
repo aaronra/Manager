@@ -60,9 +60,9 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         originView.addSubview(sideBarContainerView)
         
         
-        let blurView:UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.ExtraLight))
-        blurView.frame = sideBarContainerView.bounds
-        sideBarContainerView.addSubview(blurView)
+//        let blurView:UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.ExtraLight))
+//        blurView.frame = sideBarContainerView.bounds
+//        sideBarContainerView.addSubview(blurView)
         
         
         sideBarTableViewController.delegate = self
