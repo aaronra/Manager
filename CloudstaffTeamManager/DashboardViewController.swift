@@ -80,7 +80,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     {
         if index == 0{
             println("first")
-//            self.performSegueWithIdentifier("first", sender: self)
+            self.performSegueWithIdentifier("toDashboard", sender: self)
         } else if index == 1 {
             println("second")
         } else if index == 3{
