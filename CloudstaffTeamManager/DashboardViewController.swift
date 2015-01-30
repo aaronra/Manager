@@ -11,7 +11,7 @@ import UIKit
 class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDelegate {
     
     let borderWidth = 1.0
-    
+        
     
     @IBOutlet weak var tblView: UITableView!
     var arrayOfMetrics: [Metrics] = [Metrics]()
@@ -36,13 +36,29 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     
     func populateMetrics()
     {
+        var i = 0
+        var d = 0
+        var w = 0
+        var v = 0
         
-        var metrics1  = Metrics(title:"Sales Responses", lbldaily:"daily average", lblweekly:"weekly average", daily: 23, weekly: 135, value: 275)
+        while (i != 15)
+        {
+            ++d
+            ++w
+            ++v
+            ++i
+            
+            var metrics = Metrics(title:"Sample Title " + String(i), lbldaily:"daily average", lblweekly:"weekly average", daily: d, weekly: w, value: v)
+            
+            arrayOfMetrics.append(metrics)
+        }
         
-        var metrics2  = Metrics(title:"Open Tickets", lbldaily:"daily average", lblweekly:"weekly average", daily: 23, weekly: 56, value: 85)
-        
-        arrayOfMetrics.append(metrics1)
-        arrayOfMetrics.append(metrics2)
+//        var metrics1  = Metrics(title:"Sales Responses", lbldaily:"daily average", lblweekly:"weekly average", daily: 23, weekly: 135, value: 275)
+//        
+//        var metrics2  = Metrics(title:"Open Tickets", lbldaily:"daily average", lblweekly:"weekly average", daily: 23, weekly: 56, value: 85)
+//        
+//        arrayOfMetrics.append(metrics1)
+//        arrayOfMetrics.append(metrics2)
         
        
         
@@ -60,7 +76,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         
         if indexPath.row % 2 == 0
         {
-            cell.backgroundColor = UIColor.grayColor()
+            cell.backgroundColor = UIColor(hex: 0xDDDDDD)
         }else{
             cell.backgroundColor = UIColor.whiteColor()
         }
@@ -80,7 +96,8 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     {
         if index == 0{
             println("first")
-//            self.performSegueWithIdentifier("first", sender: self)
+            sideBar.showSideBar(false)
+            //self.performSegueWithIdentifier("toDashboard", sender: self)
         } else if index == 1 {
             println("second")
         } else if index == 3{

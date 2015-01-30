@@ -10,10 +10,12 @@ import UIKit
 
 class PinViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var txtPin1: UITextField!
     @IBOutlet weak var txtPin2: UITextField!
     @IBOutlet weak var txtPin3: UITextField!
     @IBOutlet weak var txtPin4: UITextField!
+    @IBOutlet weak var forgotPin: UIButton!
 
     
     var txtPIN = ""
@@ -21,8 +23,25 @@ class PinViewController: UIViewController, UITextFieldDelegate {
     let notificationCenter = NSNotificationCenter.defaultCenter()
     let yourPIN = "1234"
     
+    ///////////////////////  KEYBOARD DISMISS  /////////////////////////
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
+    /////////////////////////////////////////////////////////////////////
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
+        
+        // prevents the scroll view from swallowing up the touch event of child buttons
+        tapGesture.cancelsTouchesInView = false
+        
+        scrollView.addGestureRecognizer(tapGesture)
         
         txtPin1.becomeFirstResponder()
         txtPin1.delegate = self
@@ -81,6 +100,56 @@ class PinViewController: UIViewController, UITextFieldDelegate {
 
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.registerForKeyboardNotifications()
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.deregisterFromKeyboardNotifications()
+        super.viewWillDisappear(true)
+        
+    }
+
+    func registerForKeyboardNotifications() -> Void {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
+        
+    }
+    
+    func deregisterFromKeyboardNotifications() -> Void {
+        println("Deregistering!")
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillHideNotification, object: nil)
+        
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        var info: Dictionary = notification.userInfo!
+        var keyboardSize: CGSize = (info[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue().size)!
+        var buttonOrigin: CGPoint = self.forgotPin.frame.origin;
+        var buttonHeight: CGFloat = self.forgotPin.frame.size.height;
+        var visibleRect: CGRect = self.view.frame
+        visibleRect.size.height -= keyboardSize.height
+        
+        if (!CGRectContainsPoint(visibleRect, buttonOrigin)) {
+            var scrollPoint: CGPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight + 4)
+            self.scrollView.setContentOffset(scrollPoint, animated: true)
+            
+        }
+    }
+    
+    func hideKeyboard() {
+        txtPin1.resignFirstResponder()   //FirstResponder's must be resigned for hiding keyboard.
+        txtPin2.resignFirstResponder()
+        txtPin3.resignFirstResponder()
+        txtPin4.resignFirstResponder()
+
+        self.scrollView.setContentOffset(CGPointZero, animated: true)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

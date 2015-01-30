@@ -23,8 +23,6 @@
 		E72728791A5F879B00D92301 /* CloudstaffTeamManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728781A5F879B00D92301 /* CloudstaffTeamManagerTests.swift */; };
 		E72B9E461A619C450083BE2A /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9E441A619C450083BE2A /* SideBar.swift */; };
 		E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */; };
-		E7494F8F1A64A6E800ED2853 /* icon_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = E7494F8E1A64A6E800ED2853 /* icon_refresh.png */; };
-		E7494F911A64A76900ED2853 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = E7494F901A64A76900ED2853 /* icon_menu.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +56,6 @@
 		E72728781A5F879B00D92301 /* CloudstaffTeamManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudstaffTeamManagerTests.swift; sourceTree = "<group>"; };
 		E72B9E441A619C450083BE2A /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideBar.swift; path = SidebarLibrary/SideBar.swift; sourceTree = "<group>"; };
 		E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideBarTableViewController.swift; path = SidebarLibrary/SideBarTableViewController.swift; sourceTree = "<group>"; };
-		E7494F8E1A64A6E800ED2853 /* icon_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_refresh.png; path = images/icon_refresh.png; sourceTree = "<group>"; };
-		E7494F901A64A76900ED2853 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_menu.png; path = images/icon_menu.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +135,6 @@
 				E72728661A5F879B00D92301 /* Main.storyboard */,
 				E72728691A5F879B00D92301 /* Images.xcassets */,
 				E727286B1A5F879B00D92301 /* LaunchScreen.xib */,
-				E72B9E431A619AF60083BE2A /* images */,
 				E72728601A5F879A00D92301 /* Supporting Files */,
 			);
 			path = CloudstaffTeamManager;
@@ -168,15 +163,6 @@
 				E72728771A5F879B00D92301 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E72B9E431A619AF60083BE2A /* images */ = {
-			isa = PBXGroup;
-			children = (
-				E7494F901A64A76900ED2853 /* icon_menu.png */,
-				E7494F8E1A64A6E800ED2853 /* icon_refresh.png */,
-			);
-			name = images;
 			sourceTree = "<group>";
 		};
 		E72B9E481A619C4C0083BE2A /* Sidebar */ = {
@@ -271,8 +257,6 @@
 			files = (
 				E72728681A5F879B00D92301 /* Main.storyboard in Resources */,
 				E727286D1A5F879B00D92301 /* LaunchScreen.xib in Resources */,
-				E7494F911A64A76900ED2853 /* icon_menu.png in Resources */,
-				E7494F8F1A64A6E800ED2853 /* icon_refresh.png in Resources */,
 				E727286A1A5F879B00D92301 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,7 +414,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CloudstaffTeamManager/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -442,7 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CloudstaffTeamManager/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
