@@ -10,8 +10,8 @@ import UIKit
 
 class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDelegate {
     
-    let borderWidth = 1.0
-        
+    let borderWidth = 1.0       
+    
     
     @IBOutlet weak var tblView: UITableView!
     var arrayOfMetrics: [Metrics] = [Metrics]()
