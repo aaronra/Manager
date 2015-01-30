@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 CLOUDSTAFF. All rights reserved.
 //
 
-//  This is CSTM_branch
+//  This is master
 
 import UIKit
 
