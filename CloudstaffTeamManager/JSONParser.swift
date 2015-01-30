@@ -17,17 +17,22 @@ public class JSONParser {
         
         let myid = "c2010"
         
-        let urlAsString = "http://api.androidhive.info/contacts/"
+        let urlAsString = "http://10.1.51.130/cakephp/ActivityLog/indextry.json"
         let url: NSURL  = NSURL(string: urlAsString)!
         let urlSession = NSURLSession.sharedSession()
         
-        var idArray: Array<String> = []
+        var idArray: Array<Int> = []
+        var usernameArray: Array<String> = []
         var nameArray: Array<String> = []
-        var emailArray: Array<String> = []
-        var addressArray: Array<String> = []
-        var genderArray: Array<String> = []
-        
-        
+        var photoArray: Array<String> = []
+        var shtStartsArray: Array<String> = []
+        var shtEndsArray: Array<String> = []
+        var teamArray: Array<String> = []
+        var positionArray: Array<String> = []
+        var statusArray: Array<String> = []
+        var favArray: Array<String> = []
+        var loginArray: Array<String> = []
+
         
         let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
             if (error != nil) {
@@ -40,25 +45,50 @@ public class JSONParser {
                 println("JSON Error \(err!.localizedDescription)")
             }
             
-            let contactsArray = jsonResult["contacts"] as NSArray;
-            for contacts : AnyObject in contactsArray{
-                let conInfo = contacts as NSDictionary
+            let employeesArray = jsonResult["activitylogs"] as NSArray;
+            for employee : AnyObject in employeesArray{
+                let empInfo = employee as NSDictionary
                 
-                let id = conInfo["id"] as String
-                let names = conInfo["name"] as String
-                let email = conInfo["email"] as String
-                let address = conInfo["address"] as String
-                let gender = conInfo["gender"] as String
+                let id = empInfo["id"] as Int
+                let usernames = empInfo["username"] as String
+                let name = empInfo["name"] as String
+                let photo = empInfo["photo"] as String
+                let shift_start = empInfo["shift_start"] as String
+                let shift_end = empInfo["shift_end"] as String
+                let team = empInfo["team"] as String
+                let position = empInfo["position"] as String
+                let status = empInfo["status"] as String
+                let favorite = empInfo["favorite"] as String
+                let login = empInfo["login"] as String
+                
+
                 
                 idArray.append(id)
-                nameArray.append(names)
-                emailArray.append(email)
-                addressArray.append(address)
-                genderArray.append(gender)
+                usernameArray.append(usernames)
+                nameArray.append(name)
+                photoArray.append(photo)
+                shtStartsArray.append(shift_start)
+                shtEndsArray.append(shift_end)
+                teamArray.append(team)
+                positionArray.append(position)
+                statusArray.append(status)
+                favArray.append(favorite)
+                loginArray.append(login)
+
             }
             
 
+            println(idArray)
+            println(usernameArray)
             println(nameArray)
+            println(photoArray)
+            println(shtStartsArray)
+            println(shtEndsArray)
+            println(teamArray)
+            println(positionArray)
+            println(statusArray)
+            println(favArray)
+            println(loginArray)
             
 //            if contains(idArray, myid) {
 //                println("\(Tag)TRUE")

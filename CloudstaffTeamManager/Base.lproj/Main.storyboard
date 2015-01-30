@@ -109,6 +109,72 @@
             <point key="canvasLocation" x="-1417" y="-675"/>
         </scene>
         <!--Cloudstaff Team Manager-->
+        <scene sceneID="by6-JX-Uet">
+            <objects>
+                <viewController id="jWz-Le-szg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iwr-3s-ClG"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Ai-NO-gJS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xn6-Ev-1zf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="1" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qfV-xA-zSh">
+                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="1" id="ygm-Iq-5Un">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ygm-Iq-5Un" id="Mao-KK-4UK">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="               All" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPU-jn-bpI">
+                                <rect key="frame" x="0.0" y="64" width="600" height="55"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ping" translatesAutoresizingMaskIntoConstraints="NO" id="4Wr-AL-I6K">
+                                <rect key="frame" x="525" y="68" width="46" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="xlA-oC-lyG"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dU-FO-kAG">
+                                <rect key="frame" x="83" y="135" width="72" height="67"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PPU-jn-bpI" firstAttribute="leading" secondItem="qfV-xA-zSh" secondAttribute="leading" id="07g-t1-fGA"/>
+                            <constraint firstAttribute="trailing" secondItem="qfV-xA-zSh" secondAttribute="trailing" id="0Pm-nc-UaL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4Wr-AL-I6K" secondAttribute="trailing" constant="13" id="3de-fz-c7j"/>
+                            <constraint firstItem="qfV-xA-zSh" firstAttribute="top" secondItem="4Wr-AL-I6K" secondAttribute="bottom" constant="4" id="64q-CA-5N3"/>
+                            <constraint firstItem="PPU-jn-bpI" firstAttribute="trailing" secondItem="qfV-xA-zSh" secondAttribute="trailing" id="6vw-Bh-PKu"/>
+                            <constraint firstItem="qfV-xA-zSh" firstAttribute="top" secondItem="PPU-jn-bpI" secondAttribute="bottom" constant="1" id="LgY-tF-Ses"/>
+                            <constraint firstItem="qfV-xA-zSh" firstAttribute="bottom" secondItem="5Ai-NO-gJS" secondAttribute="top" id="RoU-UZ-RTT"/>
+                            <constraint firstItem="4Wr-AL-I6K" firstAttribute="top" secondItem="iwr-3s-ClG" secondAttribute="bottom" constant="4" id="ZuD-sU-ieK"/>
+                            <constraint firstItem="qfV-xA-zSh" firstAttribute="top" secondItem="iwr-3s-ClG" secondAttribute="bottom" constant="56" id="n2L-6X-jVI"/>
+                            <constraint firstItem="qfV-xA-zSh" firstAttribute="leading" secondItem="Xn6-Ev-1zf" secondAttribute="leading" id="tF5-US-fmZ"/>
+                            <constraint firstItem="PPU-jn-bpI" firstAttribute="top" secondItem="iwr-3s-ClG" secondAttribute="bottom" id="y8z-Ia-PeE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Cloudstaff Team Manager" id="dvj-1w-iGf">
+                        <barButtonItem key="leftBarButtonItem" image="icon_menu.png" id="F0U-qJ-hPd"/>
+                        <barButtonItem key="rightBarButtonItem" image="icon_refresh.png" id="HaV-ac-Nfa"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gHB-jN-fkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9" y="74"/>
+        </scene>
+        <!--Cloudstaff Team Manager-->
         <scene sceneID="yoN-yR-ZyX">
             <objects>
                 <viewController id="lhn-P9-CCP" customClass="DashboardViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,8 +200,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7I9-vJ-cec" id="WHh-uP-gCH">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOh-jD-QAM">
-                                                    <rect key="frame" x="17" y="8" width="92" height="70"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOh-jD-QAM">
+                                                    <rect key="frame" x="17" y="9" width="92" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="92" id="HoO-kH-DnZ"/>
                                                     </constraints>
@@ -143,8 +209,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bit-FR-iTm">
-                                                    <rect key="frame" x="127" y="8" width="92" height="70"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bit-FR-iTm">
+                                                    <rect key="frame" x="127" y="9" width="92" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="92" id="gY4-TK-Qlm"/>
                                                     </constraints>
@@ -152,8 +218,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G51-yH-2Lh">
-                                                    <rect key="frame" x="462" y="6" width="92" height="79"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G51-yH-2Lh">
+                                                    <rect key="frame" x="462" y="7" width="92" height="79"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="92" id="Yfs-kJ-xxb"/>
                                                     </constraints>
@@ -345,11 +411,30 @@
             </objects>
             <point key="canvasLocation" x="-699" y="-675"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MSm-VD-PTi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e97-VC-gux" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fUA-nl-ZGw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jWz-Le-szg" kind="relationship" relationship="rootViewController" id="cFq-bf-JVF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t4R-pI-D5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9" y="-675"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon_menu.png" width="28" height="28"/>
         <image name="icon_refresh.png" width="25" height="25"/>
         <image name="logo" width="512" height="512"/>
+        <image name="ping" width="190" height="190"/>
         <image name="whitebox" width="800" height="483"/>
     </resources>
 </document>
