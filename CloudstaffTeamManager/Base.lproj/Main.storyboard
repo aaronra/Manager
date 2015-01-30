@@ -423,6 +423,110 @@
             </objects>
             <point key="canvasLocation" x="-703" y="-675"/>
         </scene>
+        <!--Cloudstaff Team Manager-->
+        <scene sceneID="clW-dA-69B">
+            <objects>
+                <viewController id="n1I-uY-6Z6" customClass="DashboardViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KUq-rp-yTt"/>
+                        <viewControllerLayoutGuide type="bottom" id="h7q-DR-Obm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xk8-7K-lh1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" restorationIdentifier="Badge" bounces="NO" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lDf-EF-912">
+                                <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                                <color key="backgroundColor" red="0.1092937301" green="0.59644269920000004" blue="0.83455274469999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.1092937301" green="0.59644269920000004" blue="0.83455274469999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lDf-EF-912" secondAttribute="height" multiplier="6:1" id="9Ja-sA-4am"/>
+                                    <constraint firstAttribute="width" constant="600" id="Kc4-DE-nNM"/>
+                                    <constraint firstAttribute="height" constant="100" id="mvl-6S-S7F"/>
+                                    <constraint firstAttribute="width" secondItem="lDf-EF-912" secondAttribute="height" multiplier="6:1" id="tsT-9w-GG5"/>
+                                </constraints>
+                                <inset key="scrollIndicatorInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kQe-FQ-HBH">
+                                    <size key="itemSize" width="80" height="80"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="62Q-kq-TZ8">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Jnx-2X-HYX">
+                                <rect key="frame" x="0.0" y="64" width="600" height="435"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="s1Z-SY-bhY">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s1Z-SY-bhY" id="soP-yB-bF4">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lDf-EF-912" firstAttribute="top" secondItem="Jnx-2X-HYX" secondAttribute="bottom" constant="1" id="7rn-dY-hZN"/>
+                            <constraint firstItem="lDf-EF-912" firstAttribute="leading" secondItem="Xk8-7K-lh1" secondAttribute="leadingMargin" constant="-16" id="ArG-am-RhR"/>
+                            <constraint firstAttribute="centerX" secondItem="Jnx-2X-HYX" secondAttribute="centerX" id="DGd-xf-LlZ"/>
+                            <constraint firstItem="lDf-EF-912" firstAttribute="width" secondItem="Xk8-7K-lh1" secondAttribute="height" multiplier="1:1" id="MPl-CM-ei1"/>
+                            <constraint firstAttribute="centerX" secondItem="lDf-EF-912" secondAttribute="centerX" id="WDZ-mu-Pe0"/>
+                            <constraint firstItem="Jnx-2X-HYX" firstAttribute="top" secondItem="KUq-rp-yTt" secondAttribute="bottom" id="Wn1-gv-cGL"/>
+                            <constraint firstItem="h7q-DR-Obm" firstAttribute="top" secondItem="lDf-EF-912" secondAttribute="bottom" id="cmJ-07-LSU"/>
+                            <constraint firstItem="Jnx-2X-HYX" firstAttribute="leading" secondItem="lDf-EF-912" secondAttribute="leading" id="jdc-ft-ivS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lDf-EF-912" secondAttribute="trailing" constant="-16" id="uKP-N9-XIU"/>
+                            <constraint firstAttribute="centerX" secondItem="lDf-EF-912" secondAttribute="centerX" id="yYp-vh-Qxe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Cloudstaff Team Manager" id="IpS-hj-0Lg">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="sH2-6e-JfZ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="showMenu:" destination="n1I-uY-6Z6" id="NQz-UH-p4W"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="refresh" id="P0p-2S-66y">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TWD-zP-NSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="26" y="77"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4Bh-Ub-eIN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z4d-En-Jup" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CrX-cS-gYA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="n1I-uY-6Z6" kind="relationship" relationship="rootViewController" id="gWq-wh-Wcp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CzS-Ac-8Np" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="26" y="-680"/>
+        </scene>
     </scenes>
     <resources>
         <image name="logo" width="512" height="512"/>
