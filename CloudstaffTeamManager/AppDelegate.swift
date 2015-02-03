@@ -6,11 +6,6 @@
 //  Copyright (c) 2015 CLOUDSTAFF. All rights reserved.
 //
 
-<<<<<<< HEAD
-//  This is master
-=======
-//  This is t0tep_branch
->>>>>>> 5f1f5eddf5db81bb206048663f169ad6e615337c
 
 import UIKit
 

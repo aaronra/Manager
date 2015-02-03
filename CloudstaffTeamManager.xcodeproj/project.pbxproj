@@ -11,6 +11,7 @@
 		5D1EDDD31A76FA9E005A92B3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */; };
 		5D1EDDD81A79A786005A92B3 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1EDDD71A79A786005A92B3 /* DashboardCell.swift */; };
 		5D1EDDDA1A79C74B005A92B3 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1EDDD91A79C74B005A92B3 /* Metrics.swift */; };
+		5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC172611A7F07980056F6DA /* StaffCell.swift */; };
 		6E2341601A7B6F3B009D856E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E23415E1A7B6F3B009D856E /* Main.storyboard */; };
 		6EBC23311A78CC1E0043C743 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC23301A78CC1E0043C743 /* CustomCell.swift */; };
 		6EBC23331A78D4040043C743 /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC23321A78D4040043C743 /* Employees.swift */; };
@@ -40,6 +41,7 @@
 		5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		5D1EDDD71A79A786005A92B3 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
 		5D1EDDD91A79C74B005A92B3 /* Metrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
+		5DC172611A7F07980056F6DA /* StaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCell.swift; sourceTree = "<group>"; };
 		6E23415F1A7B6F3B009D856E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6EBC23301A78CC1E0043C743 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		6EBC23321A78D4040043C743 /* Employees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				5D1EDDD71A79A786005A92B3 /* DashboardCell.swift */,
 				5D1EDDD91A79C74B005A92B3 /* Metrics.swift */,
+				5DC172611A7F07980056F6DA /* StaffCell.swift */,
 			);
 			name = Dashboard;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D005DBF1A6F831900D66B79 /* PinViewController.swift in Sources */,
+				5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */,
 				5D1EDDD31A76FA9E005A92B3 /* DashboardViewController.swift in Sources */,
 				E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */,
 				E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */,

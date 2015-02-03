@@ -8,14 +8,17 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDelegate {
+class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UICollectionViewDelegate {
     
     let borderWidth = 1.0       
     
     
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var colletionView: UICollectionView!
     var arrayOfMetrics: [Metrics] = [Metrics]()
     
+    var arrayofStaffs: [String] = ["staff","staff","staff","staff","staff","staff","staff"]
+    var arrayofStatus: [String] = ["online","offline","online","online","online","online","online"]
     
     var sideBar:SideBar = SideBar()
     
@@ -114,6 +117,26 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             sideBar.showSideBar(true)
         }
     }
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return arrayofStaffs.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell: StaffCell = collectionView.dequeueReusableCellWithReuseIdentifier("staffCell", forIndexPath: indexPath) as StaffCell
+        
+        cell.statusCell.image = UIImage(named: arrayofStatus[indexPath.row])
+        cell.imgCell.image = UIImage(named: arrayofStaffs[indexPath.row])
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        println("Cell \(indexPath.row) selected")
+    }
 
-   
+
 }
