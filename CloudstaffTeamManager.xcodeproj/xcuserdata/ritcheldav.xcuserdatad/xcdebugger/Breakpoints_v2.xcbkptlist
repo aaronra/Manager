@@ -17,6 +17,36 @@
             endingLineNumber = "11"
             landmarkName = "DashboardViewController"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CloudstaffTeamManager.DashboardViewController.__deallocating_deinit"
+                  moduleName = "CloudstaffTeamManager"
+                  urlString = "file:///Users/ritcheldav/CloudstaffteamManager/CloudstaffTeamManager/DashboardViewController.swift"
+                  timestampString = "444727231.237355"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc CloudstaffTeamManager.DashboardViewController.__ivar_destroyer"
+                  moduleName = "CloudstaffTeamManager"
+                  urlString = "file:///Users/ritcheldav/CloudstaffteamManager/CloudstaffTeamManager/DashboardViewController.swift"
+                  timestampString = "444727231.237526"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

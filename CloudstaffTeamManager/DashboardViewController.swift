@@ -10,15 +10,19 @@ import UIKit
 
 class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UICollectionViewDelegate {
     
-    let borderWidth = 1.0       
+    let borderWidth = 1.0
+    var imageCache = [String : UIImage]()
     
     
     @IBOutlet weak var tblView: UITableView!
-    @IBOutlet weak var colletionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     var arrayOfMetrics: [Metrics] = [Metrics]()
     
-    var arrayofStaffs: [String] = ["staff","staff","staff","staff","staff","staff","staff"]
-    var arrayofStatus: [String] = ["online","offline","online","online","online","online","online"]
+    var arrayofStaffs: [String] = ["http://cloudstaff.com/staff/ChristoperC.jpg","http://cloudstaff.com/staff/OscarG.jpg","","http://cloudstaff.com/staff/RicheldaV.jpg","http://cloudstaff.com/staff/ArnelN.jpg","http://cloudstaff.com/staff/RenzS.jpg","http://cloudstaff.com/staff/ElvinD.jpg"]
+    
+//    var arrayofStaffs: [String] = ["staff","staff","staff","staff","staff","staff","staff"]
+    
+    var arrayofStatus: [String] = ["online","offline","online","online","offline","online","online"]
     
     var sideBar:SideBar = SideBar()
     
@@ -55,16 +59,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             
             arrayOfMetrics.append(metrics)
         }
-        
-//        var metrics1  = Metrics(title:"Sales Responses", lbldaily:"daily average", lblweekly:"weekly average", daily: 23, weekly: 135, value: 275)
-//        
-//        var metrics2  = Metrics(title:"Open Tickets", lbldaily:"daily average", lblweekly:"weekly average", daily: 23, weekly: 56, value: 85)
-//        
-//        arrayOfMetrics.append(metrics1)
-//        arrayOfMetrics.append(metrics2)
-        
-       
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -120,7 +114,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return arrayofStaffs.count
     }
     
@@ -129,7 +122,56 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         let cell: StaffCell = collectionView.dequeueReusableCellWithReuseIdentifier("staffCell", forIndexPath: indexPath) as StaffCell
         
         cell.statusCell.image = UIImage(named: arrayofStatus[indexPath.row])
-        cell.imgCell.image = UIImage(named: arrayofStaffs[indexPath.row])
+//        cell.imgCell.image = UIImage(named: arrayofStaffs[indexPath.row])
+        
+        cell.imgCell?.image = UIImage(named: "staff")
+        
+        // *******
+        
+        // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
+        let urlString = arrayofStaffs[indexPath.row]
+        
+        // Check our image cache for the existing key. This is just a dictionary of UIImages
+        //var image: UIImage? = self.imageCache.valueForKey(urlString) as? UIImage
+        var image = self.imageCache[urlString]
+        
+        
+        if( image == nil ) {
+            // If the image does not exist, we need to download it
+            var imgURL: NSURL = NSURL(string: urlString)!
+            
+            // Download an NSData representation of the image at the URL
+            let request: NSURLRequest = NSURLRequest(URL: imgURL)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
+                if error == nil {
+                    image = UIImage(data: data)
+                    
+                    // Store the image in to our cache
+                    self.imageCache[urlString] = image
+                    dispatch_async(dispatch_get_main_queue(), {
+                        if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath) {
+                            cell.imgCell.image = image
+                            
+                            //cellToUpdate.imageView?.image = image
+                        }
+                    })
+                }
+                else {
+                    println("Error: \(error.localizedDescription)")
+                }
+            })
+            
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), {
+                if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath) {
+                    cell.imgCell.image = image
+                    //cellToUpdate.imageView?.image = image
+                }
+            })
+        }
+        
+        // *******
         
         return cell
     }
@@ -138,5 +180,12 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         println("Cell \(indexPath.row) selected")
     }
 
+    @IBAction func scrollLeft(sender: AnyObject) {
+        [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x - 80, 0), animated: true)]
+    }
+    
+    @IBAction func scrollRight(sender: AnyObject) {
+        [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x - 80, 0), animated: true)]
+    }
 
 }
