@@ -12,13 +12,13 @@ import Darwin
 class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UICollectionViewDelegate {
     
     let borderWidth = 1.0
-    var imageCache = [String : UIImage]()
-    
     
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     var arrayOfMetrics: [Metrics] = [Metrics]()
-    
+    var staffIcon = [StaffImages]()
+    var api : APIController?
+    var imageCache = [String : UIImage]()
     var arrayofStaffs: [String] = ["http://cloudstaff.com/staff/ChristoperC.jpg","http://cloudstaff.com/staff/OscarG.jpg","","http://cloudstaff.com/staff/RicheldaV.jpg","http://cloudstaff.com/staff/ArnelN.jpg","http://cloudstaff.com/staff/RenzS.jpg","http://cloudstaff.com/staff/ElvinD.jpg"]
     
 //    var arrayofStaffs: [String] = ["staff","staff","staff","staff","staff","staff","staff"]
@@ -26,7 +26,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     var arrayofStatus: [String] = ["online","offline","online","online","offline","online","online"]
     
     var sideBar:SideBar = SideBar()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +41,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         
     }
     
-    func populateMetrics()
-    {
+    func populateMetrics(){
         var i = 0
         var d = 0
         var w = 0
@@ -201,3 +199,15 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
