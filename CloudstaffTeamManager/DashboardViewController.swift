@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Darwin
 
 class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UICollectionViewDelegate {
     
@@ -95,8 +96,12 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             //self.performSegueWithIdentifier("toDashboard", sender: self)
         } else if index == 1 {
             println("second")
-        } else if index == 3{
+        } else if index == 2{
             println("third")
+        } else if index == 3 {
+            println("fourth")
+        } else if index == 4 {
+            exit(0)
         }
     }
     
@@ -179,11 +184,24 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     }
 
     @IBAction func scrollLeft(sender: AnyObject) {
-        [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x - 80, 0), animated: true)]
+        
+        var navToleft = collectionView.contentOffset.x - 80
+        
+        if (navToleft < 0) {
+            navToleft = 0
+        }
+        
+        if ((navToleft) >= 0) {
+            [collectionView.setContentOffset(CGPointMake(navToleft, 0), animated: true)]
+        }
+        println(navToleft)
+   
     }
     
     @IBAction func scrollRight(sender: AnyObject) {
-        [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x - 80, 0), animated: true)]
+        if ((collectionView.contentOffset.x + 80) < (collectionView.contentSize.width - (collectionView.contentOffset.x - 80))) {
+            [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x + 80, 0), animated: true)]
+        }
     }
     
     
@@ -200,3 +218,15 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
