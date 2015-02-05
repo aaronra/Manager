@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Darwin
 
 class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UICollectionViewDelegate {
     
@@ -92,13 +93,13 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     func sideBarDidSelectButtonAtIndex(index: Int)
     {
         if index == 0{
-            println("first")
             sideBar.showSideBar(false)
-            //self.performSegueWithIdentifier("toDashboard", sender: self)
         } else if index == 1 {
-            println("second")
-        } else if index == 3{
-            println("third")
+        } else if index == 2 {
+        } else if index == 3 {
+            self.performSegueWithIdentifier("toSettings", sender: self)
+        } else if index == 4 {
+            exit(0)
         }
     }
     
@@ -173,7 +174,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         
         // *******
         
-        return cell
+        return cell 
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
