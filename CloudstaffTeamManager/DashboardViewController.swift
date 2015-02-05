@@ -181,11 +181,22 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     }
 
     @IBAction func scrollLeft(sender: AnyObject) {
-        [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x - 80, 0), animated: true)]
+        var navToleft = collectionView.contentOffset.x - 80
+        
+        if (navToleft < 0) {
+            navToleft = 0
+        }
+        
+        if ((navToleft) >= 0) {
+            [collectionView.setContentOffset(CGPointMake(navToleft, 0), animated: true)]
+        }
+        println(navToleft)
     }
     
     @IBAction func scrollRight(sender: AnyObject) {
-        [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x - 80, 0), animated: true)]
+        if ((collectionView.contentOffset.x + 80) < (collectionView.contentSize.width - (collectionView.contentOffset.x - 80))) {
+            [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x + 80, 0), animated: true)]
+        }
     }
 
 }
