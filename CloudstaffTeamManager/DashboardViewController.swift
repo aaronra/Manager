@@ -93,9 +93,12 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         if index == 0{
             sideBar.showSideBar(false)
         } else if index == 1 {
-        } else if index == 2 {
+            println("second")
+        } else if index == 2{
+            println("third")
         } else if index == 3 {
-            self.performSegueWithIdentifier("toSettings", sender: self)
+            println("fourth")
+            //performSegueWithIdentifier("toSettings", sender: self)
         } else if index == 4 {
             exit(0)
         }
@@ -180,6 +183,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     }
 
     @IBAction func scrollLeft(sender: AnyObject) {
+        
         var navToleft = collectionView.contentOffset.x - 80
         
         if (navToleft < 0) {
@@ -190,12 +194,26 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             [collectionView.setContentOffset(CGPointMake(navToleft, 0), animated: true)]
         }
         println(navToleft)
+   
     }
     
     @IBAction func scrollRight(sender: AnyObject) {
         if ((collectionView.contentOffset.x + 80) < (collectionView.contentSize.width - (collectionView.contentOffset.x - 80))) {
             [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x + 80, 0), animated: true)]
         }
+    }
+    
+    
+    func didReceiveAPIResults(results: NSDictionary) {
+        var teamArr: NSArray = results["myTeam"] as NSArray
+        dispatch_async(dispatch_get_main_queue(), {
+            self.staffIcon = MyTeamDetails.staffImagesJSON(teamArr)
+            //            self.tblView!.reloadData()
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        })
+        
+        println(" protocol LANGS == for getting staff ID ")
+        //        println(teamArr)
     }
 
 }
