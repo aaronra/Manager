@@ -98,7 +98,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             println("third")
         } else if index == 3 {
             println("fourth")
-            //performSegueWithIdentifier("toSettings", sender: self)
+            performSegueWithIdentifier("toSettings", sender: self)
         } else if index == 4 {
             exit(0)
         }

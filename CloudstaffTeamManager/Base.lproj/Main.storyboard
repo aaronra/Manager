@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PD5-NW-iGU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PD5-NW-iGU">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -440,7 +440,7 @@
                     <connections>
                         <outlet property="collectionView" destination="peO-z8-qDS" id="bWP-qK-XbR"/>
                         <outlet property="tblView" destination="pOj-jQ-grq" id="tLX-c0-aNL"/>
-                        <segue destination="eAK-Us-Zcb" kind="presentation" identifier="toSettings" modalTransitionStyle="crossDissolve" id="fWM-cj-XLv"/>
+                        <segue destination="eAK-Us-Zcb" kind="show" identifier="toSettings" id="fWM-cj-XLv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsy-1j-Tln" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -468,9 +468,8 @@
         <!--Settings-->
         <scene sceneID="k0o-ZC-vdy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9AF-up-Z0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="avQ-Zq-fHD" customClass="SettingsTableViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="FgV-1D-OmI">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="FgV-1D-OmI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -539,10 +538,10 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lcd-zi-TEw" id="zyw-P3-88q">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" text="You can save your default message for sending Ping message." translatesAutoresizingMaskIntoConstraints="NO" id="fBn-mj-doN">
-                                                    <rect key="frame" x="8" y="8" width="584" height="118"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" text="You can save your default message for sending Ping message." translatesAutoresizingMaskIntoConstraints="NO" id="fBn-mj-doN">
+                                                    <rect key="frame" x="8" y="9" width="584" height="118"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -551,6 +550,12 @@
                                                 <constraint firstItem="fBn-mj-doN" firstAttribute="leading" secondItem="zyw-P3-88q" secondAttribute="leadingMargin" id="XHl-7i-SOj"/>
                                                 <constraint firstAttribute="centerY" secondItem="fBn-mj-doN" secondAttribute="centerY" constant="-1" id="Yrw-Yt-vSQ"/>
                                             </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="2" id="TKg-c7-roc">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TKg-c7-roc" id="HMu-aK-7Zu">
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -562,18 +567,26 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="v1N-jm-PSh">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="DjK-64-49e">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DjK-64-49e">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel:" destination="avQ-Zq-fHD" id="S8Z-OA-DeT"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="b18-gh-lv0">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="done:" destination="avQ-Zq-fHD" id="mgY-p7-F4F"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="autoUpdate" destination="Fqd-3O-6qk" id="tXa-q5-eMm"/>
-                        <outlet property="defaultMessage" destination="fBn-mj-doN" id="QpE-wI-99U"/>
+                        <outlet property="autoUpdate" destination="Fqd-3O-6qk" id="oBv-Sj-saM"/>
+                        <outlet property="defaultMessage" destination="fBn-mj-doN" id="N83-oF-NvJ"/>
+                        <outlet property="timeInterval" destination="bz3-PH-aTh" id="PR7-q0-Nem"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9AF-up-Z0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-25" y="-44"/>
         </scene>
@@ -582,6 +595,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eAK-Us-Zcb" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bS3-Wm-cNn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CNn-i6-pQX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
