@@ -12,6 +12,8 @@
 		5D1EDDD81A79A786005A92B3 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1EDDD71A79A786005A92B3 /* DashboardCell.swift */; };
 		5D1EDDDA1A79C74B005A92B3 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1EDDD91A79C74B005A92B3 /* Metrics.swift */; };
 		5D49236A1A8993D500EB8EB6 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4923691A8993D500EB8EB6 /* SettingsTableViewController.swift */; };
+		5D4AA9481A8AE40C004DE759 /* MyTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4AA9471A8AE40C004DE759 /* MyTeamViewController.swift */; };
+		5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */; };
 		5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC172611A7F07980056F6DA /* StaffCell.swift */; };
 		6E2341601A7B6F3B009D856E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E23415E1A7B6F3B009D856E /* Main.storyboard */; };
 		6E8FF3C31A820403002074BE /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8FF3C21A820403002074BE /* APIController.swift */; };
@@ -45,6 +47,8 @@
 		5D1EDDD71A79A786005A92B3 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
 		5D1EDDD91A79C74B005A92B3 /* Metrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		5D4923691A8993D500EB8EB6 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		5D4AA9471A8AE40C004DE759 /* MyTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeamViewController.swift; sourceTree = "<group>"; };
+		5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeamCell.swift; sourceTree = "<group>"; };
 		5DC172611A7F07980056F6DA /* StaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCell.swift; sourceTree = "<group>"; };
 		6E23415F1A7B6F3B009D856E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6E8FF3C21A820403002074BE /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
@@ -87,11 +91,21 @@
 		5D1EDDD61A79A5D3005A92B3 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */,
 				5D1EDDD71A79A786005A92B3 /* DashboardCell.swift */,
 				5D1EDDD91A79C74B005A92B3 /* Metrics.swift */,
 				5DC172611A7F07980056F6DA /* StaffCell.swift */,
 			);
 			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		5D4AA9491A8B1281004DE759 /* MyTeam */ = {
+			isa = PBXGroup;
+			children = (
+				5D4AA9471A8AE40C004DE759 /* MyTeamViewController.swift */,
+				5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */,
+			);
+			name = MyTeam;
 			sourceTree = "<group>";
 		};
 		6EBC23341A78D4140043C743 /* TableItems */ = {
@@ -134,10 +148,10 @@
 		E727285F1A5F879900D92301 /* CloudstaffTeamManager */ = {
 			isa = PBXGroup;
 			children = (
+				5D4AA9491A8B1281004DE759 /* MyTeam */,
 				5D1EDDD61A79A5D3005A92B3 /* Dashboard */,
 				E72728621A5F879A00D92301 /* AppDelegate.swift */,
 				6E8FF3C41A8204FB002074BE /* MyTeamDetails.swift */,
-				5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */,
 				E707D9E41A653BE5000D75FE /* LoginViewController.swift */,
 				5D005DBE1A6F831900D66B79 /* PinViewController.swift */,
 				6EBC23391A7903890043C743 /* HTTPFunctions */,
@@ -292,8 +306,10 @@
 				5D005DBF1A6F831900D66B79 /* PinViewController.swift in Sources */,
 				5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */,
 				5D1EDDD31A76FA9E005A92B3 /* DashboardViewController.swift in Sources */,
+				5D4AA9481A8AE40C004DE759 /* MyTeamViewController.swift in Sources */,
 				E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */,
 				E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */,
+				5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */,
 				E72B9E461A619C450083BE2A /* SideBar.swift in Sources */,
 				6EBC23361A7900D40043C743 /* ConnectionDetector.swift in Sources */,
 				5D1EDDD81A79A786005A92B3 /* DashboardCell.swift in Sources */,

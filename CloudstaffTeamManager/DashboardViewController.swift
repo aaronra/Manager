@@ -20,9 +20,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     var api : APIController?
     var imageCache = [String : UIImage]()
     var arrayofStaffs: [String] = ["http://cloudstaff.com/staff/ChristoperC.jpg","http://cloudstaff.com/staff/OscarG.jpg","","http://cloudstaff.com/staff/RicheldaV.jpg","http://cloudstaff.com/staff/ArnelN.jpg","http://cloudstaff.com/staff/RenzS.jpg","http://cloudstaff.com/staff/ElvinD.jpg"]
-    
-//    var arrayofStaffs: [String] = ["staff","staff","staff","staff","staff","staff","staff"]
-    
     var arrayofStatus: [String] = ["online","offline","online","online","offline","online","online"]
     
     var sideBar:SideBar = SideBar()
@@ -94,6 +91,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             sideBar.showSideBar(false)
         } else if index == 1 {
             println("second")
+            performSegueWithIdentifier("toMyTeam", sender: self)
         } else if index == 2{
             println("third")
         } else if index == 3 {
@@ -124,17 +122,11 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         let cell: StaffCell = collectionView.dequeueReusableCellWithReuseIdentifier("staffCell", forIndexPath: indexPath) as StaffCell
         
         cell.statusCell.image = UIImage(named: arrayofStatus[indexPath.row])
-//        cell.imgCell.image = UIImage(named: arrayofStaffs[indexPath.row])
-        
         cell.imgCell?.image = UIImage(named: "staff")
         
-        // *******
-        
-        // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
         let urlString = arrayofStaffs[indexPath.row]
         
-        // Check our image cache for the existing key. This is just a dictionary of UIImages
-        //var image: UIImage? = self.imageCache.valueForKey(urlString) as? UIImage
+        
         var image = self.imageCache[urlString]
         
         
@@ -168,12 +160,10 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             dispatch_async(dispatch_get_main_queue(), {
                 if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath) {
                     cell.imgCell.image = image
-                    //cellToUpdate.imageView?.image = image
                 }
             })
-        }
-        
-        // *******
+        }      
+    
         
         return cell 
     }

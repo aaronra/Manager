@@ -63,14 +63,17 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
 
     @IBAction func done(sender: AnyObject) {
         dismissViewControllerAnimated()
+        println("done")
     }
     
     
     @IBAction func cancel(sender: AnyObject) {
         dismissViewControllerAnimated()
+        println("cancel")
     }
     
     func dismissViewControllerAnimated() {
-         navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewControllerAnimated(true)
+        println("dismiss")
     }
 }
