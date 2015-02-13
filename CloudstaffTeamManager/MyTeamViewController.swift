@@ -110,6 +110,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("toStaffDetails", sender: self)
+    }
+    
     func FavePressed(sender: UIButton) {
         let buttonRow = sender.tag
         

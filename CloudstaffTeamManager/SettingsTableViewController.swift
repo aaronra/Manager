@@ -61,13 +61,13 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
 
     
 
-    @IBAction func done(sender: AnyObject) {
+    @IBAction func done(sender: UIBarButtonItem) {
         dismissViewControllerAnimated()
         println("done")
     }
     
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func cancel(sender: UIBarButtonItem) {
         dismissViewControllerAnimated()
         println("cancel")
     }
