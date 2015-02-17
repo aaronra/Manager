@@ -32,7 +32,6 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
                 "log out"])
         sideBar.delegate = self
         
-
         // Do any additional setup after loading the view.
     }
 
@@ -112,6 +111,8 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("toStaffDetails", sender: self)
+        
+     
     }
     
     func FavePressed(sender: UIButton) {
@@ -149,4 +150,21 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             sideBar.showSideBar(true)
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
+        var teamIndex = tableView!.indexPathForSelectedRow()!.row
+        
+        staffTVController.vLblName = arrayOfName[teamIndex]
+        staffTVController.vLblFullName = arrayOfFullName[teamIndex]
+        staffTVController.vImgStaff = arrayOfStaffs[teamIndex]
+        staffTVController.vImgStatus = arrayOfStatus[teamIndex]
+        staffTVController.vDetailOne = "Status"
+        staffTVController.vDetailTwo = "Team"
+        staffTVController.vDetailThree = "Position"
+        staffTVController.vDetailFour = "Status"
+        
+    }
+    
+    
 }

@@ -604,7 +604,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDC-rk-5P3">
-                                <rect key="frame" x="16" y="84" width="200" height="21"/>
+                                <rect key="frame" x="16" y="40" width="200" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="YJ3-Jp-Q04"/>
                                 </constraints>
@@ -613,19 +613,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3c-wY-EBO">
-                                <rect key="frame" x="555" y="80" width="29" height="29"/>
+                                <rect key="frame" x="555" y="36" width="29" height="29"/>
                                 <state key="normal" image="filter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Z1-cl-JYm">
-                                <rect key="frame" x="512" y="80" width="29" height="29"/>
+                                <rect key="frame" x="512" y="36" width="29" height="29"/>
                                 <state key="normal" image="down">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TSZ-Ur-qYw">
-                                <rect key="frame" x="0.0" y="117" width="600" height="483"/>
+                                <rect key="frame" x="0.0" y="73" width="600" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="483" id="j0M-6R-6rb"/>
@@ -650,7 +650,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtQ-X8-16i">
-                                                    <rect key="frame" x="96" y="8" width="200" height="21"/>
+                                                    <rect key="frame" x="95" y="8" width="200" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.1092937301" green="0.59644269920000004" blue="0.83455274469999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -722,6 +722,11 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="j0M-6R-6rb"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="fK0-o1-rF0" id="Ctz-0V-6oi"/>
                                     <outlet property="delegate" destination="fK0-o1-rF0" id="NR5-L0-2tD"/>
@@ -806,7 +811,7 @@
         <scene sceneID="WRS-ZA-Ec4">
             <objects>
                 <tableViewController id="fVi-eZ-Vrd" customClass="StaffTableViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NwO-x1-N11">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NwO-x1-N11">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -825,7 +830,7 @@
                                                     <rect key="frame" x="15" y="15" width="100" height="100"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwg-PR-A4C">
-                                                    <rect key="frame" x="128" y="15" width="250" height="21"/>
+                                                    <rect key="frame" x="127" y="15" width="250" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                     <color key="textColor" red="0.1092937301" green="0.59644269920000004" blue="0.83455274469999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -975,13 +980,19 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Staff Details" id="vQi-e4-Pfz">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="m7F-sF-uYE"/>
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="oK6-w8-CAO">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="back:" destination="fVi-eZ-Vrd" id="8Pr-Qk-yK2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailFour" destination="3m1-7o-61D" id="Dke-0Y-1zf"/>
                         <outlet property="detailOne" destination="8JA-ej-vB0" id="TS6-G6-VAQ"/>
                         <outlet property="detailThree" destination="WZG-3G-R0Q" id="e98-1L-LvJ"/>
                         <outlet property="detailTwo" destination="7Ny-dj-Qzj" id="cXu-rD-gxg"/>
+                        <outlet property="imgFave" destination="CKW-Od-cEt" id="bK0-80-r8V"/>
                         <outlet property="imgStaff" destination="nz1-vJ-LSY" id="VlR-3h-8s6"/>
                         <outlet property="imgStatus" destination="XxO-Jh-NZa" id="9hh-2f-u8N"/>
                         <outlet property="lblFullName" destination="4e7-d8-bTJ" id="RHu-wa-Phn"/>
