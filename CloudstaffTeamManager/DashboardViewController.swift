@@ -8,6 +8,7 @@
 
 import UIKit
 import Darwin
+import Realm
 
 class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UICollectionViewDelegate {
     
@@ -17,10 +18,10 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     @IBOutlet weak var collectionView: UICollectionView!
     var arrayOfMetrics: [Metrics] = [Metrics]()
     var staffIcon = [StaffImages]()
-    var api : APIController?
     var imageCache = [String : UIImage]()
-    var arrayofStaffs: [String] = ["http://cloudstaff.com/staff/ChristoperC.jpg","http://cloudstaff.com/staff/OscarG.jpg","","http://cloudstaff.com/staff/RicheldaV.jpg","http://cloudstaff.com/staff/ArnelN.jpg","http://cloudstaff.com/staff/RenzS.jpg","http://cloudstaff.com/staff/ElvinD.jpg"]
-    var arrayofStatus: [String] = ["online","offline","online","online","offline","online","online"]
+    var arrayofStaffs = Array<String>()
+    var arrayofLogin = Array<String>()
+
     
     var sideBar:SideBar = SideBar()
     
@@ -33,8 +34,10 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
                 "settings",
                 "log out"])
         sideBar.delegate = self
-        
         self.populateMetrics()
+        
+        getImageforCollectionView()
+        
         
     }
     
@@ -57,14 +60,12 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfMetrics.count
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: DashboardCell = tableView.dequeueReusableCellWithIdentifier("Cell") as DashboardCell
         
         if indexPath.row % 2 == 0
@@ -112,6 +113,23 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         }
     }
     
+    func getImageforCollectionView() {
+        var staff = Staff()
+        var staffDetails = Staff.allObjects()
+        
+        let realm = RLMRealm.defaultRealm()
+        realm.beginWriteTransaction()
+        
+        for myStaff:RLMObject in staffDetails {
+            let staffInfo  = myStaff as RLMObject
+            
+            let photo = staffInfo["photo"] as String
+            let login = staffInfo["login"] as String
+            arrayofStaffs.append(photo)
+            arrayofLogin.append(login)
+        }
+        realm.commitWriteTransaction()
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayofStaffs.count
@@ -121,12 +139,18 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         
         let cell: StaffCell = collectionView.dequeueReusableCellWithReuseIdentifier("staffCell", forIndexPath: indexPath) as StaffCell
         
-        cell.statusCell.image = UIImage(named: arrayofStatus[indexPath.row])
+        cell.statusCell.image = UIImage(named: arrayofLogin[indexPath.row])
+        //        cell.imgCell.image = UIImage(named: arrayofStaffs[indexPath.row])
+        
         cell.imgCell?.image = UIImage(named: "staff")
         
+        // *******
+        
+        // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
         let urlString = arrayofStaffs[indexPath.row]
         
-        
+        // Check our image cache for the existing key. This is just a dictionary of UIImages
+        //var image: UIImage? = self.imageCache.valueForKey(urlString) as? UIImage
         var image = self.imageCache[urlString]
         
         
@@ -160,16 +184,45 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             dispatch_async(dispatch_get_main_queue(), {
                 if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath) {
                     cell.imgCell.image = image
+                    //cellToUpdate.imageView?.image = image
                 }
             })
-        }      
-    
+        }
         
-        return cell 
+        // *******
+        
+        return cell
     }
     
+//   Populate MetricsArray for each Staff every Click
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println("Cell \(indexPath.row) selected")
+        let stf = Staff.objectsWhere("id == \(indexPath.row)")
+        
+        for mtrc_stf:RLMObject in stf {
+            let mtrixInfo = mtrc_stf as RLMObject
+            
+            let mtrix = mtrixInfo["metrics"] as RLMArray
+            
+            for mtxstf:RLMObject in mtrix {
+                let mtxInfo = mtxstf as RLMObject
+                
+                let title = mtxInfo["title"] as String
+                let daily = mtxInfo["daily"] as Int
+                let weekly = mtxInfo["weekly"] as Int
+                let value = mtxInfo["value"] as Int
+                
+                var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
+                arrayOfMetrics.append(metrics)
+                
+                println("----->>> \(metrics.title)")
+                
+                func getMetrics() {
+                    
+                }
+                
+            }
+            
+        }
     }
 
     @IBAction func scrollLeft(sender: AnyObject) {
@@ -193,18 +246,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         }
     }
     
-    
-    func didReceiveAPIResults(results: NSDictionary) {
-        var teamArr: NSArray = results["myTeam"] as NSArray
-        dispatch_async(dispatch_get_main_queue(), {
-            self.staffIcon = MyTeamDetails.staffImagesJSON(teamArr)
-            //            self.tblView!.reloadData()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        })
-        
-        println(" protocol LANGS == for getting staff ID ")
-        //        println(teamArr)
-    }
+
 
 }
 

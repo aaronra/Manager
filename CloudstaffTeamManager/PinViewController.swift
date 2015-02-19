@@ -80,6 +80,7 @@ class PinViewController: UIViewController, UITextFieldDelegate {
             
             if txtPIN == yourPIN {
                 println("TRUE")
+                JsonToRealm.parseData()
                 self.performSegueWithIdentifier("toDashboard", sender: self)
             } else {
                 println("FALSE")
