@@ -21,9 +21,9 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     var imageCache = [String : UIImage]()
     var arrayofStaffs = Array<String>()
     var arrayofLogin = Array<String>()
-
-    
     var sideBar:SideBar = SideBar()
+    
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,29 +34,28 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
                 "settings",
                 "log out"])
         sideBar.delegate = self
-        self.populateMetrics()
+        self.firstMetrics()
         
         getImageforCollectionView()
-        
+
         
     }
     
-    func populateMetrics(){
-        var i = 0
-        var d = 0
-        var w = 0
-        var v = 0
-        
-        while (i != 15)
-        {
-            ++d
-            ++w
-            ++v
-            ++i
-            
-            var metrics = Metrics(title:"Sample Title " + String(i), lbldaily:"daily average", lblweekly:"weekly average", daily: d, weekly: w, value: v)
-            
-            arrayOfMetrics.append(metrics)
+    func firstMetrics(){
+        let stf = Staff.objectsWhere("id == 0")
+        for mtrc_stf:RLMObject in stf {
+            let mtrixInfo = mtrc_stf as RLMObject
+            let mtrix = mtrixInfo["metrics"] as RLMArray
+            for mtxstf:RLMObject in mtrix {
+                let mtxInfo = mtxstf as RLMObject
+                let title  =  mtxInfo["title"]  as  String
+                let daily  =  mtxInfo["daily"]  as  Int
+                let weekly =  mtxInfo["weekly"] as  Int
+                let value  =  mtxInfo["value"]  as  Int
+                var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
+                arrayOfMetrics.append(metrics)
+                println("METRIC TITLE \(metrics.title)")
+            }
         }
     }
     
@@ -78,16 +77,12 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         let metrics = arrayOfMetrics[indexPath.row]
         
         cell.setCell(metrics.title, lbldaily: metrics.lbldaily, lblweekly: metrics.lblweekly, daily: metrics.daily, weekly: metrics.weekly, value: metrics.value)
-        
-        println(metrics.value)
-        
+
         return cell
         
     }
-
     
-    func sideBarDidSelectButtonAtIndex(index: Int)
-    {
+    func sideBarDidSelectButtonAtIndex(index: Int) {
         if index == 0{
             sideBar.showSideBar(false)
         } else if index == 1 {
@@ -197,6 +192,13 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
 //   Populate MetricsArray for each Staff every Click
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let stf = Staff.objectsWhere("id == \(indexPath.row)")
+        reloadMetrics(stf)
+
+
+        
+    }
+    
+    func reloadMetrics(stf: RLMResults) {
         
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
@@ -206,22 +208,17 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             for mtxstf:RLMObject in mtrix {
                 let mtxInfo = mtxstf as RLMObject
                 
-                let title = mtxInfo["title"] as String
-                let daily = mtxInfo["daily"] as Int
-                let weekly = mtxInfo["weekly"] as Int
-                let value = mtxInfo["value"] as Int
+                let title  =  mtxInfo["title"]  as  String
+                let daily  =  mtxInfo["daily"]  as  Int
+                let weekly =  mtxInfo["weekly"] as  Int
+                let value  =  mtxInfo["value"]  as  Int
                 
                 var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
                 arrayOfMetrics.append(metrics)
-                
-                println("----->>> \(metrics.title)")
-                
-                func getMetrics() {
-                    
-                }
-                
+                println("METRIC TITLE \(metrics.title)")
+        
+                tblView.reloadData()
             }
-            
         }
     }
 
@@ -236,7 +233,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         if ((navToleft) >= 0) {
             [collectionView.setContentOffset(CGPointMake(navToleft, 0), animated: true)]
         }
-        println(navToleft)
+        println("NAVTOLEFT \(navToleft)")
    
     }
     
@@ -250,11 +247,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
 
 }
 
-
-
-
-
-
+    
 
 
 
