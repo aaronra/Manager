@@ -41,6 +41,31 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         
     }
     
+    @IBAction func showMenu(sender: AnyObject) {
+        
+        if sideBar.isSideBarOpen == true {
+            sideBar.showSideBar(false)
+        }else{
+            sideBar.showSideBar(true)
+        }
+    }
+    
+    func sideBarDidSelectButtonAtIndex(index: Int) {
+        if index == 0{
+            sideBar.showSideBar(false)
+        } else if index == 1 {
+            println("second")
+            performSegueWithIdentifier("toMyTeam", sender: self)
+        } else if index == 2{
+            println("third")
+        } else if index == 3 {
+            println("fourth")
+            performSegueWithIdentifier("toSettings", sender: self)
+        } else if index == 4 {
+            exit(0)
+        }
+    }
+    
     func firstMetrics(){
         let stf = Staff.objectsWhere("id == 0")
         for mtrc_stf:RLMObject in stf {
@@ -63,7 +88,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         return arrayOfMetrics.count
     }
     
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: DashboardCell = tableView.dequeueReusableCellWithIdentifier("Cell") as DashboardCell
         
@@ -81,33 +105,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         return cell
         
     }
-    
-    func sideBarDidSelectButtonAtIndex(index: Int) {
-        if index == 0{
-            sideBar.showSideBar(false)
-        } else if index == 1 {
-            println("second")
-            performSegueWithIdentifier("toMyTeam", sender: self)
-        } else if index == 2{
-            println("third")
-        } else if index == 3 {
-            println("fourth")
-            performSegueWithIdentifier("toSettings", sender: self)
-        } else if index == 4 {
-            exit(0)
-        }
-    }
-    
-    
-    @IBAction func showMenu(sender: AnyObject) {
-        
-        if sideBar.isSideBarOpen == true {
-            sideBar.showSideBar(false)
-        }else{
-            sideBar.showSideBar(true)
-        }
-    }
-    
+
     func getImageforCollectionView() {
         var staff = Staff()
         var staffDetails = Staff.allObjects()
@@ -193,31 +191,23 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let stf = Staff.objectsWhere("id == \(indexPath.row)")
         reloadMetrics(stf)
-
-
-        
     }
     
     func reloadMetrics(stf: RLMResults) {
-        
+        arrayOfMetrics.removeAll(keepCapacity: true)
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
-            
             let mtrix = mtrixInfo["metrics"] as RLMArray
-            
             for mtxstf:RLMObject in mtrix {
                 let mtxInfo = mtxstf as RLMObject
-                
                 let title  =  mtxInfo["title"]  as  String
                 let daily  =  mtxInfo["daily"]  as  Int
                 let weekly =  mtxInfo["weekly"] as  Int
                 let value  =  mtxInfo["value"]  as  Int
-                
                 var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
                 arrayOfMetrics.append(metrics)
-                println("METRIC TITLE \(metrics.title)")
-        
-                tblView.reloadData()
+                println("----->>> \(arrayOfMetrics)")
+                    self.tblView.reloadData()
             }
         }
     }
