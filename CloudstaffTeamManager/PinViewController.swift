@@ -79,8 +79,14 @@ class PinViewController: UIViewController, UITextFieldDelegate {
             println(self.txtPIN)
             
             if txtPIN == yourPIN {
-                println("TRUE")
-                JsonToRealm.parseData()
+                
+                if ConnectionDetector.isConnectedToNetwork() == true {
+                    println("TRUE")
+                    JsonToRealm.parseData()
+                } else {
+                    println("NO CONNECTION")
+                }
+                
                 self.performSegueWithIdentifier("toDashboard", sender: self)
             } else {
                 println("FALSE")

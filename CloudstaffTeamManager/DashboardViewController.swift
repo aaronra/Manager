@@ -24,6 +24,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     var sideBar:SideBar = SideBar()
     
     var refreshControl: UIRefreshControl!
+    var mtrID: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         self.firstMetrics()
         
         getImageforCollectionView()
+        
 
         
     }
@@ -67,16 +69,17 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     }
     
     func firstMetrics(){
-        let stf = Staff.objectsWhere("id == 0")
+        
+        let stf = Staff.objectsWhere("id == \(mtrID)")
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
             let mtrix = mtrixInfo["metrics"] as RLMArray
             for mtxstf:RLMObject in mtrix {
                 let mtxInfo = mtxstf as RLMObject
-                let title  =  mtxInfo["title"]  as  String
-                let daily  =  mtxInfo["daily"]  as  Int
-                let weekly =  mtxInfo["weekly"] as  Int
-                let value  =  mtxInfo["value"]  as  Int
+                let title  =  mtxInfo ["title"]  as  String
+                let daily  =  mtxInfo ["daily"]  as  Int
+                let weekly =  mtxInfo ["weekly"] as  Int
+                let value  =  mtxInfo ["value"]  as  Int
                 var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
                 arrayOfMetrics.append(metrics)
                 println("METRIC TITLE \(metrics.title)")

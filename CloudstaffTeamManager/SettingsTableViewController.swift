@@ -59,21 +59,17 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
         return 2
     }
 
-    
 
     @IBAction func done(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated()
+        performSegueWithIdentifier("bToDashboardDone", sender: self)
         println("done")
     }
     
     
     @IBAction func cancel(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated()
+        performSegueWithIdentifier("bToDashboardCanceled", sender: self)
         println("cancel")
     }
     
-    func dismissViewControllerAnimated() {
-        navigationController?.popViewControllerAnimated(true)
-        println("dismiss")
-    }
+
 }

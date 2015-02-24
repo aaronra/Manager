@@ -7,20 +7,30 @@
 //
 
 import UIKit
+import Realm
 
 class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelegate {
-
+    
     @IBOutlet weak var dept: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var sideBar:SideBar = SideBar()
     
     var imageCache = [String : UIImage]()
-    var arrayOfStaffs: [String] = ["http://cloudstaff.com/staff/ChristoperC.jpg","http://cloudstaff.com/staff/OscarG.jpg","","http://cloudstaff.com/staff/RicheldaV.jpg","http://cloudstaff.com/staff/ArnelN.jpg","http://cloudstaff.com/staff/RenzS.jpg","http://cloudstaff.com/staff/ElvinD.jpg"]
-    var arrayOfStatus: [String] = ["onlinelist","offlinelist","onlinelist","onlinelist","offlinelist","onlinelist","onlinelist"]
-    var arrayOfName: [String] = ["ChristoperC","OscarG","RonnielP","RitcheldaV","ArnelN","RenzS","ElvinD"]
-    var arrayOfFullName: [String] = ["Christoper Castillo","Oscar Gonzales","Ronniel Pelayo","Ritchelda Venzon","Arnel Nuqui","Renz Sese","Elvin Dela Cruz"]
-    var arrayOfIds: [Int] = [1,2,3,4,5,6,7]
+    
+    var arrayOfIds = Array<Int>()
+    var arrayofStaffsImg = Array<String>()
+    var arrayofLogin = Array<String>()
+    var arrayofUsername = Array<String>()
+    var arrayofName = Array<String>()
+    
+    var arrayofShift = Array<String>()
+    var arrayofTeam = Array<String>()
+    var arrayofPosition = Array<String>()
+    var arrayofStatus = Array<String>()
+    
+    var clickedIndex: Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,39 +41,58 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
                 "settings",
                 "log out"])
         sideBar.delegate = self
+        getMyTeam()
+    }
+    
+    func getMyTeam() {
+        var staff = Staff()
+        var staffDetails = Staff.allObjects()
         
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let realm = RLMRealm.defaultRealm()
+        realm.beginWriteTransaction()
+        
+        for myStaff:RLMObject in staffDetails {
+            let staffInfo  = myStaff as RLMObject
+            
+            let id = staffInfo["id"] as Int
+            let photo = staffInfo["photo"] as String
+            let login = staffInfo["login"] as String
+            let username = staffInfo["username"] as String
+            let name = staffInfo["name"] as String
+            let shift_start = staffInfo["shift_start"] as String
+            let shift_end = staffInfo["shift_end"] as String
+            let team = staffInfo["team"] as String
+            let position = staffInfo["position"] as String
+            let status = staffInfo["status"] as String
+            
+            arrayOfIds.append(id)
+            arrayofStaffsImg.append(photo)
+            arrayofLogin.append(login + "list")
+            arrayofUsername.append(username)
+            arrayofName.append(name)
+            arrayofShift.append(shift_start + " -" + shift_end)
+            arrayofTeam.append(team)
+            arrayofPosition.append(position)
+            arrayofStatus.append(status)
+        }
+        realm.commitWriteTransaction()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return arrayOfStaffs.count
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayofStaffsImg.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: MyTeamCell = tableView.dequeueReusableCellWithIdentifier("teamCell") as MyTeamCell
-        
-        cell.imgStatus.image = UIImage(named: arrayOfStatus[indexPath.row])
-        
+        cell.imgStatus.image = UIImage(named: arrayofLogin[indexPath.row])
         cell.imgStaff?.image = UIImage(named: "staff")
-        
-       
-        let urlString = arrayOfStaffs[indexPath.row]
-        
-        
+        let urlString = arrayofStaffsImg[indexPath.row]
         var image = self.imageCache[urlString]
-        
-        
         if( image == nil ) {
             // If the image does not exist, we need to download it
             var imgURL: NSURL = NSURL(string: urlString)!
-            
             // Download an NSData representation of the image at the URL
             let request: NSURLRequest = NSURLRequest(URL: imgURL)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
@@ -91,30 +120,30 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             })
         }
         
-        cell.Name.text = arrayOfName[indexPath.row]
-        cell.fullName.text = arrayOfFullName[indexPath.row]
+        cell.Name.text = arrayofUsername[indexPath.row]
+        cell.fullName.text = arrayofName[indexPath.row]
         
         cell.btnPing.tag = arrayOfIds[indexPath.row]
         cell.btnMail.tag = arrayOfIds[indexPath.row]
         cell.btnFave.tag = arrayOfIds[indexPath.row]
-        
         cell.btnFave.addTarget(self, action: "FavePressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        cell.detailOne.text = "Shift"
-        cell.detailTwo.text = "Team"
-        cell.detailThree.text = "Position"
-        cell.detailFour.text = "Status"
+        cell.detailOne.text = arrayofShift[indexPath.row]
+        cell.detailTwo.text = arrayofTeam[indexPath.row]
+        cell.detailThree.text = arrayofPosition[indexPath.row]
+        cell.detailFour.text = arrayofStatus[indexPath.row]
         
         return cell
         
     }
     
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("toStaffDetails", sender: self)
+        clickedIndex = indexPath.row
+        performSegueWithIdentifier("toStaffDetails", sender: tableView)
         
-     
     }
     
+    // FAVE PRESSED *********************************
     func FavePressed(sender: UIButton) {
         let buttonRow = sender.tag
         
@@ -126,8 +155,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         println(buttonRow)
     }
     
-    func sideBarDidSelectButtonAtIndex(index: Int)
-    {
+    func sideBarDidSelectButtonAtIndex(index: Int) {
         if index == 0{
             performSegueWithIdentifier("toDashboard", sender: self)
         } else if index == 1 {
@@ -142,7 +170,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             exit(0)
         }
     }
-
+    
     @IBAction func showMenu(sender: AnyObject) {
         if sideBar.isSideBarOpen == true {
             sideBar.showSideBar(false)
@@ -152,19 +180,14 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
-        var teamIndex = tableView!.indexPathForSelectedRow()!.row
         
-        staffTVController.vLblName = arrayOfName[teamIndex]
-        staffTVController.vLblFullName = arrayOfFullName[teamIndex]
-        staffTVController.vImgStaff = arrayOfStaffs[teamIndex]
-        staffTVController.vImgStatus = arrayOfStatus[teamIndex]
-        staffTVController.vDetailOne = "Status"
-        staffTVController.vDetailTwo = "Team"
-        staffTVController.vDetailThree = "Position"
-        staffTVController.vDetailFour = "Status"
+        if segue.identifier == "toStaffDetails" {
+            var staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
+            staffTVController.staffID = clickedIndex
+        }
         
     }
+    
     
     
 }

@@ -24,6 +24,10 @@
 //    var arrayofUsername = Array<String>()
 //    var arrayofName = Array<String>()
 //    
+//    var arrayofShift = Array<String>()
+//    var arrayofTeam = Array<String>()
+//    var arrayofPosition = Array<String>()
+//    var arrayofStatus = Array<String>()
 //    
 //    
 //    override func viewDidLoad() {
@@ -53,11 +57,21 @@
 //            let login = staffInfo["login"] as String
 //            let username = staffInfo["username"] as String
 //            let name = staffInfo["name"] as String
+//            let shift_start = staffInfo["shift_start"] as String
+//            let shift_end = staffInfo["shift_end"] as String
+//            let team = staffInfo["team"] as String
+//            let position = staffInfo["position"] as String
+//            let status = staffInfo["status"] as String
+//            
 //            arrayOfIds.append(id)
 //            arrayofStaffsImg.append(photo)
 //            arrayofLogin.append(login + "list")
 //            arrayofUsername.append(username)
 //            arrayofName.append(name)
+//            arrayofShift.append(shift_start + " -" + shift_end)
+//            arrayofTeam.append(team)
+//            arrayofPosition.append(position)
+//            arrayofStatus.append(status)
 //        }
 //        realm.commitWriteTransaction()
 //    }
@@ -69,22 +83,13 @@
 //    
 //    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        let cell: MyTeamCell = tableView.dequeueReusableCellWithIdentifier("teamCell") as MyTeamCell
-//        
 //        cell.imgStatus.image = UIImage(named: arrayofLogin[indexPath.row])
-//        
 //        cell.imgStaff?.image = UIImage(named: "staff")
-//        
-//        
 //        let urlString = arrayofStaffsImg[indexPath.row]
-//        
-//        
 //        var image = self.imageCache[urlString]
-//        
-//        
 //        if( image == nil ) {
 //            // If the image does not exist, we need to download it
 //            var imgURL: NSURL = NSURL(string: urlString)!
-//            
 //            // Download an NSData representation of the image at the URL
 //            let request: NSURLRequest = NSURLRequest(URL: imgURL)
 //            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
@@ -118,23 +123,22 @@
 //        cell.btnPing.tag = arrayOfIds[indexPath.row]
 //        cell.btnMail.tag = arrayOfIds[indexPath.row]
 //        cell.btnFave.tag = arrayOfIds[indexPath.row]
-//        
 //        cell.btnFave.addTarget(self, action: "FavePressed:", forControlEvents: UIControlEvents.TouchUpInside)
-//        
-//        cell.detailOne.text = "Shift"
-//        cell.detailTwo.text = "Team"
-//        cell.detailThree.text = "Position"
-//        cell.detailFour.text = "Status"
+//        cell.detailOne.text = arrayofShift[indexPath.row]
+//        cell.detailTwo.text = arrayofTeam[indexPath.row]
+//        cell.detailThree.text = arrayofPosition[indexPath.row]
+//        cell.detailFour.text = arrayofStatus[indexPath.row]
 //        
 //        return cell
 //        
 //    }
 //    
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        performSegueWithIdentifier("toStaffDetails", sender: self)
+//        println("------>>>>>> indexPath \(indexPath.row)")
 //        
 //    }
 //    
+//    // FAVE PRESSED *********************************
 //    func FavePressed(sender: UIButton) {
 //        let buttonRow = sender.tag
 //        
@@ -171,17 +175,10 @@
 //    }
 //    
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        var staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
-//        var teamIndex = tableView!.indexPathForSelectedRow()!.row
+//        var staffTVController = segue.destinationViewController as StaffTableViewController
 //        
-//        staffTVController.vLblName = arrayofUsername[teamIndex]
-//        staffTVController.vLblFullName = arrayofName[teamIndex]
-//        staffTVController.vImgStaff = arrayofStaffsImg[teamIndex]
-//        staffTVController.vImgStatus = arrayofLogin[teamIndex]
-//        staffTVController.vDetailOne = "Status"
-//        staffTVController.vDetailTwo = "Team"
-//        staffTVController.vDetailThree = "Position"
-//        staffTVController.vDetailFour = "Status"
+//        staffTVController.staffID = tableView!.indexPathForSelectedRow()!.row
+//        
 //        
 //    }
 //    

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Realm
 
 class StaffTableViewController: UITableViewController {
 
@@ -30,51 +31,70 @@ class StaffTableViewController: UITableViewController {
     var vDetailFour = String()
     var imageCache = [String : UIImage]()
     
+    var staffID = Int()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imgStatus.image = UIImage(named: vImgStatus)
+        let staffDetail = Staff.objectsWhere("id == \(staffID)")
         
-        imgStaff?.image = UIImage(named: "staff")
-        
-        let urlString = vImgStaff
-        
-        var image = self.imageCache[urlString]
-        
-        if( image == nil ) {
-            // If the image does not exist, we need to download it
-            var imgURL: NSURL = NSURL(string: urlString)!
+        for staff: RLMObject in staffDetail {
+            let stfInfo = staff as RLMObject
             
-            // Download an NSData representation of the image at the URL
-            let request: NSURLRequest = NSURLRequest(URL: imgURL)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-                if error == nil {
-                    image = UIImage(data: data)
-                    
-                    // Store the image in to our cache
-                    self.imageCache[urlString] = image
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.imgStaff.image = image
-                    })
-                }
-                else {
-                    println("Error: \(error.localizedDescription)")
-                }
-            })
+                let username     =   stfInfo["username"]  as  String
+                let name         =   stfInfo["name"]  as  String
+                let photo        =   stfInfo["photo"] as  String
+                let shift_start  =   stfInfo["shift_start"]  as  String
+                let shift_end    =   stfInfo["shift_end"]  as  String
+                let team         =   stfInfo["team"]  as  String
+                let position     =   stfInfo["position"] as  String
+                let status       =   stfInfo["status"]  as  String
+                let favorite     =   stfInfo["favorite"]  as  String
+                let login        =   stfInfo["login"]  as  String
             
+            
+            imgStatus.image = UIImage(named: login+"list")
+            imgStaff?.image = UIImage(named: "staff")
+            let urlString = photo
+            
+            var image = self.imageCache[urlString]
+            
+            if( image == nil ) {
+                // If the image does not exist, we need to download it
+                var imgURL: NSURL = NSURL(string: urlString)!
+                
+                // Download an NSData representation of the image at the URL
+                let request: NSURLRequest = NSURLRequest(URL: imgURL)
+                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
+                    if error == nil {
+                        image = UIImage(data: data)
+                        
+                        // Store the image in to our cache
+                        self.imageCache[urlString] = image
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.imgStaff.image = image
+                        })
+                    }
+                    else {
+                        println("Error: \(error.localizedDescription)")
+                    }
+                })
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.imgStaff.image = image
+                })
+            }
+            
+            
+            lblName.text = username
+            lblFullName.text = name
+            detailOne.text = shift_start + " -" + shift_end
+            detailTwo.text = team
+            detailThree.text = position
+            detailFour.text = status
         }
-        else {  
-            dispatch_async(dispatch_get_main_queue(), {
-                self.imgStaff.image = image
-            })
-        }
-        
-        lblName.text = vLblName
-        lblFullName.text = vLblFullName
-        detailOne.text = vDetailOne
-        detailTwo.text = vDetailTwo
-        detailThree.text = vDetailThree
-        detailFour.text = vDetailFour
+
     
     }
 
@@ -100,12 +120,22 @@ class StaffTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if (indexPath.row == 1) {
+            
+            println("---->>> \(indexPath.row)")
         
         } else if (indexPath.row == 2) {
             
+            println("---->>> \(indexPath.row)")
+            
         } else if (indexPath.row == 3) {
             
+            println("---->>> \(indexPath.row)")
+            
         } else if (indexPath.row == 4) {
+            
+//            println("---->>> \(indexPath.row)")
+//            println("---->>>ID \(staffID)")
+            performSegueWithIdentifier("backtoDashboard", sender: tableView)
             
         } else if (indexPath.row == 5) {
             if (imgFave.imageForState(UIControlState.Normal) == UIImage(named: "favourite")) {
@@ -117,6 +147,19 @@ class StaffTableViewController: UITableViewController {
     }
 
     @IBAction func back(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+        performSegueWithIdentifier("toMyTeam", sender: self)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "backtoDashboard" {
+            var dashboardController : DashboardViewController = segue.destinationViewController as DashboardViewController
+            dashboardController.mtrID = staffID
+        }
+    }
+    
+    
+    
+    
+    
 }
