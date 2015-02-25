@@ -1,18 +1,20 @@
 //
-//  MyTeamViewController.swift
+//  PingViewController.swift
 //  CloudstaffTeamManager
 //
-//  Created by RitcheldaV on 11/2/15.
+//  Created by RitcheldaV on 25/2/15.
 //  Copyright (c) 2015 CLOUDSTAFF. All rights reserved.
 //
 
 import UIKit
 import Realm
 
-class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelegate {
+
+class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate {
     
-    @IBOutlet weak var dept: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var btnSelectAll: UIButton!
+    
     
     var sideBar:SideBar = SideBar()
     
@@ -23,14 +25,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     var arrayofLogin = Array<String>()
     var arrayofUsername = Array<String>()
     var arrayofName = Array<String>()
-    
-    var arrayofShift = Array<String>()
-    var arrayofTeam = Array<String>()
-    var arrayofPosition = Array<String>()
-    var arrayofStatus = Array<String>()
-    
-    var clickedIndex: Int = 0
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +36,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
                 "settings",
                 "log out"])
         sideBar.delegate = self
-        getMyTeam()
+        getStaffList()
     }
-    
-    func getMyTeam() {
+
+    func getStaffList() {
         var staff = Staff()
         var staffDetails = Staff.allObjects()
         
@@ -52,44 +47,33 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         realm.beginWriteTransaction()
         
         for myStaff:RLMObject in staffDetails {
-            let staffInfo  = myStaff as RLMObject
-            
+            let staffInfo = myStaff as RLMObject
             let id = staffInfo["id"] as Int
             let photo = staffInfo["photo"] as String
             let login = staffInfo["login"] as String
             let username = staffInfo["username"] as String
             let name = staffInfo["name"] as String
-            let shift_start = staffInfo["shift_start"] as String
-            let shift_end = staffInfo["shift_end"] as String
-            let team = staffInfo["team"] as String
-            let position = staffInfo["position"] as String
-            let status = staffInfo["status"] as String
             
             arrayOfIds.append(id)
             arrayofStaffsImg.append(photo)
             arrayofLogin.append(login + "list")
             arrayofUsername.append(username)
             arrayofName.append(name)
-            arrayofShift.append(shift_start + " -" + shift_end)
-            arrayofTeam.append(team)
-            arrayofPosition.append(position)
-            arrayofStatus.append(status)
         }
         realm.commitWriteTransaction()
     }
-    
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayofStaffsImg.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: MyTeamCell = tableView.dequeueReusableCellWithIdentifier("teamCell") as MyTeamCell
+        let cell: PingStaffCell = tableView.dequeueReusableCellWithIdentifier("pingStaffCell") as PingStaffCell
         
         let selectedView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height))
         selectedView.backgroundColor = UIColor.whiteColor()
         
+        cell.selectedBackgroundView = selectedView
         cell.imgStatus.image = UIImage(named: arrayofLogin[indexPath.row])
         cell.imgStaff?.image = UIImage(named: "staff")
         let urlString = arrayofStaffsImg[indexPath.row]
@@ -124,39 +108,42 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             })
         }
         
-        cell.Name.text = arrayofUsername[indexPath.row]
-        cell.fullName.text = arrayofName[indexPath.row]
+        cell.lblName.text = arrayofUsername[indexPath.row]
+        cell.lblFullName.text = arrayofName[indexPath.row]
         
-        cell.btnPing.tag = arrayOfIds[indexPath.row]
-        cell.btnMail.tag = arrayOfIds[indexPath.row]
-        cell.btnFave.tag = arrayOfIds[indexPath.row]
-        cell.btnFave.addTarget(self, action: "FavePressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        cell.detailOne.text = arrayofShift[indexPath.row]
-        cell.detailTwo.text = arrayofTeam[indexPath.row]
-        cell.detailThree.text = arrayofPosition[indexPath.row]
-        cell.detailFour.text = arrayofStatus[indexPath.row]
+        cell.btnSelect.tag = arrayOfIds[indexPath.row]
+        cell.btnSelect.addTarget(self, action: "SelectThis:", forControlEvents: UIControlEvents.TouchUpInside)
         
         return cell
         
     }
     
-
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        clickedIndex = indexPath.row
-        performSegueWithIdentifier("toStaffDetails", sender: tableView)
+        
+        let cell: PingStaffCell = tableView.cellForRowAtIndexPath(indexPath) as PingStaffCell
+        
+        if (cell.btnSelect.imageForState(UIControlState.Normal) == UIImage(named: "checked")) {
+            cell.btnSelect.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
+        } else {
+            cell.btnSelect.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
+        }
         
     }
     
-    // FAVE PRESSED *********************************
-    func FavePressed(sender: UIButton) {
+    func SelectThis(sender: UIButton) {
         let buttonRow = sender.tag
         
-        if (sender.imageForState(UIControlState.Normal) == UIImage(named: "favourite")) {
-            sender.setImage(UIImage(named: "unfavourite"), forState: UIControlState.Normal)
+        if (sender.imageForState(UIControlState.Normal) == UIImage(named: "checked")) {
+            sender.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
         } else {
-            sender.setImage(UIImage(named: "favourite"), forState: UIControlState.Normal)
+            sender.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
         }
         println(buttonRow)
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     func sideBarDidSelectButtonAtIndex(index: Int) {
@@ -164,10 +151,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             performSegueWithIdentifier("toDashboard", sender: self)
         } else if index == 1 {
             println("second")
-            sideBar.showSideBar(false)
+            performSegueWithIdentifier("toMyTeam", sender: self)
         } else if index == 2{
             println("third")
-            performSegueWithIdentifier("toPing", sender: self)
+            sideBar.showSideBar(false)
         } else if index == 3 {
             println("fourth")
             performSegueWithIdentifier("toSettings", sender: self)
@@ -176,6 +163,22 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         }
     }
     
+    @IBAction func pingAll(sender: AnyObject) {
+        if (sender.imageForState(UIControlState.Normal) == UIImage(named: "checked")) {
+            sender.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
+            
+            for NSIndexPath idx in 0..<arrayOfIds.count {
+            
+                let cell: PingStaffCell = tableView(tblView, cellForRowAtIndexPath:idx) as PingStaffCell
+                cell.btnSelect.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
+            }
+            
+        } else {
+            sender.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
+        }
+    }
+    
+    
     @IBAction func showMenu(sender: AnyObject) {
         if sideBar.isSideBarOpen == true {
             sideBar.showSideBar(false)
@@ -183,16 +186,5 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             sideBar.showSideBar(true)
         }
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "toStaffDetails" {
-            var staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
-            staffTVController.staffID = clickedIndex
-        }
-        
-    }
-    
-    
     
 }

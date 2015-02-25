@@ -60,6 +60,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             performSegueWithIdentifier("toMyTeam", sender: self)
         } else if index == 2{
             println("third")
+            performSegueWithIdentifier("toPing", sender: self)
         } else if index == 3 {
             println("fourth")
             performSegueWithIdentifier("toSettings", sender: self)

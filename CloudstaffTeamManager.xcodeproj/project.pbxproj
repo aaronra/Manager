@@ -15,6 +15,8 @@
 		5D4AA9481A8AE40C004DE759 /* MyTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4AA9471A8AE40C004DE759 /* MyTeamViewController.swift */; };
 		5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */; };
 		5D6323261A8D888C00E893C5 /* StaffTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6323251A8D888C00E893C5 /* StaffTableViewController.swift */; };
+		5D9A5C6C1A9D3D1C003F94B9 /* PingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9A5C6B1A9D3D1C003F94B9 /* PingViewController.swift */; };
+		5D9A5C6E1A9D3E4F003F94B9 /* PingStaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */; };
 		5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC172611A7F07980056F6DA /* StaffCell.swift */; };
 		6E2341601A7B6F3B009D856E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E23415E1A7B6F3B009D856E /* Main.storyboard */; };
 		6E5548991A96C16E0088A158 /* bCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5548981A96C16E0088A158 /* bCodes.swift */; };
@@ -54,6 +56,8 @@
 		5D4AA9471A8AE40C004DE759 /* MyTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeamViewController.swift; sourceTree = "<group>"; };
 		5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeamCell.swift; sourceTree = "<group>"; };
 		5D6323251A8D888C00E893C5 /* StaffTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTableViewController.swift; sourceTree = "<group>"; };
+		5D9A5C6B1A9D3D1C003F94B9 /* PingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingViewController.swift; sourceTree = "<group>"; };
+		5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingStaffCell.swift; sourceTree = "<group>"; };
 		5DC172611A7F07980056F6DA /* StaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCell.swift; sourceTree = "<group>"; };
 		6E23415F1A7B6F3B009D856E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6E5548981A96C16E0088A158 /* bCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bCodes.swift; sourceTree = "<group>"; };
@@ -119,6 +123,15 @@
 			name = MyTeam;
 			sourceTree = "<group>";
 		};
+		5D9A5C6A1A9D3CDF003F94B9 /* Ping */ = {
+			isa = PBXGroup;
+			children = (
+				5D9A5C6B1A9D3D1C003F94B9 /* PingViewController.swift */,
+				5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */,
+			);
+			name = Ping;
+			sourceTree = "<group>";
+		};
 		6E90146B1A9569E5001DA99F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +182,7 @@
 		E727285F1A5F879900D92301 /* CloudstaffTeamManager */ = {
 			isa = PBXGroup;
 			children = (
+				5D9A5C6A1A9D3CDF003F94B9 /* Ping */,
 				5D4AA9491A8B1281004DE759 /* MyTeam */,
 				5D1EDDD61A79A5D3005A92B3 /* Dashboard */,
 				E72728621A5F879A00D92301 /* AppDelegate.swift */,
@@ -331,6 +345,7 @@
 				E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */,
 				E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */,
 				6E9014711A956B91001DA99F /* JsonToRealm.swift in Sources */,
+				5D9A5C6C1A9D3D1C003F94B9 /* PingViewController.swift in Sources */,
 				5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */,
 				E72B9E461A619C450083BE2A /* SideBar.swift in Sources */,
 				6E5548991A96C16E0088A158 /* bCodes.swift in Sources */,
@@ -342,6 +357,7 @@
 				5D49236A1A8993D500EB8EB6 /* SettingsTableViewController.swift in Sources */,
 				6EBC23331A78D4040043C743 /* Employees.swift in Sources */,
 				6EBC23311A78CC1E0043C743 /* CustomCell.swift in Sources */,
+				5D9A5C6E1A9D3E4F003F94B9 /* PingStaffCell.swift in Sources */,
 				E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
