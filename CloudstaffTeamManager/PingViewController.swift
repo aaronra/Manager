@@ -167,14 +167,20 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
         if (sender.imageForState(UIControlState.Normal) == UIImage(named: "checked")) {
             sender.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
             
-            for NSIndexPath idx in 0..<arrayOfIds.count {
-            
-                let cell: PingStaffCell = tableView(tblView, cellForRowAtIndexPath:idx) as PingStaffCell
-                cell.btnSelect.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-            }
+//            for idx in arrayOfIds {
+//                let cell: PingStaffCell = tableView(tblView, cellForRowAtIndexPath: NSIndexPath(forRow: idx, inSection: 0)) as PingStaffCell
+//                cell.btnSelect.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)           
+//            }
+//            tblView.reloadData()
             
         } else {
             sender.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
+            
+            for idx in arrayOfIds {
+                let cell: PingStaffCell = tableView(tblView, cellForRowAtIndexPath: NSIndexPath(forRow: idx, inSection: 0)) as PingStaffCell
+                
+                cell.btnSelect.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
+            }
         }
     }
     

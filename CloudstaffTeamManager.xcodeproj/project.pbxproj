@@ -105,6 +105,7 @@
 		5D1EDDD61A79A5D3005A92B3 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */,
 				5D1EDDD71A79A786005A92B3 /* DashboardCell.swift */,
 				5D1EDDD91A79C74B005A92B3 /* Metrics.swift */,
 				5DC172611A7F07980056F6DA /* StaffCell.swift */,
@@ -189,7 +190,6 @@
 				6E8FF3C41A8204FB002074BE /* MyTeamDetails.swift */,
 				E707D9E41A653BE5000D75FE /* LoginViewController.swift */,
 				5D005DBE1A6F831900D66B79 /* PinViewController.swift */,
-				5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */,
 				5D4923691A8993D500EB8EB6 /* SettingsTableViewController.swift */,
 				6EBC23391A7903890043C743 /* HTTPFunctions */,
 				6EBC23341A78D4140043C743 /* TableItems */,
