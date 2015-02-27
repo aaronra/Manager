@@ -39,8 +39,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         
         getImageforCollectionView()
         
-
-        
     }
     
     @IBAction func showMenu(sender: AnyObject) {
@@ -65,7 +63,27 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             println("fourth")
             performSegueWithIdentifier("toSettings", sender: self)
         } else if index == 4 {
-            exit(0)
+            switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+            case .OrderedSame, .OrderedDescending:
+                println("8 above")
+                var alertController = UIAlertController(title: "Logout?", message: "Exit Manager", preferredStyle: .Alert)
+                let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                    exit(0)
+                })
+                let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in}
+                alertController.addAction(ok)
+                alertController.addAction(cancel)
+                presentViewController(alertController, animated: true, completion: nil)
+                
+            case .OrderedAscending:
+                
+                let alertView = UIAlertView(title: "Logout?", message: "Exit Manager", delegate: self, cancelButtonTitle: "Cancel")
+                alertView.addButtonWithTitle("OK")
+                alertView.alertViewStyle = .Default
+                alertView.show()
+                
+                println("8 below")
+            }
         }
     }
     
@@ -228,7 +246,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             [collectionView.setContentOffset(CGPointMake(navToleft, 0), animated: true)]
         }
         println("NAVTOLEFT \(navToleft)")
-   
     }
     
     @IBAction func scrollRight(sender: AnyObject) {

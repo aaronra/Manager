@@ -121,7 +121,36 @@ class StaffTableViewController: UITableViewController {
         
         if (indexPath.row == 1) {
             
-            println("---->>> \(indexPath.row)")
+            let pingMsg = PingMessage.allObjects()
+            
+            let realm = RLMRealm.defaultRealm()
+            realm.beginWriteTransaction()
+            
+            for myPing:RLMObject in pingMsg {
+                let staffInfo  = myPing as RLMObject
+                
+                let ping = staffInfo["ping"] as String
+                
+                println("----->>>> \(ping)")
+                
+            }
+            realm.commitWriteTransaction()
+            
+            var alertController = UIAlertController(title: "Enter Ping Message", message: "", preferredStyle: .Alert)
+            
+            
+            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in})
+            let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in}
+            
+            
+            alertController.addAction(ok)
+            alertController.addAction(cancel)
+            
+            alertController.addTextFieldWithConfigurationHandler { (name) -> Void in
+                name.text = "dsfasgsdfgsfgsdfgsdfg"
+            }
+            
+            presentViewController(alertController, animated: true, completion: nil)
         
         } else if (indexPath.row == 2) {
             
@@ -157,9 +186,6 @@ class StaffTableViewController: UITableViewController {
             dashboardController.mtrID = staffID
         }
     }
-    
-    
-    
-    
+
     
 }

@@ -10,6 +10,11 @@ import Foundation
 import Realm
 
 
+class PingMessage: RLMObject {
+    dynamic var ping = ""
+    dynamic var message = ""
+}
+
 class Metric: RLMObject {
     dynamic var title = ""
     dynamic var daily: Int = 0
@@ -35,7 +40,6 @@ class Staff: RLMObject {
     
     override class func primaryKey() -> String! {
         return "id"
-        
     }
 }
 
@@ -43,13 +47,10 @@ public class JsonToRealm {
     
     class func parseData(){
         
-        
         // CALL the API
         let urlAsString = "http://10.1.51.130/cakephp/ActivityLog/indextry.json"
         let url: NSURL  = NSURL(string: urlAsString)!
         let urlSession = NSURLSession.sharedSession()
-        
-        
         
         let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
             if (error != nil) {
@@ -67,6 +68,19 @@ public class JsonToRealm {
             realm.beginWriteTransaction()
             for staff in staffList {
                 Staff.createOrUpdateInDefaultRealmWithObject(staff)
+            }
+            
+            let pingmsg = PingMessage()
+            pingmsg.ping = "DEFAULT MESSAGE"
+            pingmsg.message = ""
+            
+            
+            if PingMessage().ping.isEmpty{
+                //               realm.addObject(pingmsg)
+                println("true")
+            }else {
+                println("false")
+                
             }
             
             realm.commitWriteTransaction()
