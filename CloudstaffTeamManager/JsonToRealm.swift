@@ -13,6 +13,7 @@ import Realm
 class PingMessage: RLMObject {
     dynamic var ping = ""
     dynamic var message = ""
+//    dynamic var interval = NSTimer()
 }
 
 class Metric: RLMObject {
@@ -45,10 +46,12 @@ class Staff: RLMObject {
 
 public class JsonToRealm {
     
-    class func parseData(){
+    
+    class func parseData(loginInfo: String){
+        
         
         // CALL the API
-        let urlAsString = "http://10.1.51.130/cakephp/ActivityLog/indextry.json"
+        let urlAsString = "http://10.1.51.130/cakephp/Accounts/login/\(loginInfo).json"
         let url: NSURL  = NSURL(string: urlAsString)!
         let urlSession = NSURLSession.sharedSession()
         
@@ -62,33 +65,69 @@ public class JsonToRealm {
                 println("JSON Error \(err!.localizedDescription)")
             }
             
+            
             // INSERTING JSONOBJECTS ON REALM
             let realm = RLMRealm.defaultRealm()
-            let staffList = jsonResult["myTeam"] as [NSDictionary]
-            realm.beginWriteTransaction()
-            for staff in staffList {
-                Staff.createOrUpdateInDefaultRealmWithObject(staff)
-            }
             
-            let pingmsg = PingMessage()
-            pingmsg.ping = "DEFAULT MESSAGE"
-            pingmsg.message = ""
+            let loginStatus = jsonResult["LoginStatus"] as String
+            println("LoginStatus --->>> \(loginStatus)")
             
-            
-            if PingMessage().ping.isEmpty{
-                //               realm.addObject(pingmsg)
-                println("true")
-            }else {
-                println("false")
+            if loginStatus == "Success" {
+                let staffList = jsonResult["myTeam"] as [NSDictionary]
+                realm.beginWriteTransaction()
+                for staff in staffList {
+                    Staff.createOrUpdateInDefaultRealmWithObject(staff)
+                }
                 
+                realm.commitWriteTransaction()
+                println("PATH --->>> \(RLMRealm.defaultRealm().path)")
+            }else if loginStatus == "Wrong Password"{
+                println("Wrong Password")
+            }else {
+
+                println("Account not found")
+            }
+
+        
+        })
+        jsonQuery.resume()
+        
+    }
+    
+    
+    class func validate(loginInfo: String){
+        
+        let urlAsString = "http://10.1.51.130/cakephp/Accounts/login/\(loginInfo).json"
+        let url: NSURL  = NSURL(string: urlAsString)!
+        let urlSession = NSURLSession.sharedSession()
+        
+        let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
+            if (error != nil) {
+                println(error.localizedDescription)
+            }
+            var err: NSError?
+            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            if (err != nil) {
+                println("JSON Error \(err!.localizedDescription)")
             }
             
-            realm.commitWriteTransaction()
-            println("PATH --->>> \(RLMRealm.defaultRealm().path)")
+            let loginStatus = jsonResult["LoginStatus"] as String
+            println("LoginStatus --->>> \(loginStatus)")
+            
+            if loginStatus == "Success" {
+                println("LoginStatus --->>> \(loginStatus)")
+            }else if loginStatus == "Wrong Password"{
+                println("LoginStatus --->>> \(loginStatus)")
+            }else {
+                println("LoginStatus --->>> \(loginStatus)")
+            }
             
             
         })
         jsonQuery.resume()
         
     }
+
+    
+
 }

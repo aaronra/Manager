@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
     
     var Umail = "totep"
     var Pword = "123"
-    
+    var json = JsonToRealm()
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var username: UITextField!
@@ -62,27 +62,41 @@ class LoginViewController: UIViewController {
     }
 
     func loginfunc() {
+
+        let urlAsString = "http://10.1.51.130/cakephp/Accounts/login/\(username.text)/\(password.text.md5).json"
+        let url: NSURL  = NSURL(string: urlAsString)!
+        let urlSession = NSURLSession.sharedSession()
         
-        if username.text == "" && password.text == "" {
-            println("null")
-            registerNull()
-        }else if username.text != Umail && password.text != Pword{
-            println("Both Wrong")
-            bothWrong()
-        }else if username.text != Umail || username.text == ""{
-            println("Wrong Email")
-            wrongEmail()
-        }else if password.text != Pword || password.text == "" {
-            println("Wrong Password")
-            wrongPassword()
-        }else {
-            println("Correct")
-            self.performSegueWithIdentifier("toPinEntry", sender: self)
-        }
+        let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
+            if (error != nil) {
+                println(error.localizedDescription)
+            }
+            var err: NSError?
+            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            if (err != nil) {
+                println("JSON Error \(err!.localizedDescription)")
+            }
+            
+            let loginStatus = jsonResult["LoginStatus"] as String
+
+            if loginStatus == "Success" {
+                JsonToRealm.parseData("\(self.username.text)/\(self.password.text.md5)")
+                self.performSegueWithIdentifier("toPinEntry", sender: self)
+            }else if loginStatus == "Wrong Password"{
+                self.alertLogin(loginStatus)
+                println("LoginStatus --->>> \(loginStatus)")
+            }else {
+                self.alertLogin(loginStatus)
+                println("LoginStatus --->>> \(loginStatus)")
+            }
+        
+        })
+        jsonQuery.resume()
+        
         
     }
     
-    func registerNull() {
+    func alertLogin(apiMessage: String) {
         
         let getname = username.text
         let gettnum = password.text
@@ -92,7 +106,7 @@ class LoginViewController: UIViewController {
             
             println("8 above")
             
-            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Please fill up the required information.", preferredStyle: .Alert)
+            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: apiMessage, preferredStyle: .Alert)
             let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             })
             
@@ -100,7 +114,7 @@ class LoginViewController: UIViewController {
             presentViewController(alertController, animated: true, completion: nil)
             
         case .OrderedAscending:
-            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "Please fill up the required information.", delegate: self, cancelButtonTitle: "OK")
+            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: apiMessage, delegate: self, cancelButtonTitle: "OK")
             alertView.alertViewStyle = .Default
             alertView.show()
             
@@ -109,79 +123,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    func wrongEmail() {
-        let getname = username.text
-        let gettnum = password.text
-        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-        case .OrderedSame, .OrderedDescending:
-            
-            println("8 above")
-            
-            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong email address.", preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            })
-            
-            alertController.addAction(ok)
-            presentViewController(alertController, animated: true, completion: nil)
-            
-        case .OrderedAscending:
-            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "Wrong email address.", delegate: self, cancelButtonTitle: "OK")
-            alertView.alertViewStyle = .Default
-            alertView.show()
-            
-            println("8 below")
-        }
-    }
-    
-    func wrongPassword() {
-        let getname = username.text
-        let gettnum = password.text
-        
-        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-        case .OrderedSame, .OrderedDescending:
-            
-            println("8 above")
-            
-            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong password.", preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            })
-            
-            alertController.addAction(ok)
-            presentViewController(alertController, animated: true, completion: nil)
-            
-        case .OrderedAscending:
-            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "Wrong password.", delegate: self, cancelButtonTitle: "OK")
-            alertView.alertViewStyle = .Default
-            alertView.show()
-            
-            println("8 below")
-        }
-    }
-    
-    func bothWrong() {
-        let getname = username.text
-        let gettnum = password.text
-        
-        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-        case .OrderedSame, .OrderedDescending:
-            
-            println("8 above")
-            
-            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Wrong email and password.", preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            })
-            
-            alertController.addAction(ok)
-            presentViewController(alertController, animated: true, completion: nil)
-            
-        case .OrderedAscending:
-            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "Wrong email and password.", delegate: self, cancelButtonTitle: "OK")
-            alertView.alertViewStyle = .Default
-            alertView.show()
-            
-            println("8 below")
-        }
-    }
     
     func registerForKeyboardNotifications() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)

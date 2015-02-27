@@ -524,6 +524,7 @@
                         <segue destination="eAK-Us-Zcb" kind="show" identifier="toSettings" id="ZqU-ml-1UO"/>
                         <segue destination="fVi-eZ-Vrd" kind="show" identifier="toStaffDetails" id="G90-bq-4SM"/>
                         <segue destination="aWJ-RM-lEq" kind="presentation" identifier="toPing" modalTransitionStyle="crossDissolve" id="e4B-Ee-Tz2"/>
+                        <segue destination="pNj-7y-S5n" kind="presentation" identifier="toDashboard" modalTransitionStyle="crossDissolve" id="KVJ-TI-tUS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CH9-YS-Ehl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1157,7 +1158,7 @@
                         <outlet property="collectionView" destination="JZB-GE-Sil" id="zxQ-rI-hRy"/>
                         <outlet property="tblView" destination="TMY-Qq-VTP" id="3wG-eV-Hd0"/>
                         <segue destination="eAK-Us-Zcb" kind="show" identifier="toSettings" id="Gv3-IP-ZiX"/>
-                        <segue destination="UD2-ba-EN2" kind="presentation" identifier="toMyTeam" id="bGC-p1-8ln"/>
+                        <segue destination="UD2-ba-EN2" kind="presentation" identifier="toMyTeam" modalTransitionStyle="crossDissolve" id="bGC-p1-8ln"/>
                         <segue destination="aWJ-RM-lEq" kind="presentation" identifier="toPing" modalTransitionStyle="crossDissolve" id="til-pa-fig"/>
                     </connections>
                 </viewController>
@@ -1201,9 +1202,9 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jgQ-We-WHT"/>
+        <segue reference="bGC-p1-8ln"/>
+        <segue reference="rFA-CZ-2zU"/>
+        <segue reference="Gv3-IP-ZiX"/>
         <segue reference="til-pa-fig"/>
-        <segue reference="24p-s5-mQS"/>
-        <segue reference="MWJ-GL-lJp"/>
     </inferredMetricsTieBreakers>
 </document>

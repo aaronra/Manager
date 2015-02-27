@@ -82,7 +82,7 @@ class PinViewController: UIViewController, UITextFieldDelegate {
                 
                 if ConnectionDetector.isConnectedToNetwork() == true {
                     println("TRUE")
-                    JsonToRealm.parseData()
+//                    JsonToRealm.parseData()
                 } else {
                     println("NO CONNECTION")
                 }

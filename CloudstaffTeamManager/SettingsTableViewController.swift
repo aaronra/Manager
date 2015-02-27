@@ -19,12 +19,10 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
         textField.resignFirstResponder()
         return true
     }
-    
     func textViewShouldEndEditing(textView: UITextView) -> Bool {
         textView.resignFirstResponder()
         return true
     }
-    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         timeInterval.resignFirstResponder()
         defaultMessage.resignFirstResponder()
@@ -32,6 +30,8 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
     }
     /////////////////////////////////////////////////////////////////////
 
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,13 +55,15 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
         return 2
     }
 
-
+    
+    
+    
+    
     @IBAction func done(sender: UIBarButtonItem) {
         performSegueWithIdentifier("bToDashboardDone", sender: self)
         println("done")
     }
-    
-    
+  
     @IBAction func cancel(sender: UIBarButtonItem) {
         performSegueWithIdentifier("bToDashboardCanceled", sender: self)
         println("cancel")
