@@ -28,9 +28,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     var arrayofTeam = Array<String>()
     var arrayofPosition = Array<String>()
     var arrayofStatus = Array<String>()
+    var arrayofFaveStatus = Array<String>()
     
     var clickedIndex: Int = 0
-    
+    var arrayOfFave = Array<Int>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             let team = staffInfo["team"] as String
             let position = staffInfo["position"] as String
             let status = staffInfo["status"] as String
+            let fave = staffInfo["favorite"] as String
             
             arrayOfIds.append(id)
             arrayofStaffsImg.append(photo)
@@ -74,7 +76,22 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             arrayofTeam.append(team)
             arrayofPosition.append(position)
             arrayofStatus.append(status)
+            arrayofFaveStatus.append(fave)
+            
+            if fave == "Yes" {
+                if contains(arrayOfFave,id) {
+                } else {
+                    arrayOfFave.append(id)
+                }
+            } else if fave == "No" {
+                if contains(arrayOfFave,id) {
+                    arrayOfFave = arrayOfFave.filter() { $0 != id }
+                }
+            }
         }
+        
+        println(arrayofFaveStatus)
+        
         realm.commitWriteTransaction()
     }
     
@@ -136,6 +153,12 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         cell.detailThree.text = arrayofPosition[indexPath.row]
         cell.detailFour.text = arrayofStatus[indexPath.row]
         
+        if contains(arrayOfFave, arrayOfIds[indexPath.row]) {
+            cell.btnFave.setImage(UIImage(named: "favourite"), forState: UIControlState.Normal)
+        } else {
+            cell.btnFave.setImage(UIImage(named: "unfavourite"), forState: UIControlState.Normal)
+        }
+        
         return cell
         
     }
@@ -151,12 +174,13 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     func FavePressed(sender: UIButton) {
         let buttonRow = sender.tag
         
-        if (sender.imageForState(UIControlState.Normal) == UIImage(named: "favourite")) {
-            sender.setImage(UIImage(named: "unfavourite"), forState: UIControlState.Normal)
+        if (contains(arrayOfFave, buttonRow)) {
+            arrayOfFave = arrayOfFave.filter() { $0 != buttonRow }
         } else {
-            sender.setImage(UIImage(named: "favourite"), forState: UIControlState.Normal)
+            arrayOfFave.append(buttonRow)
         }
         println(buttonRow)
+        tableView.reloadData()
     }
     
     func sideBarDidSelectButtonAtIndex(index: Int) {

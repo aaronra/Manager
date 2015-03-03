@@ -57,8 +57,11 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func login(sender: AnyObject) {
-        loginfunc()
-    
+        if ConnectionDetector.isConnectedToNetwork() {
+            loginfunc()
+        }else {
+           alertLogin("No Internet Connection")
+        }
     }
 
     func loginfunc() {
@@ -77,19 +80,20 @@ class LoginViewController: UIViewController {
                 println("JSON Error \(err!.localizedDescription)")
             }
             
-            let loginStatus = jsonResult["LoginStatus"] as String
-
-            if loginStatus == "Success" {
-                JsonToRealm.parseData("\(self.username.text)/\(self.password.text.md5)")
-                self.performSegueWithIdentifier("toPinEntry", sender: self)
-            }else if loginStatus == "Wrong Password"{
-                self.alertLogin(loginStatus)
-                println("LoginStatus --->>> \(loginStatus)")
-            }else {
-                self.alertLogin(loginStatus)
-                println("LoginStatus --->>> \(loginStatus)")
-            }
-        
+            dispatch_async(dispatch_get_main_queue(), {
+                let loginStatus = jsonResult["LoginStatus"] as String
+                
+                if loginStatus == "Success" {
+                    JsonToRealm.parseData("\(self.username.text)/\(self.password.text.md5)")
+                    self.performSegueWithIdentifier("toPinEntry", sender: self)
+                }else if loginStatus == "Wrong Password"{
+                    self.alertLogin(loginStatus)
+                    println("LoginStatus --->>> \(loginStatus)")
+                }else {
+                    self.alertLogin(loginStatus)
+                    println("LoginStatus --->>> \(loginStatus)")
+                }
+            })
         })
         jsonQuery.resume()
         
@@ -122,7 +126,6 @@ class LoginViewController: UIViewController {
         }
         
     }
-    
     
     func registerForKeyboardNotifications() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)

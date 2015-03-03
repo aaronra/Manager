@@ -30,8 +30,6 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
     }
     /////////////////////////////////////////////////////////////////////
 
-   
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,12 +54,11 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
     }
 
     
-    
-    
-    
     @IBAction func done(sender: UIBarButtonItem) {
         performSegueWithIdentifier("bToDashboardDone", sender: self)
-        println("done")
+        
+        println("--->>>> \(defaultMessage.text)")
+        
     }
   
     @IBAction func cancel(sender: UIBarButtonItem) {

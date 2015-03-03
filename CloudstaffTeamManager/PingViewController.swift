@@ -25,7 +25,11 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
     var arrayofLogin = Array<String>()
     var arrayofUsername = Array<String>()
     var arrayofName = Array<String>()
-
+    
+    var willPingAll:Bool = false
+    var selectedFew:Bool = false
+    
+    var arrayofPingIds = Array<Int>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,31 +118,50 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
         cell.btnSelect.tag = arrayOfIds[indexPath.row]
         cell.btnSelect.addTarget(self, action: "SelectThis:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        if selectedFew {
+            if contains(arrayofPingIds,arrayOfIds[indexPath.row]) {
+                cell.btnSelect.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
+            } else {
+                cell.btnSelect.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
+            }
+        } else {
+            if willPingAll {
+                cell.btnSelect.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
+            } else {
+                cell.btnSelect.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
+            }
+        }
         return cell
         
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cell: PingStaffCell = tableView.cellForRowAtIndexPath(indexPath) as PingStaffCell
+//        let cell: PingStaffCell = tableView.cellForRowAtIndexPath(indexPath) as PingStaffCell
         
-        if (cell.btnSelect.imageForState(UIControlState.Normal) == UIImage(named: "checked")) {
-            cell.btnSelect.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
+        if (contains(arrayofPingIds,arrayOfIds[indexPath.row])) {
+            arrayofPingIds = arrayofPingIds.filter() { $0 != self.arrayOfIds[indexPath.row] }
         } else {
-            cell.btnSelect.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
+            arrayofPingIds.append(arrayOfIds[indexPath.row])
         }
+        
+        tblView.reloadData()
+        selectedFew = true
         
     }
     
     func SelectThis(sender: UIButton) {
         let buttonRow = sender.tag
         
-        if (sender.imageForState(UIControlState.Normal) == UIImage(named: "checked")) {
-            sender.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
+        if (contains(arrayofPingIds,buttonRow)) {
+            arrayofPingIds = arrayofPingIds.filter() { $0 != buttonRow }
         } else {
-            sender.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
+            arrayofPingIds.append(buttonRow)
         }
         println(buttonRow)
+        
+        tblView.reloadData()
+        selectedFew = true
     }
     
     
@@ -186,22 +209,20 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
     @IBAction func pingAll(sender: AnyObject) {
         if (sender.imageForState(UIControlState.Normal) == UIImage(named: "checked")) {
             sender.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-            
-//            for idx in arrayOfIds {
-//                let cell: PingStaffCell = tableView(tblView, cellForRowAtIndexPath: NSIndexPath(forRow: idx, inSection: 0)) as PingStaffCell
-//                cell.btnSelect.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)           
-//            }
-//            tblView.reloadData()
-            
+            willPingAll = false
+            arrayofPingIds.removeAll(keepCapacity: true)
         } else {
             sender.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
-            
-            for idx in arrayOfIds {
-                let cell: PingStaffCell = tableView(tblView, cellForRowAtIndexPath: NSIndexPath(forRow: idx, inSection: 0)) as PingStaffCell
-                
-                cell.btnSelect.setImage(UIImage(named: "checked"), forState: UIControlState.Normal)
+            willPingAll = true
+            for x in 0..<arrayOfIds.count {
+                arrayofPingIds.append(x)
             }
+
         }
+        
+        tblView.reloadData()
+        
+        selectedFew = false
     }
     
     
