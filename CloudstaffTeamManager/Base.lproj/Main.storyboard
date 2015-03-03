@@ -534,6 +534,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ux0-bj-0t6" kind="presentation" identifier="backtoDashboard" modalTransitionStyle="crossDissolve" id="TBs-Qq-UwJ"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="x8X-Jo-eq6">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1205,9 +1208,10 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MWJ-GL-lJp"/>
-        <segue reference="e4B-Ee-Tz2"/>
         <segue reference="RFH-wF-BBt"/>
+        <segue reference="TBs-Qq-UwJ"/>
+        <segue reference="e4B-Ee-Tz2"/>
+        <segue reference="MWJ-GL-lJp"/>
         <segue reference="bJM-Oj-5f7"/>
         <segue reference="rFA-CZ-2zU"/>
     </inferredMetricsTieBreakers>
