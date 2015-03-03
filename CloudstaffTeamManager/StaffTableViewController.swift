@@ -93,6 +93,13 @@ class StaffTableViewController: UITableViewController {
             detailTwo.text = team
             detailThree.text = position
             detailFour.text = status
+            
+            if favorite == "Yes" {
+                imgFave.setImage(UIImage(named: "favourite"), forState: UIControlState.Normal)
+            } else if favorite == "No" {
+                imgFave.setImage(UIImage(named: "unfavourite"), forState: UIControlState.Normal)
+            }
+            
         }
 
     
