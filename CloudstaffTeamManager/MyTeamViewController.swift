@@ -237,10 +237,16 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         if segue.identifier == "toStaffDetails" {
             var staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
             staffTVController.staffID = clickedIndex
+        } else if segue.identifier == "toSendMessage" {
+            var sendMTVController : SendMessageTableViewController = segue.destinationViewController as SendMessageTableViewController
+            sendMTVController.staffID = clickedIndex
         }
         
     }
     
+    @IBAction func sendMessage(sender: UIButton) {
+        performSegueWithIdentifier("toSendMessage", sender: self)
+    }
     
     
 }

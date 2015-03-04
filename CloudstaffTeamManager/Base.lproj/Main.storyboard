@@ -311,6 +311,9 @@
                                                     <state key="normal" image="mail">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="sendMessage:" destination="fK0-o1-rF0" eventType="touchUpInside" id="wRY-5O-5Gc"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bi-te-Lda">
                                                     <rect key="frame" x="489" y="8" width="29" height="29"/>
@@ -411,6 +414,7 @@
                         <segue destination="aWJ-RM-lEq" kind="presentation" identifier="toPing" modalTransitionStyle="crossDissolve" id="e4B-Ee-Tz2"/>
                         <segue destination="pNj-7y-S5n" kind="presentation" identifier="toDashboard" modalTransitionStyle="crossDissolve" id="KVJ-TI-tUS"/>
                         <segue destination="PD5-NW-iGU" kind="presentation" identifier="toLogin" modalTransitionStyle="crossDissolve" id="P5g-My-Q0m"/>
+                        <segue destination="Vf8-N3-7qi" kind="show" identifier="toSendMessage" id="ctd-Ip-Wjm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CH9-YS-Ehl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -454,11 +458,89 @@
             </objects>
             <point key="canvasLocation" x="579" y="-1441"/>
         </scene>
+        <!--Send Message-->
+        <scene sceneID="xVR-W1-r1M">
+            <objects>
+                <tableViewController id="pp0-ih-O9s" customClass="SendMessageTableViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tpl-hu-o6j">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="sectionIndexTrackingBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="fa3-Ay-LGy">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="20" id="OTX-ae-VGB">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OTX-ae-VGB" id="Tzk-fr-PeX">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="5fj-Gt-4gG">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5fj-Gt-4gG" id="LN3-k1-vfm">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jah-uK-wpP">
+                                                    <rect key="frame" x="8" y="8" width="584" height="184"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="jah-uK-wpP" secondAttribute="centerX" id="3bd-Ly-h6T"/>
+                                                <constraint firstAttribute="centerY" secondItem="jah-uK-wpP" secondAttribute="centerY" id="7lr-1E-Nxm"/>
+                                                <constraint firstItem="jah-uK-wpP" firstAttribute="top" secondItem="LN3-k1-vfm" secondAttribute="topMargin" id="Hts-Vo-yrr"/>
+                                                <constraint firstItem="jah-uK-wpP" firstAttribute="leading" secondItem="LN3-k1-vfm" secondAttribute="leadingMargin" id="QsE-kF-d4V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Rsd-eY-VHA">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rsd-eY-VHA" id="ScQ-t3-1tt">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="pp0-ih-O9s" id="zRC-cs-2ts"/>
+                            <outlet property="delegate" destination="pp0-ih-O9s" id="rCu-l7-0fe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Send Message" id="g2j-gW-dfB">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="c2M-q9-8w0">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel:" destination="pp0-ih-O9s" id="b0H-A7-xkQ"/>
+                                <segue destination="UD2-ba-EN2" kind="presentation" identifier="toMyTeam" modalTransitionStyle="crossDissolve" id="tZe-LJ-gqT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="RJ7-hU-Szs">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="send:" destination="pp0-ih-O9s" id="HAd-wq-yZ1"/>
+                                <segue destination="UD2-ba-EN2" kind="presentation" identifier="toMyTeam" modalTransitionStyle="crossDissolve" id="s1T-jJ-GUJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RS8-Jd-8kA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="579" y="78"/>
+        </scene>
         <!--Staff Details-->
         <scene sceneID="WRS-ZA-Ec4">
             <objects>
                 <tableViewController id="fVi-eZ-Vrd" customClass="StaffTableViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NwO-x1-N11">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NwO-x1-N11">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -534,9 +616,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="ux0-bj-0t6" kind="presentation" identifier="backtoDashboard" modalTransitionStyle="crossDissolve" id="TBs-Qq-UwJ"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="x8X-Jo-eq6">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -652,7 +731,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVS-ar-IdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="579" y="92"/>
+            <point key="canvasLocation" x="1297" y="78"/>
         </scene>
         <!--Ping-->
         <scene sceneID="U1Q-zA-qa8">
@@ -1190,6 +1269,24 @@
             </objects>
             <point key="canvasLocation" x="-1569" y="-663"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7vv-rS-gf2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vf8-N3-7qi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nSK-iT-8RM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pp0-ih-O9s" kind="relationship" relationship="rootViewController" id="yuH-AZ-dsy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zLm-0S-KbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-139" y="78"/>
+        </scene>
     </scenes>
     <resources>
         <image name="down" width="29" height="29"/>
@@ -1208,11 +1305,10 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RFH-wF-BBt"/>
-        <segue reference="TBs-Qq-UwJ"/>
         <segue reference="e4B-Ee-Tz2"/>
-        <segue reference="MWJ-GL-lJp"/>
-        <segue reference="bJM-Oj-5f7"/>
-        <segue reference="rFA-CZ-2zU"/>
+        <segue reference="RFH-wF-BBt"/>
+        <segue reference="ZqU-ml-1UO"/>
+        <segue reference="KVJ-TI-tUS"/>
+        <segue reference="P5g-My-Q0m"/>
     </inferredMetricsTieBreakers>
 </document>
