@@ -77,15 +77,39 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
             let mtrix = mtrixInfo["metrics"] as RLMArray
-            for mtxstf:RLMObject in mtrix {
-                let mtxInfo = mtxstf as RLMObject
-                let title  =  mtxInfo ["title"]  as  String
-                let daily  =  mtxInfo ["daily"]  as  Int
-                let weekly =  mtxInfo ["weekly"] as  Int
-                let value  =  mtxInfo ["value"]  as  Int
-                var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
-                arrayOfMetrics.append(metrics)
-                println("METRIC TITLE \(metrics.title)")
+            if mtrix.count != 0 {
+                for mtxstf:RLMObject in mtrix {
+                    let mtxInfo = mtxstf as RLMObject
+                    let title  =  mtxInfo["title"]  as  String
+                    let daily  =  mtxInfo["daily"]  as  Int
+                    let weekly =  mtxInfo["weekly"] as  Int
+                    let value  =  mtxInfo["value"]  as  Int
+                    var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
+                    arrayOfMetrics.append(metrics)
+                    println("----->>> \(arrayOfMetrics)")
+                    self.tblView.reloadData()
+                }
+            }else {
+                arrayOfMetrics.removeAll(keepCapacity: true)
+                self.tblView.reloadData()
+                
+                switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+                case .OrderedSame, .OrderedDescending:
+                    println("8 above")
+                    
+                    var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "No available Metrics", preferredStyle: .Alert)
+                    let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                    })
+                    
+                    alertController.addAction(ok)
+                    presentViewController(alertController, animated: true, completion: nil)
+                    
+                case .OrderedAscending:
+                    let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "No available Metrics", delegate: self, cancelButtonTitle: "OK")
+                    alertView.alertViewStyle = .Default
+                    alertView.show()
+                    println("8 below")
+                }
             }
         }
     }
@@ -204,24 +228,49 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
             let mtrix = mtrixInfo["metrics"] as RLMArray
-            for mtxstf:RLMObject in mtrix {
-                let mtxInfo = mtxstf as RLMObject
-                let title  =  mtxInfo["title"]  as  String
-                let daily  =  mtxInfo["daily"]  as  Int
-                let weekly =  mtxInfo["weekly"] as  Int
-                let value  =  mtxInfo["value"]  as  Int
-                var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
-                arrayOfMetrics.append(metrics)
-                println("----->>> \(arrayOfMetrics)")
+            
+            if mtrix.count != 0 {
+                for mtxstf:RLMObject in mtrix {
+                    let mtxInfo = mtxstf as RLMObject
+                    let title  =  mtxInfo["title"]  as  String
+                    let daily  =  mtxInfo["daily"]  as  Int
+                    let weekly =  mtxInfo["weekly"] as  Int
+                    let value  =  mtxInfo["value"]  as  Int
+                    var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
+                    arrayOfMetrics.append(metrics)
+                    println("----->>> \(arrayOfMetrics)")
                     self.tblView.reloadData()
+                }
+            }else {
+                arrayOfMetrics.removeAll(keepCapacity: true)
+                self.tblView.reloadData()
+                
+                switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+                case .OrderedSame, .OrderedDescending:
+                    println("8 above")
+                    
+                    var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "No available Metrics", preferredStyle: .Alert)
+                    let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                    })
+                    
+                    alertController.addAction(ok)
+                    presentViewController(alertController, animated: true, completion: nil)
+                    
+                case .OrderedAscending:
+                    let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: "No available Metrics", delegate: self, cancelButtonTitle: "OK")
+                    alertView.alertViewStyle = .Default
+                    alertView.show()
+                    println("8 below")
+                }
             }
+            
+            
         }
     }
 
     @IBAction func scrollLeft(sender: AnyObject) {
         
         var navToleft = collectionView.contentOffset.x - 80
-        
         if (navToleft < 0) {
             navToleft = 0
         }
@@ -244,9 +293,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         println("REFRESH --->>>> \(userSegue)")
         println("REFRESH --->>>> \(passSegue)")
     
-        
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "toMyTeam" {

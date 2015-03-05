@@ -258,6 +258,9 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         if segue.identifier == "toStaffDetails" {
             var staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
             staffTVController.staffID = clickedIndex
+            staffTVController.userSegue = userSegue
+            staffTVController.passSegue = passSegue
+            
         }else if segue.identifier == "toDashboard" {
             let navigationController  = segue.destinationViewController as UINavigationController
             let myTeamTv = navigationController.topViewController as DashboardViewController
@@ -280,9 +283,13 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             settingsTv.userSegue = userSegue
             settingsTv.passSegue = passSegue
             
+            
         } else if segue.identifier == "toSendMessage" {
             var sendMTVController : SendMessageTableViewController = segue.destinationViewController as SendMessageTableViewController
             sendMTVController.staffID = clickedIndex
+            sendMTVController.userSegue = userSegue
+            sendMTVController.passSegue = passSegue
+            
         }
         
     }

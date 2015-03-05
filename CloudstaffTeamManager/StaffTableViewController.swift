@@ -33,9 +33,11 @@ class StaffTableViewController: UITableViewController {
     
     var staffID = Int()
     
+    var userSegue = ""
+    var passSegue = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         let staffDetail = Staff.objectsWhere("id == \(staffID)")
         
@@ -187,14 +189,23 @@ class StaffTableViewController: UITableViewController {
         performSegueWithIdentifier("toMyTeam", sender: self)
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "backtoDashboard" {
             
             let navigationController  = segue.destinationViewController as UINavigationController
             let dashboardController = navigationController.topViewController as DashboardViewController
             dashboardController.mtrID = staffID
+                dashboardController.userSegue = userSegue
+                dashboardController.passSegue = passSegue
+
+        }else if segue.identifier == "toMyTeam" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let toMyTeamTV = navigationController.topViewController as MyTeamViewController
+                toMyTeamTV.userSegue = userSegue
+                toMyTeamTV.passSegue = passSegue
         }
     }
-
+    
     
 }
