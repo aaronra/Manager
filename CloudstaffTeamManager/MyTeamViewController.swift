@@ -33,6 +33,9 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     var clickedIndex: Int = 0
     var arrayOfFave = Array<Int>()
     
+    var userSegue = ""
+    var passSegue = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideBar = SideBar(sourceView: self.view, menuItems:
@@ -94,7 +97,6 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         
         realm.commitWriteTransaction()
     }
-    
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -163,7 +165,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         
     }
     
-
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         clickedIndex = indexPath.row
         performSegueWithIdentifier("toStaffDetails", sender: tableView)
@@ -221,7 +223,6 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             
         }
         
-        
     }
     
     @IBAction func showMenu(sender: AnyObject) {
@@ -232,21 +233,55 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         }
     }
     
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toStaffDetails" {
             var staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
             staffTVController.staffID = clickedIndex
-        } else if segue.identifier == "toSendMessage" {
-            var sendMTVController : SendMessageTableViewController = segue.destinationViewController as SendMessageTableViewController
-            sendMTVController.staffID = clickedIndex
+        }else if segue.identifier == "toDashboard" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let myTeamTv = navigationController.topViewController as DashboardViewController
+            
+            myTeamTv.userSegue = userSegue
+            myTeamTv.passSegue = passSegue
+            
+        }else if segue.identifier == "toPing" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let pingTv = navigationController.topViewController as PingViewController
+            
+            pingTv.userSegue = userSegue
+            pingTv.passSegue = passSegue
+            
+        }else if segue.identifier == "toSettings" {
+            
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let settingsTv = navigationController.topViewController as SettingsTableViewController
+            
+            settingsTv.userSegue = userSegue
+            settingsTv.passSegue = passSegue
+            
         }
         
     }
     
-    @IBAction func sendMessage(sender: UIButton) {
-        performSegueWithIdentifier("toSendMessage", sender: self)
+    
+    
+    
+    @IBAction func refresh(sender: UIBarButtonItem) {
+        
+        println("REFRESH --->>>> \(userSegue)")
+        println("REFRESH --->>>> \(passSegue)")
+        
     }
     
+    
+    
+    @IBAction func filter(sender: AnyObject) {
+        println("shjggdffgdfdfdfdf")
+    }
+    
+
     
 }

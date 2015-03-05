@@ -10,8 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var Umail = "totep"
-    var Pword = "123"
+
     var json = JsonToRealm()
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -85,7 +84,9 @@ class LoginViewController: UIViewController {
                 
                 if loginStatus == "Success" {
                     JsonToRealm.parseData("\(self.username.text)/\(self.password.text.md5)")
-                    self.performSegueWithIdentifier("toPinEntry", sender: self)
+                    self.performSegueWithIdentifier("toDashboard", sender: self.btnLogin)
+                    
+                    
                 }else if loginStatus == "Wrong Password"{
                     self.alertLogin(loginStatus)
                     println("LoginStatus --->>> \(loginStatus)")
@@ -97,8 +98,20 @@ class LoginViewController: UIViewController {
         })
         jsonQuery.resume()
         
-        
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+            if segue.identifier == "toDashboard" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+                let dashBTv = navigationController.topViewController as DashboardViewController
+
+            dashBTv.userSegue = username.text
+            dashBTv.passSegue = password.text.md5
+        }
+    }
+    
+    
+
     
     func alertLogin(apiMessage: String) {
         

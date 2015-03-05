@@ -26,6 +26,9 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     var refreshControl: UIRefreshControl!
     var mtrID: Int = 0
     
+    var userSegue = ""
+    var passSegue = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideBar = SideBar(sourceView: self.view, menuItems:
@@ -38,6 +41,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         self.firstMetrics()
         
         getImageforCollectionView()
+        
         
     }
     
@@ -227,14 +231,48 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         }
         println("NAVTOLEFT \(navToleft)")
     }
-    
     @IBAction func scrollRight(sender: AnyObject) {
         if ((collectionView.contentOffset.x + 80) < (collectionView.contentSize.width - (collectionView.contentOffset.x - 80))) {
             [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x + 80, 0), animated: true)]
         }
     }
     
-
+    
+    
+    @IBAction func refresh(sender: UIBarButtonItem) {
+        
+        println("REFRESH --->>>> \(userSegue)")
+        println("REFRESH --->>>> \(passSegue)")
+    
+        
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "toMyTeam" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let myTeamTv = navigationController.topViewController as MyTeamViewController
+            
+            myTeamTv.userSegue = userSegue
+            myTeamTv.passSegue = passSegue
+            
+        }else if segue.identifier == "toPing" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let pingTv = navigationController.topViewController as PingViewController
+            
+            pingTv.userSegue = userSegue
+            pingTv.passSegue = passSegue
+            
+        }else if segue.identifier == "toSettings" {
+            
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let settingsTv = navigationController.topViewController as SettingsTableViewController
+            
+            settingsTv.userSegue = userSegue
+            settingsTv.passSegue = passSegue
+            
+        }
+    }
 
 }
 
