@@ -172,19 +172,6 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         
     }
     
-    // FAVE PRESSED *********************************
-    func FavePressed(sender: UIButton) {
-        let buttonRow = sender.tag
-        
-        if (contains(arrayOfFave, buttonRow)) {
-            arrayOfFave = arrayOfFave.filter() { $0 != buttonRow }
-        } else {
-            arrayOfFave.append(buttonRow)
-        }
-        println(buttonRow)
-        tableView.reloadData()
-    }
-    
     func sideBarDidSelectButtonAtIndex(index: Int) {
         if index == 0{
             performSegueWithIdentifier("toDashboard", sender: self)
@@ -235,6 +222,37 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     
     
+    // FAVE PRESSED *********************************
+    func FavePressed(sender: UIButton) {
+        let buttonRow = sender.tag
+        
+        if (contains(arrayOfFave, buttonRow)) {
+            arrayOfFave = arrayOfFave.filter() { $0 != buttonRow }
+        } else {
+            arrayOfFave.append(buttonRow)
+        }
+        println(buttonRow)
+        tableView.reloadData()
+    }
+    
+    
+    @IBAction func sendMessage(sender: AnyObject) {
+//        performSegueWithIdentifier("toSendMessage", sender: self)
+    }
+    
+
+    
+    @IBAction func refresh(sender: UIBarButtonItem) {
+        
+        println("REFRESH --->>>> \(userSegue)")
+        println("REFRESH --->>>> \(passSegue)")
+        
+    }
+    
+    @IBAction func filter(sender: AnyObject) {
+        println("shjggdffgdfdfdfdf")
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toStaffDetails" {
@@ -262,26 +280,11 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             settingsTv.userSegue = userSegue
             settingsTv.passSegue = passSegue
             
+        } else if segue.identifier == "toSendMessage" {
+            var sendMTVController : SendMessageTableViewController = segue.destinationViewController as SendMessageTableViewController
+            sendMTVController.staffID = clickedIndex
         }
         
     }
-    
-    
-    
-    
-    @IBAction func refresh(sender: UIBarButtonItem) {
-        
-        println("REFRESH --->>>> \(userSegue)")
-        println("REFRESH --->>>> \(passSegue)")
-        
-    }
-    
-    
-    
-    @IBAction func filter(sender: AnyObject) {
-        println("shjggdffgdfdfdfdf")
-    }
-    
-
     
 }

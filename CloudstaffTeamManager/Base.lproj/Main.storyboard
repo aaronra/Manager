@@ -308,6 +308,10 @@
                                                     <state key="normal" image="mail">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="sendMessage:" destination="fK0-o1-rF0" eventType="touchUpInside" id="Ccd-mo-I2u"/>
+                                                        <segue destination="om1-Wl-wgJ" kind="show" identifier="toSendMessage" id="Pgy-e2-03c"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bi-te-Lda">
                                                     <rect key="frame" x="489" y="8" width="29" height="29"/>
@@ -650,7 +654,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVS-ar-IdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="579" y="75"/>
+            <point key="canvasLocation" x="953" y="89"/>
         </scene>
         <!--Ping-->
         <scene sceneID="U1Q-zA-qa8">
@@ -1190,6 +1194,87 @@
             </objects>
             <point key="canvasLocation" x="-1569" y="-663"/>
         </scene>
+        <!--Send Message-->
+        <scene sceneID="Idm-XV-xPK">
+            <objects>
+                <tableViewController id="om1-Wl-wgJ" customClass="SendMessageTableViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aNo-yP-5tF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="sectionIndexTrackingBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="GYC-Sr-wjp">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="20" id="sdD-Xs-fQd">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sdD-Xs-fQd" id="zkn-L9-ewR">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="r0G-aD-3oK">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r0G-aD-3oK" id="MlK-sr-BBt">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LY-Xf-EIB">
+                                                    <rect key="frame" x="8" y="8" width="584" height="184"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5LY-Xf-EIB" firstAttribute="top" secondItem="MlK-sr-BBt" secondAttribute="topMargin" id="6ss-QM-KPz"/>
+                                                <constraint firstItem="5LY-Xf-EIB" firstAttribute="leading" secondItem="MlK-sr-BBt" secondAttribute="leadingMargin" id="JR5-M9-QmB"/>
+                                                <constraint firstAttribute="centerY" secondItem="5LY-Xf-EIB" secondAttribute="centerY" id="KRq-kk-K0S"/>
+                                                <constraint firstAttribute="centerX" secondItem="5LY-Xf-EIB" secondAttribute="centerX" id="rAM-xZ-Ir8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qt4-Hb-nZu">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qt4-Hb-nZu" id="8K1-AF-4Z3">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="om1-Wl-wgJ" id="k5y-qU-1GZ"/>
+                            <outlet property="delegate" destination="om1-Wl-wgJ" id="3nO-yx-6FA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Send Message" id="VnB-0b-W4G">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Yjv-Sa-60q">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel:" destination="om1-Wl-wgJ" id="mfL-xn-339"/>
+                                <segue destination="UD2-ba-EN2" kind="presentation" identifier="toMyTeam" modalTransitionStyle="crossDissolve" id="4Yd-hg-pKT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="cIu-Qw-rjz">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="send:" destination="om1-Wl-wgJ" id="46T-FI-PpP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <segue destination="UD2-ba-EN2" kind="presentation" identifier="toMyTeam" modalTransitionStyle="crossDissolve" id="BgS-o5-fov"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dhc-zx-EdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197" y="89"/>
+        </scene>
     </scenes>
     <resources>
         <image name="filter" width="29" height="29"/>
@@ -1207,10 +1292,10 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TDE-Fr-DEr"/>
-        <segue reference="RFH-wF-BBt"/>
+        <segue reference="KVJ-TI-tUS"/>
+        <segue reference="4Yd-hg-pKT"/>
+        <segue reference="P5g-My-Q0m"/>
         <segue reference="e4B-Ee-Tz2"/>
-        <segue reference="bJM-Oj-5f7"/>
-        <segue reference="MWJ-GL-lJp"/>
+        <segue reference="ZqU-ml-1UO"/>
     </inferredMetricsTieBreakers>
 </document>
