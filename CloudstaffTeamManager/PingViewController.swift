@@ -31,6 +31,9 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
     
     var arrayofPingIds = Array<Int>()
     
+    var userSegue = ""
+    var passSegue = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideBar = SideBar(sourceView: self.view, menuItems:
@@ -165,9 +168,6 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
     }
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     func sideBarDidSelectButtonAtIndex(index: Int) {
         if index == 0{
@@ -231,6 +231,32 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
             sideBar.showSideBar(false)
         }else{
             sideBar.showSideBar(true)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "toMyTeam" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let myTeamTv = navigationController.topViewController as MyTeamViewController
+            
+            myTeamTv.userSegue = userSegue
+            myTeamTv.passSegue = passSegue
+            
+        }else if segue.identifier == "toDashboard" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let pingTv = navigationController.topViewController as DashboardViewController
+            
+            pingTv.userSegue = userSegue
+            pingTv.passSegue = passSegue
+            
+        }else if segue.identifier == "toSettings" {
+            
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let settingsTv = navigationController.topViewController as SettingsTableViewController
+            
+            settingsTv.userSegue = userSegue
+            settingsTv.passSegue = passSegue
+            
         }
     }
     

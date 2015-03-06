@@ -14,6 +14,9 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
     @IBOutlet weak var timeInterval: UITextField!
     @IBOutlet weak var defaultMessage: UITextView!
     
+    var userSegue = ""
+    var passSegue = ""
+    
     ///////////////////////  KEYBOARD DISMISS  /////////////////////////
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
@@ -64,6 +67,25 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
     @IBAction func cancel(sender: UIBarButtonItem) {
         performSegueWithIdentifier("bToDashboardCanceled", sender: self)
         println("cancel")
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "bToDashboardDone" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let myTeamTv = navigationController.topViewController as DashboardViewController
+            
+            myTeamTv.userSegue = userSegue
+            myTeamTv.passSegue = passSegue
+            
+        }else if segue.identifier == "bToDashboardCanceled" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let pingTv = navigationController.topViewController as DashboardViewController
+            
+            pingTv.userSegue = userSegue
+            pingTv.passSegue = passSegue
+            
+        }
     }
     
 

@@ -36,6 +36,7 @@ class StaffTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let staffDetail = Staff.objectsWhere("id == \(staffID)")
         
         for staff: RLMObject in staffDetail {
@@ -161,7 +162,7 @@ class StaffTableViewController: UITableViewController {
         
         } else if (indexPath.row == 2) {
             
-            println("---->>> \(indexPath.row)")
+            println("---->>> \(staffID)")
             
         } else if (indexPath.row == 3) {
             
@@ -169,8 +170,8 @@ class StaffTableViewController: UITableViewController {
             
         } else if (indexPath.row == 4) {
             
-//            println("---->>> \(indexPath.row)")
-//            println("---->>>ID \(staffID)")
+            println("---->>> \(indexPath.row)")
+            println("---->>>ID \(staffID)")
             performSegueWithIdentifier("backtoDashboard", sender: tableView)
             
         } else if (indexPath.row == 5) {
@@ -187,9 +188,10 @@ class StaffTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if segue.identifier == "backtoDashboard" {
-            var dashboardController : DashboardViewController = segue.destinationViewController as DashboardViewController
+            
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let dashboardController = navigationController.topViewController as DashboardViewController
             dashboardController.mtrID = staffID
         }
     }
