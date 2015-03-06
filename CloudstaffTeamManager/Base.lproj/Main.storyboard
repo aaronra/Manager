@@ -1348,7 +1348,13 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="RFH-wF-BBt"/>
+=======
+        <segue reference="TDE-Fr-DEr"/>
+        <segue reference="4Yd-hg-pKT"/>
+        <segue reference="P5g-My-Q0m"/>
+>>>>>>> 4198ed45db4dd40376f02a79fe4c8ec736130499
         <segue reference="e4B-Ee-Tz2"/>
         <segue reference="bJM-Oj-5f7"/>
         <segue reference="MWJ-GL-lJp"/>

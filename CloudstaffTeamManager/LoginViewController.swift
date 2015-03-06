@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
-    /////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////
     
 
     override func viewDidLoad() {
@@ -53,7 +53,6 @@ class LoginViewController: UIViewController {
         super.viewWillDisappear(true)
         
     }
-    
 
     @IBAction func login(sender: AnyObject) {
         if ConnectionDetector.isConnectedToNetwork() {
@@ -64,7 +63,7 @@ class LoginViewController: UIViewController {
     }
 
     func loginfunc() {
-
+        
         let urlAsString = "http://10.1.51.130/cakephp/Accounts/login/\(username.text)/\(password.text.md5).json"
         let url: NSURL  = NSURL(string: urlAsString)!
         let urlSession = NSURLSession.sharedSession()
@@ -104,14 +103,10 @@ class LoginViewController: UIViewController {
             if segue.identifier == "toDashboard" {
             let navigationController  = segue.destinationViewController as UINavigationController
                 let dashBTv = navigationController.topViewController as DashboardViewController
-
             dashBTv.userSegue = username.text
             dashBTv.passSegue = password.text.md5
         }
     }
-    
-    
-
     
     func alertLogin(apiMessage: String) {
         
@@ -120,21 +115,16 @@ class LoginViewController: UIViewController {
         
         switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
         case .OrderedSame, .OrderedDescending:
-            
             println("8 above")
-            
             var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: apiMessage, preferredStyle: .Alert)
             let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             })
-            
             alertController.addAction(ok)
             presentViewController(alertController, animated: true, completion: nil)
-            
         case .OrderedAscending:
             let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: apiMessage, delegate: self, cancelButtonTitle: "OK")
             alertView.alertViewStyle = .Default
             alertView.show()
-            
             println("8 below")
         }
         
