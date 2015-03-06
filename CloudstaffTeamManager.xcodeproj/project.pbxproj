@@ -16,6 +16,8 @@
 		5D6323261A8D888C00E893C5 /* StaffTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6323251A8D888C00E893C5 /* StaffTableViewController.swift */; };
 		5D9A5C6E1A9D3E4F003F94B9 /* PingStaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */; };
 		5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC172611A7F07980056F6DA /* StaffCell.swift */; };
+		6E05F8E71AA97FA700CA898C /* DropDownDept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05F8E61AA97FA700CA898C /* DropDownDept.swift */; };
+		6E05F8EA1AA9801600CA898C /* DropDownDeptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05F8E91AA9801600CA898C /* DropDownDeptTableViewController.swift */; };
 		6E2341601A7B6F3B009D856E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E23415E1A7B6F3B009D856E /* Main.storyboard */; };
 		6E5755C31AA53EF80067B67C /* MyTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5755C21AA53EF80067B67C /* MyTeamViewController.swift */; };
 		6E5755C51AA53F220067B67C /* PingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5755C41AA53F220067B67C /* PingViewController.swift */; };
@@ -57,6 +59,8 @@
 		5D6323251A8D888C00E893C5 /* StaffTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTableViewController.swift; sourceTree = "<group>"; };
 		5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingStaffCell.swift; sourceTree = "<group>"; };
 		5DC172611A7F07980056F6DA /* StaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCell.swift; sourceTree = "<group>"; };
+		6E05F8E61AA97FA700CA898C /* DropDownDept.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownDept.swift; sourceTree = "<group>"; };
+		6E05F8E91AA9801600CA898C /* DropDownDeptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownDeptTableViewController.swift; sourceTree = "<group>"; };
 		6E23415F1A7B6F3B009D856E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6E4FBA7D1AA01633003076DE /* CloudstaffTeamManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudstaffTeamManager-Bridging-Header.h"; sourceTree = "<group>"; };
 		6E4FBA801AA0165D003076DE /* CommonCryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonCryptor.h; sourceTree = "<group>"; };
@@ -133,6 +137,15 @@
 				5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */,
 			);
 			name = Ping;
+			sourceTree = "<group>";
+		};
+		6E05F8E81AA97FC700CA898C /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				6E05F8E61AA97FA700CA898C /* DropDownDept.swift */,
+				6E05F8E91AA9801600CA898C /* DropDownDeptTableViewController.swift */,
+			);
+			name = DropDown;
 			sourceTree = "<group>";
 		};
 		6E4FBA811AA03910003076DE /* Encryptor */ = {
@@ -214,6 +227,7 @@
 				6EBC23391A7903890043C743 /* HTTPFunctions */,
 				6EBC23341A78D4140043C743 /* TableItems */,
 				E72B9E481A619C4C0083BE2A /* Sidebar */,
+				6E05F8E81AA97FC700CA898C /* DropDown */,
 				6E4FBA811AA03910003076DE /* Encryptor */,
 				E72728691A5F879B00D92301 /* Images.xcassets */,
 				6E23415E1A7B6F3B009D856E /* Main.storyboard */,
@@ -367,6 +381,7 @@
 				E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */,
 				6EA216601AA7FCC500F957EE /* SendMessageTableViewController.swift in Sources */,
 				6E9014711A956B91001DA99F /* JsonToRealm.swift in Sources */,
+				6E05F8EA1AA9801600CA898C /* DropDownDeptTableViewController.swift in Sources */,
 				6E5755C51AA53F220067B67C /* PingViewController.swift in Sources */,
 				5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */,
 				E72B9E461A619C450083BE2A /* SideBar.swift in Sources */,
@@ -380,6 +395,7 @@
 				6EBC23311A78CC1E0043C743 /* CustomCell.swift in Sources */,
 				5D9A5C6E1A9D3E4F003F94B9 /* PingStaffCell.swift in Sources */,
 				E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */,
+				6E05F8E71AA97FA700CA898C /* DropDownDept.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -258,6 +258,12 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         
     }
     
+
+    
+    @IBAction func dept(sender: AnyObject) {
+        println("DEPARTMENT")
+    }
+    
     @IBAction func filter(sender: AnyObject) {
         println("shjggdffgdfdfdfdf")
     }

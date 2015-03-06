@@ -1,9 +1,9 @@
 //
 //  SideBar.swift
-//  BlurrySideBar
+//  CloudstaffTeamManager
 //
-//  Created by Training on 01/09/14.
-//  Copyright (c) 2014 Training. All rights reserved.
+//  Created by t0tep on 27/1/15.
+//  Copyright (c) 2015 CLOUDSTAFF. All rights reserved.
 //
 
 import UIKit
@@ -47,8 +47,6 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         let hideGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
         hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         originView.addGestureRecognizer(hideGestureRecognizer)
-
-        
     }
     
     
@@ -70,12 +68,9 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         sideBarTableViewController.tableView.clipsToBounds = false
         sideBarTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         sideBarTableViewController.tableView.backgroundColor = UIColor(hex: 0x1C98D5)
-
         sideBarTableViewController.tableView.scrollsToTop  = false
         sideBarTableViewController.tableView.contentInset = UIEdgeInsetsMake(sideBarTableViewTopInset, 0, 0, 0)
-        
         sideBarTableViewController.tableView.reloadData()
-        
         sideBarContainerView.addSubview(sideBarTableViewController.tableView)
         sideBarContainerView.alpha = 0.85
     
@@ -86,12 +81,10 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         if recognizer.direction == UISwipeGestureRecognizerDirection.Left{
             showSideBar(false)
             delegate?.sideBarWillClose?()
-            
         }else{
             showSideBar(true)
             delegate?.sideBarWillOpen?()
         }
-    
     }
     
     
@@ -103,7 +96,6 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         let magnitude:CGFloat = (shouldOpen) ? 60 : -60
         let boundaryX:CGFloat = (shouldOpen) ? barWidth : -barWidth - 1
         
-        
         let gravityBehavior:UIGravityBehavior = UIGravityBehavior(items: [sideBarContainerView])
         gravityBehavior.gravityDirection = CGVectorMake(gravityX, 0)
         animator.addBehavior(gravityBehavior)
@@ -112,12 +104,10 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         collisionBehavior.addBoundaryWithIdentifier("sideBarBoundary", fromPoint: CGPointMake(boundaryX, 30), toPoint: CGPointMake(boundaryX, originView.frame.size.height))
         animator.addBehavior(collisionBehavior)
         
-        
         let pushBehavior:UIPushBehavior = UIPushBehavior(items: [sideBarContainerView], mode: UIPushBehaviorMode.Instantaneous)
         pushBehavior.magnitude = magnitude
         animator.addBehavior(pushBehavior)
         originView.bringSubviewToFront(sideBarContainerView)
-        
         
         let sideBarBehavior:UIDynamicItemBehavior = UIDynamicItemBehavior(items: [sideBarContainerView])
         sideBarBehavior.elasticity = -0.9

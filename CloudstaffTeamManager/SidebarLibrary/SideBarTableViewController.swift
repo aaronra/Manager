@@ -1,9 +1,9 @@
 //
 //  SideBarTableViewController.swift
-//  BlurrySideBar
+//  CloudstaffTeamManager
 //
-//  Created by Training on 01/09/14.
-//  Copyright (c) 2014 Training. All rights reserved.
+//  Created by t0tep on 27/1/15.
+//  Copyright (c) 2015 CLOUDSTAFF. All rights reserved.
 //
 
 import UIKit
