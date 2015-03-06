@@ -172,6 +172,13 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animateWithDuration(0.25, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+        })
+    }
+    
     func sideBarDidSelectButtonAtIndex(index: Int) {
         if index == 0{
             performSegueWithIdentifier("toDashboard", sender: self)
@@ -240,10 +247,12 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
 //        performSegueWithIdentifier("toSendMessage", sender: self)
     }
     
-
-    
     @IBAction func refresh(sender: UIBarButtonItem) {
         
+        dispatch_async(dispatch_get_main_queue(), {
+            JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
+        })
+        self.tableView.reloadData()
         println("REFRESH --->>>> \(userSegue)")
         println("REFRESH --->>>> \(passSegue)")
         
@@ -282,7 +291,6 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             
             settingsTv.userSegue = userSegue
             settingsTv.passSegue = passSegue
-            
             
         } else if segue.identifier == "toSendMessage" {
             var sendMTVController : SendMessageTableViewController = segue.destinationViewController as SendMessageTableViewController

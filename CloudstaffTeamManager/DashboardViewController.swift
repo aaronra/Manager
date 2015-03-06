@@ -129,11 +129,8 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         }
         
         let metrics = arrayOfMetrics[indexPath.row]
-        
         cell.setCell(metrics.title, lbldaily: metrics.lbldaily, lblweekly: metrics.lblweekly, daily: metrics.daily, weekly: metrics.weekly, value: metrics.value)
-
         return cell
-        
     }
 
     func getImageforCollectionView() {
@@ -223,6 +220,13 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         reloadMetrics(stf)
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animateWithDuration(0.25, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+        })
+    }
+    
     func reloadMetrics(stf: RLMResults) {
         arrayOfMetrics.removeAll(keepCapacity: true)
         for mtrc_stf:RLMObject in stf {
@@ -287,14 +291,14 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     }
     
     
-    
     @IBAction func refresh(sender: UIBarButtonItem) {
-        
+        dispatch_async(dispatch_get_main_queue(), {
+            JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
+        })
+        self.tblView.reloadData()
         println("REFRESH --->>>> \(userSegue)")
         println("REFRESH --->>>> \(passSegue)")
-    
     }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "toMyTeam" {
             let navigationController  = segue.destinationViewController as UINavigationController
@@ -320,7 +324,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             
         }
     }
-
 }
 
     
