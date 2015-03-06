@@ -569,7 +569,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What are you working on?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ict-6T-Dpx">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Working On Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ict-6T-Dpx">
                                                     <rect key="frame" x="75" y="11" width="250" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -577,6 +577,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="gTK-Qp-mqF" kind="show" identifier="toWorkingOn" id="AAE-kJ-AGi"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VSH-m2-uab">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -668,14 +671,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEo-eA-Y3p">
-                                <rect key="frame" x="555" y="80" width="29" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEo-eA-Y3p">
+                                <rect key="frame" x="555" y="36" width="29" height="29"/>
                                 <state key="normal" image="ping">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pFH-Zq-uCv">
-                                <rect key="frame" x="0.0" y="117" width="600" height="483"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pFH-Zq-uCv">
+                                <rect key="frame" x="0.0" y="73" width="600" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="483" id="JiP-Ai-nfe"/>
@@ -759,8 +762,8 @@
                                     <outlet property="delegate" destination="vei-Pv-Oi7" id="oSR-VP-pre"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkP-nv-Lbf">
-                                <rect key="frame" x="16" y="80" width="29" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkP-nv-Lbf">
+                                <rect key="frame" x="16" y="36" width="29" height="29"/>
                                 <state key="normal" image="unchecked">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -768,8 +771,8 @@
                                     <action selector="pingAll:" destination="vei-Pv-Oi7" eventType="touchUpInside" id="Fav-bN-gpT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select All" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHc-A2-Hnk">
-                                <rect key="frame" x="53" y="84" width="200" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select All" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHc-A2-Hnk">
+                                <rect key="frame" x="53" y="40" width="200" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="ch0-zu-ylD"/>
                                 </constraints>
@@ -1275,6 +1278,59 @@
             </objects>
             <point key="canvasLocation" x="197" y="89"/>
         </scene>
+        <!--Working On Today-->
+        <scene sceneID="AvS-SS-pxR">
+            <objects>
+                <tableViewController id="gTK-Qp-mqF" customClass="WorkingOnTableViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kn3-bN-XHR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="sectionIndexTrackingBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="taskCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="bYV-aP-uhK" customClass="WorkingOnCell" customModule="CloudstaffTeamManager" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bYV-aP-uhK" id="uBr-bK-NVe">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLj-ER-529">
+                                            <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rq1-gG-QJJ">
+                                            <rect key="frame" x="8" y="37" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblDateTime" destination="qLj-ER-529" id="kvq-5F-oMb"/>
+                                    <outlet property="lblTask" destination="Rq1-gG-QJJ" id="Fky-Qu-8O1"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="gTK-Qp-mqF" id="9O8-xn-c5g"/>
+                            <outlet property="delegate" destination="gTK-Qp-mqF" id="as7-qS-e2t"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Working On Today" id="fZT-0d-ePN">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="zHu-Az-QZd">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HHz-0H-wf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1681" y="89"/>
+        </scene>
     </scenes>
     <resources>
         <image name="filter" width="29" height="29"/>
@@ -1292,10 +1348,10 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KVJ-TI-tUS"/>
-        <segue reference="4Yd-hg-pKT"/>
-        <segue reference="P5g-My-Q0m"/>
+        <segue reference="RFH-wF-BBt"/>
         <segue reference="e4B-Ee-Tz2"/>
-        <segue reference="ZqU-ml-1UO"/>
+        <segue reference="bJM-Oj-5f7"/>
+        <segue reference="MWJ-GL-lJp"/>
+        <segue reference="TDE-Fr-DEr"/>
     </inferredMetricsTieBreakers>
 </document>

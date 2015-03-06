@@ -14,6 +14,8 @@
 		5D49236A1A8993D500EB8EB6 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4923691A8993D500EB8EB6 /* SettingsTableViewController.swift */; };
 		5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */; };
 		5D6323261A8D888C00E893C5 /* StaffTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6323251A8D888C00E893C5 /* StaffTableViewController.swift */; };
+		5D904CD31AA9515B008AB5D3 /* WorkingOnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D904CD21AA9515B008AB5D3 /* WorkingOnCell.swift */; };
+		5D904CD51AA97E16008AB5D3 /* WorkingOnTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D904CD41AA97E16008AB5D3 /* WorkingOnTableViewController.swift */; };
 		5D9A5C6E1A9D3E4F003F94B9 /* PingStaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */; };
 		5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC172611A7F07980056F6DA /* StaffCell.swift */; };
 		6E2341601A7B6F3B009D856E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E23415E1A7B6F3B009D856E /* Main.storyboard */; };
@@ -55,6 +57,8 @@
 		5D4923691A8993D500EB8EB6 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeamCell.swift; sourceTree = "<group>"; };
 		5D6323251A8D888C00E893C5 /* StaffTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTableViewController.swift; sourceTree = "<group>"; };
+		5D904CD21AA9515B008AB5D3 /* WorkingOnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingOnCell.swift; sourceTree = "<group>"; };
+		5D904CD41AA97E16008AB5D3 /* WorkingOnTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingOnTableViewController.swift; sourceTree = "<group>"; };
 		5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingStaffCell.swift; sourceTree = "<group>"; };
 		5DC172611A7F07980056F6DA /* StaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCell.swift; sourceTree = "<group>"; };
 		6E23415F1A7B6F3B009D856E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 				5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */,
 				5D6323251A8D888C00E893C5 /* StaffTableViewController.swift */,
 				6EA2165F1AA7FCC500F957EE /* SendMessageTableViewController.swift */,
+				5D904CD21AA9515B008AB5D3 /* WorkingOnCell.swift */,
+				5D904CD41AA97E16008AB5D3 /* WorkingOnTableViewController.swift */,
 			);
 			name = MyTeam;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 			files = (
 				6E5755C31AA53EF80067B67C /* MyTeamViewController.swift in Sources */,
 				6E8FF3C51A8204FB002074BE /* MyTeamDetails.swift in Sources */,
+				5D904CD51AA97E16008AB5D3 /* WorkingOnTableViewController.swift in Sources */,
 				5D005DBF1A6F831900D66B79 /* PinViewController.swift in Sources */,
 				5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */,
 				5D1EDDD31A76FA9E005A92B3 /* DashboardViewController.swift in Sources */,
@@ -370,6 +377,7 @@
 				6E5755C51AA53F220067B67C /* PingViewController.swift in Sources */,
 				5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */,
 				E72B9E461A619C450083BE2A /* SideBar.swift in Sources */,
+				5D904CD31AA9515B008AB5D3 /* WorkingOnCell.swift in Sources */,
 				6EBC23361A7900D40043C743 /* ConnectionDetector.swift in Sources */,
 				5D6323261A8D888C00E893C5 /* StaffTableViewController.swift in Sources */,
 				5D1EDDD81A79A786005A92B3 /* DashboardCell.swift in Sources */,

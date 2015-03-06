@@ -167,6 +167,7 @@ class StaffTableViewController: UITableViewController {
         } else if (indexPath.row == 3) {
             
             println("---->>> \(indexPath.row)")
+            performSegueWithIdentifier("toWorkingOn", sender: tableView)
             
         } else if (indexPath.row == 4) {
             
