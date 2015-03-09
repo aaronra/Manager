@@ -169,15 +169,16 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         clickedIndex = indexPath.row
         performSegueWithIdentifier("toStaffDetails", sender: tableView)
-        
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
-        UIView.animateWithDuration(0.25, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1,1,1)
-        })
-    }
+//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//
+//        
+//        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+//        UIView.animateWithDuration(0.25, animations: {
+//            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+//        })
+//    }
     
     func sideBarDidSelectButtonAtIndex(index: Int) {
         if index == 0{
@@ -205,11 +206,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         }
     }
     
-    
-    
     // FAVE PRESSED *********************************
     func FavePressed(sender: UIButton) {
         let buttonRow = sender.tag
+        let cell = UITableViewCell()
         
         if (contains(arrayOfFave, buttonRow)) {
             arrayOfFave = arrayOfFave.filter() { $0 != buttonRow }
@@ -217,6 +217,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             arrayOfFave.append(buttonRow)
         }
         println(buttonRow)
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animateWithDuration(0.00, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+        })
         tableView.reloadData()
     }
     
@@ -280,22 +284,18 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         }else if segue.identifier == "toDashboard" {
             let navigationController  = segue.destinationViewController as UINavigationController
             let myTeamTv = navigationController.topViewController as DashboardViewController
-            
             myTeamTv.userSegue = userSegue
             myTeamTv.passSegue = passSegue
             
         }else if segue.identifier == "toPing" {
             let navigationController  = segue.destinationViewController as UINavigationController
             let pingTv = navigationController.topViewController as PingViewController
-            
             pingTv.userSegue = userSegue
             pingTv.passSegue = passSegue
             
         }else if segue.identifier == "toSettings" {
-            
             let navigationController  = segue.destinationViewController as UINavigationController
             let settingsTv = navigationController.topViewController as SettingsTableViewController
-            
             settingsTv.userSegue = userSegue
             settingsTv.passSegue = passSegue
             
