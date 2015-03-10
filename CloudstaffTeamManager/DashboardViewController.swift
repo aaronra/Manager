@@ -208,7 +208,9 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
                 }
             })
         }
-
+        
+        // *******
+        
         return cell
     }
     
@@ -290,38 +292,13 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     
     
     @IBAction func refresh(sender: UIBarButtonItem) {
-        
-        if ConnectionDetector.isConnectedToNetwork() {
-            dispatch_async(dispatch_get_main_queue(), {
-                JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
-            })
-            self.tblView.reloadData()
-            println("REFRESH --->>>> \(userSegue)")
-            println("REFRESH --->>>> \(passSegue)")
-        }else {
-            alertLogin("No Internet Connection")
-        }
+        dispatch_async(dispatch_get_main_queue(), {
+            JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
+        })
+        self.tblView.reloadData()
+        println("REFRESH --->>>> \(userSegue)")
+        println("REFRESH --->>>> \(passSegue)")
     }
-    
-    
-    func alertLogin(apiMessage: String) {
-        
-        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-        case .OrderedSame, .OrderedDescending:
-            println("8 above")
-            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: apiMessage, preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            })
-            alertController.addAction(ok)
-            presentViewController(alertController, animated: true, completion: nil)
-        case .OrderedAscending:
-            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: apiMessage, delegate: self, cancelButtonTitle: "OK")
-            alertView.alertViewStyle = .Default
-            alertView.show()
-            println("8 below")
-        }
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "toMyTeam" {
             let navigationController  = segue.destinationViewController as UINavigationController
