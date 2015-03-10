@@ -7,13 +7,37 @@
 //
 
 import UIKit
+import Realm
 
-class WorkingOnViewController: UIViewController {
+class WorkingOnTableViewController: UITableViewController {
 
-    var arrayOfTask = ["one", "two", "three"]
+    var arrayOfTask = Array<String>()
+    var arrayOfDate = Array<String>()
+    
+    var staffID = Int()
+    var userSegue = ""
+    var passSegue = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        println("---this>>> \(staffID)")
+        
+        let stf = Staff.objectsWhere("id == \(staffID)")
+        for mtrc_stf:RLMObject in stf {
+            let mtrixInfo = mtrc_stf as RLMObject
+            let mtrix = mtrixInfo["working"] as RLMArray
+            for mtxstf:RLMObject in mtrix {
+                let mtxInfo = mtxstf as RLMObject
+                let task  =  mtxInfo["task"]  as  String
+                let date  =  mtxInfo["date"]  as  String
+
+                arrayOfTask.append(task)
+                arrayOfDate.append(date)
+
+            }
+        }
+        
         
     }
 
@@ -22,15 +46,15 @@ class WorkingOnViewController: UIViewController {
     
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfTask.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: WorkingOnCell = tableView.dequeueReusableCellWithIdentifier("taskCell") as WorkingOnCell
         
         cell.lblDateTime.text = arrayOfTask[indexPath.row]
-        cell.lblTask.text = arrayOfTask[indexPath.row]
+        cell.lblTask.text = arrayOfDate[indexPath.row]
         
         return cell
         
@@ -39,4 +63,15 @@ class WorkingOnViewController: UIViewController {
     @IBAction func back(sender: AnyObject) {
         performSegueWithIdentifier("toMyTeam", sender: self)
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       if segue.identifier == "toMyTeam" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            let toMyTeamTV = navigationController.topViewController as MyTeamViewController
+            toMyTeamTV.userSegue = userSegue
+            toMyTeamTV.passSegue = passSegue
+        }
+    }
+    
 }

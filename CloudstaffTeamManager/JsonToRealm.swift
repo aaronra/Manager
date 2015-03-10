@@ -13,7 +13,7 @@ import Realm
 class PingMessage: RLMObject {
     dynamic var ping = ""
     dynamic var message = ""
-//    dynamic var interval = NSTimer()
+    //    dynamic var interval = NSTimer()
 }
 
 class Metric: RLMObject {
@@ -21,6 +21,13 @@ class Metric: RLMObject {
     dynamic var daily: Int = 0
     dynamic var weekly: Int = 0
     dynamic var value: Int = 0
+    
+}
+
+
+class Working: RLMObject {
+    dynamic var task = ""
+    dynamic var date = ""
     
 }
 
@@ -38,6 +45,7 @@ class Staff: RLMObject {
     dynamic var favorite = ""
     dynamic var login = ""
     dynamic var metrics = RLMArray(objectClassName: Metric.className())
+    dynamic var working = RLMArray(objectClassName: Working.className())
     
     override class func primaryKey() -> String! {
         return "id"
@@ -64,25 +72,25 @@ public class JsonToRealm {
                 println("JSON Error \(err!.localizedDescription)")
             }
             
-        
+            
             // INSERTING JSONOBJECTS ON REALM
             let realm = RLMRealm.defaultRealm()
             
             let staffList = jsonResult["myTeam"] as [NSDictionary]
             realm.beginWriteTransaction()
-
+            
             for staff in staffList {
                 Staff.createOrUpdateInDefaultRealmWithObject(staff)
             }
             
             realm.commitWriteTransaction()
             println("PATH --->>> \(RLMRealm.defaultRealm().path)")
-
+            
         })
         jsonQuery.resume()
         
     }
     
-
-
+    
+    
 }

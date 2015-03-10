@@ -231,16 +231,35 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     // FAVE PRESSED *********************************
     func FavePressed(sender: UIButton) {
+        let realm = RLMRealm.defaultRealm()
+        realm.beginWriteTransaction()
         let buttonRow = sender.tag
         
+        
+        println("Button Row \(buttonRow)")
         if (contains(arrayOfFave, buttonRow)) {
             arrayOfFave = arrayOfFave.filter() { $0 != buttonRow }
+            println("NO")
         } else {
             arrayOfFave.append(buttonRow)
+            println("YES")
         }
-        println(buttonRow)
         tableView.reloadData()
+        
+        
+        let staffDetail = Staff.objectsWhere("id == \(buttonRow)")
+        
+        let y: String = "Yes"
+        
+        for staff: RLMObject in staffDetail {
+            let stfInfo = staff as RLMObject
+            let favorite = stfInfo["favorite"] as String
+            
+            println("REALM -->> \(favorite.uppercaseString)")
+            realm.commitWriteTransaction()
+        }
     }
+
     
     
     @IBAction func sendMessage(sender: AnyObject) {

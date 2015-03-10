@@ -578,7 +578,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="UWn-rB-qbb" kind="show" identifier="toWorkingOn" id="GUE-1G-eSw"/>
+                                            <segue destination="o7o-sM-0GQ" kind="show" identifier="toWorkingOn" id="nAV-xF-CUO"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VSH-m2-uab">
@@ -643,7 +643,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="detailFour" destination="3m1-7o-61D" id="Dke-0Y-1zf"/>
                         <outlet property="detailOne" destination="8JA-ej-vB0" id="TS6-G6-VAQ"/>
@@ -662,71 +661,68 @@
             <point key="canvasLocation" x="974" y="89"/>
         </scene>
         <!--Working On Today-->
-        <scene sceneID="meK-8N-6S3">
+        <scene sceneID="dR1-AX-kdL">
             <objects>
-                <viewController id="UWn-rB-qbb" customClass="WorkingOnViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wZ5-k1-thY"/>
-                        <viewControllerLayoutGuide type="bottom" id="JyM-HY-7Q0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JPe-z8-cOx">
+                <tableViewController id="o7o-sM-0GQ" customClass="WorkingOnTableViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0yt-5s-BZU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qcK-Ez-vqI">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="70" id="8gt-m6-iaA" customClass="WorkingOnCell" customModule="CloudstaffTeamManager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8gt-m6-iaA" id="b2v-tR-SHu">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ3-gV-0ji">
-                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yQ-4z-Ede">
-                                                    <rect key="frame" x="8" y="24" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="lblDateTime" destination="pQ3-gV-0ji" id="BMo-gn-0IN"/>
-                                            <outlet property="lblTask" destination="5yQ-4z-Ede" id="gwf-xk-8zL"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="qcK-Ez-vqI" firstAttribute="leading" secondItem="JPe-z8-cOx" secondAttribute="leading" id="3Br-BA-cCg"/>
-                            <constraint firstAttribute="centerX" secondItem="qcK-Ez-vqI" secondAttribute="centerX" id="Und-Oe-DMQ"/>
-                            <constraint firstAttribute="centerY" secondItem="qcK-Ez-vqI" secondAttribute="centerY" id="tm4-q6-QuL"/>
-                            <constraint firstItem="qcK-Ez-vqI" firstAttribute="bottom" secondItem="JyM-HY-7Q0" secondAttribute="top" id="xY3-u9-1CQ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Working On Today" id="5B1-TE-eCB">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="cmU-kZ-wrg">
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="70" id="8gt-m6-iaA" customClass="WorkingOnCell" customModule="CloudstaffTeamManager" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8gt-m6-iaA" id="b2v-tR-SHu">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ3-gV-0ji">
+                                            <rect key="frame" x="8" y="9" width="584" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yQ-4z-Ede">
+                                            <rect key="frame" x="8" y="26" width="592" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5yQ-4z-Ede" secondAttribute="bottom" constant="15" id="2Pf-qk-ni2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="pQ3-gV-0ji" secondAttribute="bottom" constant="32" id="2xc-Rs-lvE"/>
+                                        <constraint firstItem="5yQ-4z-Ede" firstAttribute="leading" secondItem="b2v-tR-SHu" secondAttribute="leadingMargin" id="5D8-Ob-ZBh"/>
+                                        <constraint firstItem="pQ3-gV-0ji" firstAttribute="leading" secondItem="b2v-tR-SHu" secondAttribute="leadingMargin" id="JRu-gY-a9Q"/>
+                                        <constraint firstItem="pQ3-gV-0ji" firstAttribute="top" secondItem="b2v-tR-SHu" secondAttribute="topMargin" constant="1" id="Xs9-aw-M8e"/>
+                                        <constraint firstItem="5yQ-4z-Ede" firstAttribute="top" secondItem="b2v-tR-SHu" secondAttribute="topMargin" constant="18" id="YCY-Mh-mo6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5yQ-4z-Ede" secondAttribute="trailing" constant="-8" id="fxR-UC-BYo"/>
+                                        <constraint firstItem="pQ3-gV-0ji" firstAttribute="trailing" secondItem="b2v-tR-SHu" secondAttribute="trailingMargin" id="nCy-np-eRS"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblDateTime" destination="pQ3-gV-0ji" id="BMo-gn-0IN"/>
+                                    <outlet property="lblTask" destination="5yQ-4z-Ede" id="gwf-xk-8zL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="o7o-sM-0GQ" id="89u-vQ-81I"/>
+                            <outlet property="delegate" destination="o7o-sM-0GQ" id="aDE-Ir-WcB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Working On Today" id="ZjQ-lU-Sbm">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="wst-A2-OHE">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="back:" destination="UWn-rB-qbb" id="gvs-nn-Xfa"/>
-                                <segue destination="UD2-ba-EN2" kind="presentation" identifier="toMyTeam" modalTransitionStyle="crossDissolve" id="dxP-u9-9f1"/>
+                                <segue destination="UD2-ba-EN2" kind="presentation" identifier="toMyTeam" modalTransitionStyle="crossDissolve" id="ETz-Q8-Vww"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TKX-9Y-40a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CNX-qT-FyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1743" y="89"/>
+            <point key="canvasLocation" x="974" y="820"/>
         </scene>
         <!--Ping-->
         <scene sceneID="U1Q-zA-qa8">
@@ -1364,11 +1360,11 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MWJ-GL-lJp"/>
-        <segue reference="e4B-Ee-Tz2"/>
-        <segue reference="dxP-u9-9f1"/>
         <segue reference="iRd-a1-zi3"/>
+        <segue reference="ETz-Q8-Vww"/>
+        <segue reference="ZqU-ml-1UO"/>
+        <segue reference="e4B-Ee-Tz2"/>
+        <segue reference="P5g-My-Q0m"/>
         <segue reference="TDE-Fr-DEr"/>
-        <segue reference="bJM-Oj-5f7"/>
     </inferredMetricsTieBreakers>
 </document>

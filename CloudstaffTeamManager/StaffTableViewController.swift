@@ -169,9 +169,6 @@ class StaffTableViewController: UITableViewController {
             
         } else if (indexPath.row == 3) {
             
-            println("---->>> \(indexPath.row)")
-            
-            performSegueWithIdentifier("toWorkingOn", sender: tableView)
             
         } else if (indexPath.row == 4) {
             
@@ -207,6 +204,13 @@ class StaffTableViewController: UITableViewController {
             let toMyTeamTV = navigationController.topViewController as MyTeamViewController
                 toMyTeamTV.userSegue = userSegue
                 toMyTeamTV.passSegue = passSegue
+            
+        }else if segue.identifier == "toWorkingOn" {
+            var workingMTVController : WorkingOnTableViewController = segue.destinationViewController as WorkingOnTableViewController
+            workingMTVController.staffID = staffID
+            workingMTVController.userSegue = userSegue
+            workingMTVController.passSegue = passSegue
+            
         }
     }
     
