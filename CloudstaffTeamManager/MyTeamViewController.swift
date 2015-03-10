@@ -169,10 +169,14 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         clickedIndex = indexPath.row
         performSegueWithIdentifier("toStaffDetails", sender: tableView)
-        
     }
     
 //    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+<<<<<<< HEAD
+=======
+//
+//        
+>>>>>>> a61efd7fb6fb2bd3df0321d230470218aeff0170
 //        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
 //        UIView.animateWithDuration(0.25, animations: {
 //            cell.layer.transform = CATransform3DMakeScale(1,1,1)
@@ -192,29 +196,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             println("fourth")
             performSegueWithIdentifier("toSettings", sender: self)
         } else if index == 4 {
-            
-            switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-            case .OrderedSame, .OrderedDescending:
-                println("8 above")
-                var alertController = UIAlertController(title: "Logout?", message: "Exit Manager", preferredStyle: .Alert)
-                let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-                    exit(0)
-                })
-                let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in}
-                alertController.addAction(ok)
-                alertController.addAction(cancel)
-                presentViewController(alertController, animated: true, completion: nil)
-                
-            case .OrderedAscending:
-                
-                let alertView = UIAlertView(title: "Logout?", message: "Exit Manager", delegate: self, cancelButtonTitle: "Cancel")
-                alertView.addButtonWithTitle("OK")
-                alertView.alertViewStyle = .Default
-                alertView.show()
-                
-                println("8 below")
-            }
-            
+            performSegueWithIdentifier("toLogin", sender: self)
         }
         
     }
@@ -227,11 +209,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         }
     }
     
-    
-    
     // FAVE PRESSED *********************************
     func FavePressed(sender: UIButton) {
         let buttonRow = sender.tag
+        let cell = UITableViewCell()
         
         if (contains(arrayOfFave, buttonRow)) {
             arrayOfFave = arrayOfFave.filter() { $0 != buttonRow }
@@ -239,6 +220,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             arrayOfFave.append(buttonRow)
         }
         println(buttonRow)
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animateWithDuration(0.00, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+        })
         tableView.reloadData()
     }
     
@@ -249,13 +234,42 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     @IBAction func refresh(sender: UIBarButtonItem) {
         
-        dispatch_async(dispatch_get_main_queue(), {
-            JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
-        })
-        self.tableView.reloadData()
-        println("REFRESH --->>>> \(userSegue)")
-        println("REFRESH --->>>> \(passSegue)")
+        if ConnectionDetector.isConnectedToNetwork() {
+            dispatch_async(dispatch_get_main_queue(), {
+                JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
+            })
+            self.tableView.reloadData()
+            println("REFRESH --->>>> \(userSegue)")
+            println("REFRESH --->>>> \(passSegue)")
+            
+        }else {
+            alertLogin("No Internet Connection")
+        }
         
+    }
+    
+    func alertLogin(apiMessage: String) {
+        
+        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+        case .OrderedSame, .OrderedDescending:
+            println("8 above")
+            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: apiMessage, preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            })
+            alertController.addAction(ok)
+            presentViewController(alertController, animated: true, completion: nil)
+        case .OrderedAscending:
+            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: apiMessage, delegate: self, cancelButtonTitle: "OK")
+            alertView.alertViewStyle = .Default
+            alertView.show()
+            println("8 below")
+        }
+    }
+    
+    
+
+    @IBAction func department(sender: AnyObject) {
+        println("DEPARTMENT")
     }
     
     @IBAction func filter(sender: AnyObject) {
@@ -273,22 +287,18 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         }else if segue.identifier == "toDashboard" {
             let navigationController  = segue.destinationViewController as UINavigationController
             let myTeamTv = navigationController.topViewController as DashboardViewController
-            
             myTeamTv.userSegue = userSegue
             myTeamTv.passSegue = passSegue
             
         }else if segue.identifier == "toPing" {
             let navigationController  = segue.destinationViewController as UINavigationController
             let pingTv = navigationController.topViewController as PingViewController
-            
             pingTv.userSegue = userSegue
             pingTv.passSegue = passSegue
             
         }else if segue.identifier == "toSettings" {
-            
             let navigationController  = segue.destinationViewController as UINavigationController
             let settingsTv = navigationController.topViewController as SettingsTableViewController
-            
             settingsTv.userSegue = userSegue
             settingsTv.passSegue = passSegue
             

@@ -4,12 +4,10 @@
 //
 //  Created by t0tep on 1/13/15.
 //  Copyright (c) 2015 CLOUDSTAFF. All rights reserved.
-// QWERTYqqgit
 
 import UIKit
 
 class LoginViewController: UIViewController {
-    
 
     var json = JsonToRealm()
     
@@ -18,7 +16,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var forgot: UIButton!
-    
     
     ///////////////////////  KEYBOARD DISMISS  /////////////////////////
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
@@ -70,12 +67,14 @@ class LoginViewController: UIViewController {
         
         let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
             if (error != nil) {
-                println(error.localizedDescription)
+                println("ERROR \(error.localizedDescription)")
             }
+            
             var err: NSError?
+            
             var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
             if (err != nil) {
-                println("JSON Error \(err!.localizedDescription)")
+                println("JSON Error FALSE \(err!.localizedDescription)")
             }
             
             dispatch_async(dispatch_get_main_queue(), {
@@ -118,29 +117,28 @@ class LoginViewController: UIViewController {
             println("8 above")
             var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: apiMessage, preferredStyle: .Alert)
             let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                self.performSegueWithIdentifier("toDashboard", sender: alertController)
             })
             alertController.addAction(ok)
             presentViewController(alertController, animated: true, completion: nil)
         case .OrderedAscending:
             let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: apiMessage, delegate: self, cancelButtonTitle: "OK")
+                self.performSegueWithIdentifier("toDashboard", sender: alertView)
             alertView.alertViewStyle = .Default
             alertView.show()
             println("8 below")
         }
-        
     }
     
     func registerForKeyboardNotifications() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
-        
     }
     
     func deregisterFromKeyboardNotifications() -> Void {
         println("Deregistering!")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillHideNotification, object: nil)
-        
     }
     
     func keyboardWasShown(notification: NSNotification) {
@@ -150,11 +148,9 @@ class LoginViewController: UIViewController {
         var buttonHeight: CGFloat = self.forgot.frame.size.height;
         var visibleRect: CGRect = self.view.frame
         visibleRect.size.height -= keyboardSize.height
-        
         if (!CGRectContainsPoint(visibleRect, buttonOrigin)) {
             var scrollPoint: CGPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight + 4)
             self.scrollView.setContentOffset(scrollPoint, animated: true)
-            
         }
     }
     
