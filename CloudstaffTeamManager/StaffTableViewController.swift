@@ -165,10 +165,13 @@ class StaffTableViewController: UITableViewController {
         } else if (indexPath.row == 2) {
             
             println("---->>> \(staffID)")
+            performSegueWithIdentifier("toSendMessage", sender: tableView)
             
         } else if (indexPath.row == 3) {
             
             println("---->>> \(indexPath.row)")
+            
+            performSegueWithIdentifier("toWorkingOn", sender: tableView)
             
         } else if (indexPath.row == 4) {
             
