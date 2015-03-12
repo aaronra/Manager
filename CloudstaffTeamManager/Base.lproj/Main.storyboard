@@ -1360,11 +1360,11 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iRd-a1-zi3"/>
-        <segue reference="ETz-Q8-Vww"/>
-        <segue reference="ZqU-ml-1UO"/>
-        <segue reference="e4B-Ee-Tz2"/>
-        <segue reference="P5g-My-Q0m"/>
         <segue reference="TDE-Fr-DEr"/>
+        <segue reference="BgS-o5-fov"/>
+        <segue reference="iRd-a1-zi3"/>
+        <segue reference="P5g-My-Q0m"/>
+        <segue reference="e4B-Ee-Tz2"/>
+        <segue reference="ZqU-ml-1UO"/>
     </inferredMetricsTieBreakers>
 </document>

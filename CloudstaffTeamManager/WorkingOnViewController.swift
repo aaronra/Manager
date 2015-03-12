@@ -11,8 +11,10 @@ import Realm
 
 class WorkingOnTableViewController: UITableViewController {
 
-    var arrayOfTask = Array<String>()
-    var arrayOfDate = Array<String>()
+//    var arrayOfTask = Array<String>()
+//    var arrayOfDate = Array<String>()
+    
+    var arrayOfWorking: [WorkingDetails] = [WorkingDetails]()
     
     var staffID = Int()
     var userSegue = ""
@@ -21,23 +23,22 @@ class WorkingOnTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("---this>>> \(staffID)")
-        
         let stf = Staff.objectsWhere("id == \(staffID)")
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
             let mtrix = mtrixInfo["working"] as RLMArray
             for mtxstf:RLMObject in mtrix {
                 let mtxInfo = mtxstf as RLMObject
-                let task  =  mtxInfo["task"]  as  String
-                let date  =  mtxInfo["date"]  as  String
+                let task = mtxInfo["task"] as String
+                let date = mtxInfo["date"] as String
 
-                arrayOfTask.append(task)
-                arrayOfDate.append(date)
-
+                var working = WorkingDetails(task: String(task), date: String(date))
+            
+                arrayOfWorking.append(working)
+                
+                println("------->>> \(working.date)")
             }
         }
-        
         
     }
 
@@ -47,17 +48,17 @@ class WorkingOnTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfTask.count
+        return arrayOfWorking.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: WorkingOnCell = tableView.dequeueReusableCellWithIdentifier("taskCell") as WorkingOnCell
         
-        cell.lblDateTime.text = arrayOfTask[indexPath.row]
-        cell.lblTask.text = arrayOfDate[indexPath.row]
+        let working = arrayOfWorking[indexPath.row]
+        cell.setCell(working.date, lblTask: working.task)
         
         return cell
-        
+
     }
     
     @IBAction func back(sender: AnyObject) {

@@ -311,7 +311,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             settingsTv.userSegue = userSegue
             settingsTv.passSegue = passSegue
             
-        } else if segue.identifier == "toSendMessage" {
+        }else if segue.identifier == "toSendMessage" {
             var sendMTVController : SendMessageTableViewController = segue.destinationViewController as SendMessageTableViewController
             sendMTVController.staffID = clickedIndex
             sendMTVController.userSegue = userSegue

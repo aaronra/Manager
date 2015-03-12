@@ -8,17 +8,34 @@
 
 import UIKit
 
+
+struct WorkingDetails {
+    var task = ""
+    var date = ""
+
+    
+    init(task: String, date: String) {
+        self.task = task
+        self.date = date
+
+    }
+}
+
+
 class WorkingOnCell: UITableViewCell {
     
-    @IBOutlet var lblDateTime: UILabel!
     @IBOutlet var lblTask: UILabel!
+    @IBOutlet var lblDateTime: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    func setCell(lblDateTime: String, lblTask: String) {
+        
+        self.lblDateTime.text = lblDateTime
+        self.lblTask.text = lblTask
+
     }
 }

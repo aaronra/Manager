@@ -149,28 +149,62 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             arrayofLogin.append(login)
         }
         realm.commitWriteTransaction()
+        
+        newArray()
+    }
+    
+    
+    func newArray() {
+        
+        var firstStaff =  arrayofStaffs[0]
+        var lastStaff = arrayofStaffs.last
+        var firstLogin = arrayofLogin[0]
+        var lastLogin = arrayofLogin.last
+        
+        arrayofStaffs.insert(lastStaff!, atIndex: 0)
+        arrayofStaffs.append(firstStaff)
+        
+        arrayofLogin.insert(lastLogin!, atIndex: 0)
+        arrayofLogin.append(firstLogin)
+        
+        println(" APENDERSSSSSSS \(arrayofStaffs)")
+        
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayofStaffs.count
     }
     
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        println("TRUE")
+    }
+    
+    
+    
+//    func scrollViewDidScroll(scrollView: UIScrollView) {
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//        
+//        println("Scrolled \(contentHeight)")
+//        
+//        if offsetY > contentHeight - scrollView.frame.size.height {
+//            getImageforCollectionView()
+//            self.collectionView.reloadData()
+//        }
+//    }
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell: StaffCell = collectionView.dequeueReusableCellWithReuseIdentifier("staffCell", forIndexPath: indexPath) as StaffCell
         
         cell.statusCell.image = UIImage(named: arrayofLogin[indexPath.row])
-        //        cell.imgCell.image = UIImage(named: arrayofStaffs[indexPath.row])
         
         cell.imgCell?.image = UIImage(named: "staff")
         
-        // *******
-        
-        // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
         let urlString = arrayofStaffs[indexPath.row]
         
         // Check our image cache for the existing key. This is just a dictionary of UIImages
-        //var image: UIImage? = self.imageCache.valueForKey(urlString) as? UIImage
         var image = self.imageCache[urlString]
         
         
@@ -190,7 +224,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
                         if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath) {
                             cell.imgCell.image = image
                             
-                            //cellToUpdate.imageView?.image = image
                         }
                     })
                 }
@@ -216,17 +249,11 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     
 //   Populate MetricsArray for each Staff every Click
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let stf = Staff.objectsWhere("id == \(indexPath.row)")
+        let stf = Staff.objectsWhere("id == \(indexPath.row - 1)")
         reloadMetrics(stf)
     }
     
-//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
-//        UIView.animateWithDuration(0.25, animations: {
-//            cell.layer.transform = CATransform3DMakeScale(1,1,1)
-//        })
-//    }
-    
+
     func reloadMetrics(stf: RLMResults) {
         arrayOfMetrics.removeAll(keepCapacity: true)
         for mtrc_stf:RLMObject in stf {
@@ -267,8 +294,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
                     println("8 below")
                 }
             }
-            
-            
+        
         }
     }
 
@@ -328,6 +354,15 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
 
     
 
+
+
+
+//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+//        UIView.animateWithDuration(0.25, animations: {
+//            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+//        })
+//    }
 
 
 
