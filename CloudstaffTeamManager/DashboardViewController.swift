@@ -17,7 +17,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     var arrayOfMetrics: [Metrics] = [Metrics]()
-    var staffIcon = [StaffImages]()
     var imageCache = [String : UIImage]()
     var arrayofStaffs = Array<String>()
     var arrayofLogin = Array<String>()
@@ -152,10 +151,13 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         }
         realm.commitWriteTransaction()
         
-        arrayofStaffs.insert(arrayofStaffs.last!, atIndex: 0)
-        arrayofStaffs.append(arrayofStaffs[1])
-        arrayofLogin.insert(arrayofLogin.last!, atIndex: 0)
-        arrayofLogin.append(arrayofLogin[1])
+//        arrayofStaffs.insert(arrayofStaffs.last!, atIndex: 0)
+//        arrayofStaffs.append(arrayofStaffs[1])
+//        arrayofLogin.insert(arrayofLogin.last!, atIndex: 0)
+//        arrayofLogin.append(arrayofLogin[1])
+        
+        println("list \(arrayofStaffs.description)")
+        println("login \(arrayofLogin.description)")
         
 
     }
@@ -171,6 +173,8 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         // Calculate where the collection view should be at the right-hand end item
         var contentOffsetWhenFullyScrolledRight:CGFloat = self.collectionView.frame.size.width * (CGFloat)(self.arrayofStaffs.count-1)
         
+        
+        println("self.collectionView.frame.size.width \(self.collectionView.frame.size.width)")
         
         println("self.arrayofStaffs.count-1 \(self.arrayofStaffs.count-1)")
         println("scrolled to RIGHT \(contentOffsetWhenFullyScrolledRight)")
@@ -194,8 +198,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
 //    func scrollViewDidScroll(scrollView: UIScrollView) {
 //        let offsetY = scrollView.contentOffset.y
 //        let contentHeight = scrollView.contentSize.height
-//        
-//        println("Scrolled \(contentHeight)")
 //        
 //        if offsetY > contentHeight - scrollView.frame.size.height {
 //            getImageforCollectionView()
@@ -258,7 +260,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     
 //   Populate MetricsArray for each Staff every Click
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let stf = Staff.objectsWhere("id == \(indexPath.row - 1)")
+        let stf = Staff.objectsWhere("id == \(indexPath.row)")
         reloadMetrics(stf)
     }
     

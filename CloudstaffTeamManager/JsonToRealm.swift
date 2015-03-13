@@ -72,7 +72,6 @@ public class JsonToRealm {
                 println("JSON Error \(err!.localizedDescription)")
             }
             
-            
             // INSERTING JSONOBJECTS ON REALM
             let realm = RLMRealm.defaultRealm()
             
@@ -83,6 +82,11 @@ public class JsonToRealm {
                 Staff.createOrUpdateInDefaultRealmWithObject(staff)
             }
             
+            
+            let ping = PingMessage()
+            
+            ping.ping = "Sample Ping"
+            
             realm.commitWriteTransaction()
             println("PATH --->>> \(RLMRealm.defaultRealm().path)")
             
@@ -92,5 +96,5 @@ public class JsonToRealm {
     }
     
     
-    
+
 }

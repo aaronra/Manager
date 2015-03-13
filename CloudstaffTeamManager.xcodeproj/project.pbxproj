@@ -19,11 +19,11 @@
 		5DC120761AAE8DA300226DD0 /* WorkingOnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC120751AAE8DA300226DD0 /* WorkingOnViewController.swift */; };
 		5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC172611A7F07980056F6DA /* StaffCell.swift */; };
 		6E2341601A7B6F3B009D856E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E23415E1A7B6F3B009D856E /* Main.storyboard */; };
+		6E51042C1AB2B0EC00395952 /* AlertDialogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E51042B1AB2B0EC00395952 /* AlertDialogs.swift */; };
 		6E5755C31AA53EF80067B67C /* MyTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5755C21AA53EF80067B67C /* MyTeamViewController.swift */; };
 		6E5755C51AA53F220067B67C /* PingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5755C41AA53F220067B67C /* PingViewController.swift */; };
 		6E5E561C1A9BEFBE000DF2EC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5E561B1A9BEFBE000DF2EC /* Realm.framework */; };
 		6E5E561E1A9BEFCA000DF2EC /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E561D1A9BEFCA000DF2EC /* RLMSupport.swift */; };
-		6E8FF3C51A8204FB002074BE /* MyTeamDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8FF3C41A8204FB002074BE /* MyTeamDetails.swift */; };
 		6E90146A1A9569D0001DA99F /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9014691A9569D0001DA99F /* libc++.dylib */; };
 		6E9014711A956B91001DA99F /* JsonToRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9014701A956B91001DA99F /* JsonToRealm.swift */; };
 		6EA216601AA7FCC500F957EE /* SendMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2165F1AA7FCC500F957EE /* SendMessageTableViewController.swift */; };
@@ -64,11 +64,11 @@
 		6E23415F1A7B6F3B009D856E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6E4FBA7D1AA01633003076DE /* CloudstaffTeamManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudstaffTeamManager-Bridging-Header.h"; sourceTree = "<group>"; };
 		6E4FBA801AA0165D003076DE /* CommonCryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonCryptor.h; sourceTree = "<group>"; };
+		6E51042B1AB2B0EC00395952 /* AlertDialogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertDialogs.swift; sourceTree = "<group>"; };
 		6E5755C21AA53EF80067B67C /* MyTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeamViewController.swift; sourceTree = "<group>"; };
 		6E5755C41AA53F220067B67C /* PingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingViewController.swift; sourceTree = "<group>"; };
 		6E5E561B1A9BEFBE000DF2EC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = CloudstaffTeamManager/Frameworks/Realm.framework; sourceTree = "<group>"; };
 		6E5E561D1A9BEFCA000DF2EC /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RLMSupport.swift; path = CloudstaffTeamManager/Frameworks/RLMSupport.swift; sourceTree = "<group>"; };
-		6E8FF3C41A8204FB002074BE /* MyTeamDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeamDetails.swift; sourceTree = "<group>"; };
 		6E9014691A9569D0001DA99F /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		6E9014701A956B91001DA99F /* JsonToRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonToRealm.swift; sourceTree = "<group>"; };
 		6EA2165F1AA7FCC500F957EE /* SendMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMessageTableViewController.swift; sourceTree = "<group>"; };
@@ -214,9 +214,9 @@
 				5D4AA9491A8B1281004DE759 /* MyTeam */,
 				5D1EDDD61A79A5D3005A92B3 /* Dashboard */,
 				E72728621A5F879A00D92301 /* AppDelegate.swift */,
-				6E8FF3C41A8204FB002074BE /* MyTeamDetails.swift */,
 				E707D9E41A653BE5000D75FE /* LoginViewController.swift */,
 				5D4923691A8993D500EB8EB6 /* SettingsTableViewController.swift */,
+				6E51042B1AB2B0EC00395952 /* AlertDialogs.swift */,
 				6EBC23391A7903890043C743 /* HTTPFunctions */,
 				6EBC23341A78D4140043C743 /* TableItems */,
 				E72B9E481A619C4C0083BE2A /* Sidebar */,
@@ -365,7 +365,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E5755C31AA53EF80067B67C /* MyTeamViewController.swift in Sources */,
-				6E8FF3C51A8204FB002074BE /* MyTeamDetails.swift in Sources */,
 				5D005DBF1A6F831900D66B79 /* PinViewController.swift in Sources */,
 				5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */,
 				5D1EDDD31A76FA9E005A92B3 /* DashboardViewController.swift in Sources */,
@@ -381,6 +380,7 @@
 				5D6323261A8D888C00E893C5 /* StaffTableViewController.swift in Sources */,
 				5D1EDDD81A79A786005A92B3 /* DashboardCell.swift in Sources */,
 				5D1EDDDA1A79C74B005A92B3 /* Metrics.swift in Sources */,
+				6E51042C1AB2B0EC00395952 /* AlertDialogs.swift in Sources */,
 				6E5E561E1A9BEFCA000DF2EC /* RLMSupport.swift in Sources */,
 				5D49236A1A8993D500EB8EB6 /* SettingsTableViewController.swift in Sources */,
 				6EBC23331A78D4040043C743 /* Employees.swift in Sources */,

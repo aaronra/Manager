@@ -36,6 +36,8 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     var userSegue = ""
     var passSegue = ""
     
+    var alert = AlertDialogs()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideBar = SideBar(sourceView: self.view, menuItems:
@@ -261,10 +263,22 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     }
 
     
-    
     @IBAction func sendMessage(sender: AnyObject) {
 //        performSegueWithIdentifier("toSendMessage", sender: self)
     }
+    
+    
+    @IBAction func ping(sender: AnyObject) {
+        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+        case .OrderedSame, .OrderedDescending:
+            
+            alert.showAlertController(self)
+        case .OrderedAscending:
+            alert.showAlertView()
+        }
+    }
+    
+    
     
     @IBAction func refresh(sender: UIBarButtonItem) {
         
@@ -280,6 +294,8 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     @IBAction func filter(sender: AnyObject) {
         println("shjggdffgdfdfdfdf")
     }
+    
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

@@ -10,7 +10,7 @@ import UIKit
 import Realm
 import Foundation
 
-class StaffTableViewController: UITableViewController {
+class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
 
     @IBOutlet weak var imgStaff: UIImageView!
     @IBOutlet weak var imgStatus: UIImageView!
@@ -36,6 +36,9 @@ class StaffTableViewController: UITableViewController {
     
     var userSegue = ""
     var passSegue = ""
+    
+    var alert = AlertDialogs()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,40 +153,12 @@ class StaffTableViewController: UITableViewController {
             
             switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
             case .OrderedSame, .OrderedDescending:
-                var alertController = UIAlertController(title: "Enter Ping Message", message: "", preferredStyle: .Alert)
-                let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in})
-                let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in}
-                
-                alertController.addAction(ok)
-                alertController.addAction(cancel)
-                
-                alertController.addTextFieldWithConfigurationHandler { (name) -> Void in
-                    name.text = "Default Ping Message..!"
-                }
-                presentViewController(alertController, animated: true, completion: nil)
+
+                alert.showTableAlertController(self)
             case .OrderedAscending:
-                
-                var alert = UIAlertView()
-                alert.title = "Enter Ping Message"
-                alert.alertViewStyle = UIAlertViewStyle.Default
-                let textField = alert.textFieldAtIndex(1)
-                alert.addButtonWithTitle("OK")
-                textField?.placeholder = "Enter Ping"
-                alert.addButtonWithTitle("Cancel")
-                alert.show()
-                
-//                var textField = UITextField()
-//                
-//                let alertView = UIAlertView(title: "Enter Ping Message", message: "", delegate: self, cancelButtonTitle: "OK")
-//                alertView.addButtonWithTitle("Cancel")
-//                alertView.alertViewStyle = .Default
-//                alertView.show()
-
-                
+                alert.showAlertView()
             }
-            
 
-        
         } else if (indexPath.row == 2) {
             
             println("---->>> \(staffID)")
@@ -206,7 +181,9 @@ class StaffTableViewController: UITableViewController {
             }
         }
     }
+    
 
+    
     @IBAction func back(sender: AnyObject) {
         performSegueWithIdentifier("toMyTeam", sender: self)
     }

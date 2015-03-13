@@ -302,6 +302,9 @@
                                                     <state key="normal" image="ping">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="ping:" destination="fK0-o1-rF0" eventType="touchUpInside" id="GIL-PZ-eoM"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRW-fD-BSC">
                                                     <rect key="frame" x="526" y="8" width="29" height="29"/>
@@ -1360,11 +1363,11 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TDE-Fr-DEr"/>
-        <segue reference="BgS-o5-fov"/>
-        <segue reference="iRd-a1-zi3"/>
-        <segue reference="P5g-My-Q0m"/>
+        <segue reference="bGC-p1-8ln"/>
+        <segue reference="KVJ-TI-tUS"/>
+        <segue reference="Pgy-e2-03c"/>
         <segue reference="e4B-Ee-Tz2"/>
         <segue reference="ZqU-ml-1UO"/>
+        <segue reference="P5g-My-Q0m"/>
     </inferredMetricsTieBreakers>
 </document>
