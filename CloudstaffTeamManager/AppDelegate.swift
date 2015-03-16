@@ -8,6 +8,7 @@
 
 
 import UIKit
+import HockeySDK
 
 extension UIColor {
     convenience init(hex: Int) {
@@ -48,6 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
+
+        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("d4f20f855814e22a29f7adb69decee16")
+        BITHockeyManager.sharedHockeyManager().startManager()
+        BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
+        BITHockeyManager.sharedHockeyManager().testIdentifier()
+        
+
         
         
         UINavigationBar.appearance().barTintColor = UIColor(hex: 0x1C98D5)
