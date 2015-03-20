@@ -168,31 +168,31 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     }
 
     
-
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        // Calculate where the collection view should be at the right-hand end item
-        var contentOffsetWhenFullyScrolledRight:CGFloat = self.collectionView.frame.size.width * (CGFloat)(self.arrayofStaffs.count-1)
-        
-        
-        println("self.collectionView.frame.size.width \(self.collectionView.frame.size.width)")
-        
-        println("self.arrayofStaffs.count-1 \(self.arrayofStaffs.count-1)")
-        println("scrolled to RIGHT \(contentOffsetWhenFullyScrolledRight)")
-        println("scrollView.contentOffset.x \(scrollView.contentOffset.x)")
-        
-        
-        if (scrollView.contentOffset.x == 1152.0) {
-            // user is scrolling to the right from the last item to the 'fake' item 1.
-            // reposition offset to show the 'real' item 1 at the left-hand end of the collection view
-            var newIndexPath:NSIndexPath = NSIndexPath(forItem: 1, inSection: 0)
-            self.collectionView.scrollToItemAtIndexPath(newIndexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: false)
-        }else if(scrollView.contentOffset.x == 0){
-            // user is scrolling to the left from the first item to the fake 'item N'.
-            // reposition offset to show the 'real' item N at the right end end of the collection view
-            var newIndexPath:NSIndexPath = NSIndexPath(forItem: (self.arrayofStaffs.count-2), inSection: 0)
-            self.collectionView.scrollToItemAtIndexPath(newIndexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: false)
-        }
-    }
+//
+//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+//        // Calculate where the collection view should be at the right-hand end item
+//        var contentOffsetWhenFullyScrolledRight:CGFloat = self.collectionView.frame.size.width * (CGFloat)(self.arrayofStaffs.count-1)
+//        
+//        
+//        println("self.collectionView.frame.size.width \(self.collectionView.frame.size.width)")
+//        
+//        println("self.arrayofStaffs.count-1 \(self.arrayofStaffs.count-1)")
+//        println("scrolled to RIGHT \(contentOffsetWhenFullyScrolledRight)")
+//        println("scrollView.contentOffset.x \(scrollView.contentOffset.x)")
+//        
+//        
+//        if (scrollView.contentOffset.x == 1152.0) {
+//            // user is scrolling to the right from the last item to the 'fake' item 1.
+//            // reposition offset to show the 'real' item 1 at the left-hand end of the collection view
+//            var newIndexPath:NSIndexPath = NSIndexPath(forItem: 1, inSection: 0)
+//            self.collectionView.scrollToItemAtIndexPath(newIndexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: false)
+//        }else if(scrollView.contentOffset.x == 0){
+//            // user is scrolling to the left from the first item to the fake 'item N'.
+//            // reposition offset to show the 'real' item N at the right end end of the collection view
+//            var newIndexPath:NSIndexPath = NSIndexPath(forItem: (self.arrayofStaffs.count-2), inSection: 0)
+//            self.collectionView.scrollToItemAtIndexPath(newIndexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: false)
+//        }
+//    }
     
 
 //    func scrollViewDidScroll(scrollView: UIScrollView) {

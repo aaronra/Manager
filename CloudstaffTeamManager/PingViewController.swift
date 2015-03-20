@@ -34,6 +34,8 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
     var userSegue = ""
     var passSegue = ""
     
+    var alert = AlertDialogs()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideBar = SideBar(sourceView: self.view, menuItems:
@@ -232,6 +234,19 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
         }else{
             sideBar.showSideBar(true)
         }
+    }
+    
+    
+    
+    @IBAction func ping(sender: AnyObject) {
+        
+        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+        case .OrderedSame, .OrderedDescending:
+            alert.showAlertController(self)
+        case .OrderedAscending:
+            alert.showAlertView()
+        }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

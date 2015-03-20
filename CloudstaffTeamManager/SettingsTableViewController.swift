@@ -14,7 +14,7 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
     @IBOutlet weak var timeInterval: UITextField!
     @IBOutlet weak var defaultMessage: UITextView!
     
-    var userSegue = ""
+    var userSegue = "0"
     var passSegue = ""
     
     ///////////////////////  KEYBOARD DISMISS  /////////////////////////
