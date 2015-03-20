@@ -300,7 +300,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toStaffDetails" {
-            var staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
+            
+            let navigationController  = segue.destinationViewController as UINavigationController
+            var staffTVController = navigationController.topViewController as StaffTableViewController
+            staffTVController.cameFrom = "MyTeam"
             staffTVController.staffID = clickedIndex
             staffTVController.userSegue = userSegue
             staffTVController.passSegue = passSegue

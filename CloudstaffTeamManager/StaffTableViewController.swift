@@ -33,6 +33,7 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
     var imageCache = [String : UIImage]()
     
     var staffID = Int()
+    var cameFrom = ""
     
     var userSegue = ""
     var passSegue = ""
@@ -168,9 +169,6 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
             
             
         } else if (indexPath.row == 4) {
-            
-            println("---->>> \(indexPath.row)")
-            println("---->>>ID \(staffID)")
             performSegueWithIdentifier("backtoDashboard", sender: tableView)
             
         } else if (indexPath.row == 5) {
@@ -184,14 +182,22 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
     
 
     
-    @IBAction func back(sender: AnyObject) {
-        performSegueWithIdentifier("toMyTeam", sender: self)
-    }
     
+    @IBAction func done(sender: AnyObject) {
+        
+        if cameFrom == "DashBoard" {
+//            performSegueWithIdentifier("backtoDashboard", sender: sender)
+            println("True - CameFrom DashBoard")
+        }else {
+            println("False - CameFrom MyTeam")
+//            performSegueWithIdentifier("toMyTeam", sender: sender) 
+        }
+
+        
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "backtoDashboard" {
-            
             let navigationController  = segue.destinationViewController as UINavigationController
             let dashboardController = navigationController.topViewController as DashboardViewController
             dashboardController.mtrID = staffID

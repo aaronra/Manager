@@ -28,6 +28,9 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     var userSegue = ""
     var passSegue = ""
     
+    var longPressTarget: (cell: UICollectionViewCell, indexPath: NSIndexPath)!
+    var longPressTargetIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideBar = SideBar(sourceView: self.view, menuItems:
@@ -41,7 +44,8 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         
         getImageforCollectionView()
         
-        
+        let longPress = UILongPressGestureRecognizer(target: self, action: "longPressHandler:")
+        collectionView.addGestureRecognizer(longPress)
     }
     
     @IBAction func showMenu(sender: AnyObject) {
@@ -168,7 +172,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     }
 
     
-//
 //    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 //        // Calculate where the collection view should be at the right-hand end item
 //        var contentOffsetWhenFullyScrolledRight:CGFloat = self.collectionView.frame.size.width * (CGFloat)(self.arrayofStaffs.count-1)
@@ -262,7 +265,24 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let stf = Staff.objectsWhere("id == \(indexPath.row)")
         reloadMetrics(stf)
+        
     }
+    
+    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath){
+        longPressTarget = (cell: self.collectionView(collectionView, cellForItemAtIndexPath: indexPath), indexPath: indexPath)
+    }
+    
+    
+    func longPressHandler(recognizer: UILongPressGestureRecognizer) {
+        if recognizer.state == UIGestureRecognizerState.Began {
+            
+            if let _longPressTarget = longPressTarget {
+                longPressTargetIndex = _longPressTarget.indexPath.row
+                performSegueWithIdentifier("toStaffDetails", sender: self)
+            }
+        }
+    }
+
     
 
     func reloadMetrics(stf: RLMResults) {
@@ -309,24 +329,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         }
     }
 
-    @IBAction func scrollLeft(sender: AnyObject) {
-        
-        var navToleft = collectionView.contentOffset.x - 80
-        if (navToleft < 0) {
-            navToleft = 0
-        }
-        
-        if ((navToleft) >= 0) {
-            [collectionView.setContentOffset(CGPointMake(navToleft, 0), animated: true)]
-        }
-        println("NAVTOLEFT \(navToleft)")
-    }
-    @IBAction func scrollRight(sender: AnyObject) {
-        if ((collectionView.contentOffset.x + 80) < (collectionView.contentSize.width - (collectionView.contentOffset.x - 80))) {
-            [collectionView.setContentOffset(CGPointMake(collectionView.contentOffset.x + 80, 0), animated: true)]
-        }
-    }
-    
     
     @IBAction func refresh(sender: UIBarButtonItem) {
         dispatch_async(dispatch_get_main_queue(), {
@@ -336,6 +338,8 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         println("REFRESH --->>>> \(userSegue)")
         println("REFRESH --->>>> \(passSegue)")
     }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "toMyTeam" {
             let navigationController  = segue.destinationViewController as UINavigationController
@@ -359,11 +363,16 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             settingsTv.userSegue = userSegue
             settingsTv.passSegue = passSegue
             
+        }else if segue.identifier == "toStaffDetails" {
+            let navigationController  = segue.destinationViewController as UINavigationController
+            var staffTVController = navigationController.topViewController as StaffTableViewController
+            staffTVController.cameFrom = "DashBoard"
+            staffTVController.staffID = longPressTargetIndex
+            staffTVController.userSegue = userSegue
+            staffTVController.passSegue = passSegue
         }
     }
 }
-
-    
 
 
 
