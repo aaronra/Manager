@@ -50,18 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
 
-        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("d4f20f855814e22a29f7adb69decee16")
+    BITHockeyManager.sharedHockeyManager().configureWithIdentifier("d4f20f855814e22a29f7adb69decee16")
         BITHockeyManager.sharedHockeyManager().startManager()
         BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
         BITHockeyManager.sharedHockeyManager().testIdentifier()
         
-
-        
-        
         UINavigationBar.appearance().barTintColor = UIColor(hex: 0x1C98D5)
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(hex: 0xffffff)]
 //        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "Tahoma", size: 11)!]
-        UIBarButtonItem.appearance().tintColor = UIColor(hex: 0xffffff)
+//        UIBarButtonItem.appearance().tintColor = UIColor(hex: 0xffffff)
         
         return true
     }

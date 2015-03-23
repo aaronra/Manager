@@ -23,7 +23,7 @@ class MyTeamCell: UITableViewCell {
     @IBOutlet weak var detailTwo: UILabel!
     @IBOutlet weak var detailThree: UILabel!
     @IBOutlet weak var detailFour: UILabel!
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
     }

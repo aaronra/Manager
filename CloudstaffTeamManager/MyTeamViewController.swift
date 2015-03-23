@@ -40,7 +40,6 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
        
         sideBar = SideBar(sourceView: self.view, menuItems:
             ["dashboard",
@@ -78,9 +77,6 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             let fave = staffInfo["favorite"] as String
             
             arrayOfIds.append(id)
-            
-             println("arrayyOfIDs \(arrayOfIds)")
-            
             arrayofStaffsImg.append(photo)
             arrayofLogin.append(login + "list")
             arrayofUsername.append(username)
@@ -177,10 +173,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        clickedIndex = indexPath.row
-//        performSegueWithIdentifier("toStaffDetails", sender: tableView)
         
-        println("From MyTeam \(clickedIndex)")
+        clickedIndex = arrayOfIds[indexPath.row]
+        
+        println("didSelectRowAtIndexPath >>> From MyTeam \(clickedIndex)")
         
     }
     
@@ -308,6 +304,9 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        println("prepareForSegue >>> From MyTeam \(clickedIndex)")
+        
         
         if segue.identifier == "toStaffDetails" {
             

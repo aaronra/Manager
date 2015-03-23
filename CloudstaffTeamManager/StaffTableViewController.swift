@@ -44,7 +44,7 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("--->>> \(staffID)")
+        println("STAFF DETAILS --->>> \(staffID)")
         
         let staffDetail = Staff.objectsWhere("id == \(staffID)")
         
