@@ -177,6 +177,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         clickedIndex = arrayOfIds[indexPath.row]
         
         println("didSelectRowAtIndexPath >>> From MyTeam \(clickedIndex)")
+        performSegueWithIdentifier("toStaffDetails", sender: self)
         
     }
     

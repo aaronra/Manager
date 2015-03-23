@@ -364,8 +364,10 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             settingsTv.passSegue = passSegue
             
         }else if segue.identifier == "toStaffDetails" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            var staffTVController = navigationController.topViewController as StaffTableViewController
+//            let navigationController  = segue.destinationViewController as UINavigationController
+//            var staffTVController = navigationController.topViewController as StaffTableViewController
+            
+            let staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
             staffTVController.cameFrom = "DashBoard"
             staffTVController.staffID = longPressTargetIndex
             staffTVController.userSegue = userSegue

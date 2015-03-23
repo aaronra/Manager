@@ -368,7 +368,6 @@
                                             <outlet property="fullName" destination="y6g-Pm-i3j" id="RWh-37-vNs"/>
                                             <outlet property="imgStaff" destination="sa3-37-e5a" id="n7f-Mv-WWm"/>
                                             <outlet property="imgStatus" destination="LU3-HP-N5y" id="6z1-0W-6za"/>
-                                            <segue destination="fVi-eZ-Vrd" kind="show" identifier="toStaffDetails" id="yqS-RR-rJb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -416,6 +415,7 @@
                         <segue destination="aWJ-RM-lEq" kind="presentation" identifier="toPing" modalTransitionStyle="crossDissolve" id="e4B-Ee-Tz2"/>
                         <segue destination="pNj-7y-S5n" kind="presentation" identifier="toDashboard" modalTransitionStyle="crossDissolve" id="KVJ-TI-tUS"/>
                         <segue destination="PD5-NW-iGU" kind="presentation" identifier="toLogin" modalTransitionStyle="crossDissolve" id="P5g-My-Q0m"/>
+                        <segue destination="fVi-eZ-Vrd" kind="show" identifier="toStaffDetails" id="kfx-WR-1cy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CH9-YS-Ehl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -656,7 +656,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVS-ar-IdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3186" y="129"/>
+            <point key="canvasLocation" x="-3209" y="129"/>
         </scene>
         <!--Working On Today-->
         <scene sceneID="dR1-AX-kdL">
@@ -1104,6 +1104,7 @@
                         <segue destination="UD2-ba-EN2" kind="presentation" identifier="toMyTeam" modalTransitionStyle="crossDissolve" id="bGC-p1-8ln"/>
                         <segue destination="aWJ-RM-lEq" kind="presentation" identifier="toPing" modalTransitionStyle="crossDissolve" id="til-pa-fig"/>
                         <segue destination="PD5-NW-iGU" kind="presentation" identifier="toLogin" modalTransitionStyle="crossDissolve" id="hsw-5w-jez"/>
+                        <segue destination="fVi-eZ-Vrd" kind="show" identifier="toStaffDetails" id="TJt-V4-tIN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBb-k5-nCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1565,11 +1566,12 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ETz-Q8-Vww"/>
-        <segue reference="ZqU-ml-1UO"/>
-        <segue reference="P5g-My-Q0m"/>
-        <segue reference="e4B-Ee-Tz2"/>
-        <segue reference="TDE-Fr-DEr"/>
-        <segue reference="iRd-a1-zi3"/>
+        <segue reference="KVJ-TI-tUS"/>
+        <segue reference="bGC-p1-8ln"/>
+        <segue reference="kfx-WR-1cy"/>
+        <segue reference="Pgy-e2-03c"/>
+        <segue reference="Gv3-IP-ZiX"/>
+        <segue reference="hsw-5w-jez"/>
+        <segue reference="til-pa-fig"/>
     </inferredMetricsTieBreakers>
 </document>
