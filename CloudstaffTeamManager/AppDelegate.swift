@@ -61,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor(hex: 0x1C98D5)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(hex: 0xffffff)]
 //        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "Tahoma", size: 11)!]
+        UIBarButtonItem.appearance().tintColor = UIColor(hex: 0xffffff)
         
         return true
     }

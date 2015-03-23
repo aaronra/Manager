@@ -368,6 +368,7 @@
                                             <outlet property="fullName" destination="y6g-Pm-i3j" id="RWh-37-vNs"/>
                                             <outlet property="imgStaff" destination="sa3-37-e5a" id="n7f-Mv-WWm"/>
                                             <outlet property="imgStatus" destination="LU3-HP-N5y" id="6z1-0W-6za"/>
+                                            <segue destination="fVi-eZ-Vrd" kind="show" identifier="toStaffDetails" id="yqS-RR-rJb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -412,7 +413,6 @@
                         <outlet property="dept" destination="YDC-rk-5P3" id="mI7-GX-MKN"/>
                         <outlet property="tableView" destination="TSZ-Ur-qYw" id="kCu-JF-ZoL"/>
                         <segue destination="eAK-Us-Zcb" kind="presentation" identifier="toSettings" modalTransitionStyle="crossDissolve" id="ZqU-ml-1UO"/>
-                        <segue destination="2aQ-12-2a5" kind="presentation" identifier="toStaffDetails" modalTransitionStyle="crossDissolve" id="G90-bq-4SM"/>
                         <segue destination="aWJ-RM-lEq" kind="presentation" identifier="toPing" modalTransitionStyle="crossDissolve" id="e4B-Ee-Tz2"/>
                         <segue destination="pNj-7y-S5n" kind="presentation" identifier="toDashboard" modalTransitionStyle="crossDissolve" id="KVJ-TI-tUS"/>
                         <segue destination="PD5-NW-iGU" kind="presentation" identifier="toLogin" modalTransitionStyle="crossDissolve" id="P5g-My-Q0m"/>
@@ -637,15 +637,10 @@
                             <outlet property="delegate" destination="fVi-eZ-Vrd" id="Wci-Go-3Wb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Staff Details" id="vQi-e4-Pfz">
-                        <barButtonItem key="leftBarButtonItem" title="Done" id="oK6-w8-CAO">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="done:" destination="fVi-eZ-Vrd" id="LC3-GI-WtI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Staff Details" id="vQi-e4-Pfz"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="detailFour" destination="3m1-7o-61D" id="Dke-0Y-1zf"/>
                         <outlet property="detailOne" destination="8JA-ej-vB0" id="TS6-G6-VAQ"/>
@@ -661,7 +656,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVS-ar-IdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3136" y="135"/>
+            <point key="canvasLocation" x="-3186" y="129"/>
         </scene>
         <!--Working On Today-->
         <scene sceneID="dR1-AX-kdL">
@@ -725,7 +720,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNX-qT-FyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3168" y="864"/>
+            <point key="canvasLocation" x="-3186" y="966"/>
         </scene>
         <!--Ping-->
         <scene sceneID="U1Q-zA-qa8">
@@ -1109,7 +1104,6 @@
                         <segue destination="UD2-ba-EN2" kind="presentation" identifier="toMyTeam" modalTransitionStyle="crossDissolve" id="bGC-p1-8ln"/>
                         <segue destination="aWJ-RM-lEq" kind="presentation" identifier="toPing" modalTransitionStyle="crossDissolve" id="til-pa-fig"/>
                         <segue destination="PD5-NW-iGU" kind="presentation" identifier="toLogin" modalTransitionStyle="crossDissolve" id="hsw-5w-jez"/>
-                        <segue destination="2aQ-12-2a5" kind="presentation" identifier="toStaffDetails" modalTransitionStyle="crossDissolve" id="XPk-kL-gCe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBb-k5-nCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1554,24 +1548,6 @@
             </objects>
             <point key="canvasLocation" x="-5019" y="107"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="B66-cG-EAc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2aQ-12-2a5" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ffu-QH-Krd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="fVi-eZ-Vrd" kind="relationship" relationship="rootViewController" id="hzh-oa-pUv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7bI-y8-R2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3136" y="107"/>
-        </scene>
     </scenes>
     <resources>
         <image name="filter" width="29" height="29"/>
@@ -1589,12 +1565,11 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="G90-bq-4SM"/>
-        <segue reference="jgQ-We-WHT"/>
-        <segue reference="e4B-Ee-Tz2"/>
+        <segue reference="ETz-Q8-Vww"/>
         <segue reference="ZqU-ml-1UO"/>
         <segue reference="P5g-My-Q0m"/>
-        <segue reference="iRd-a1-zi3"/>
+        <segue reference="e4B-Ee-Tz2"/>
         <segue reference="TDE-Fr-DEr"/>
+        <segue reference="iRd-a1-zi3"/>
     </inferredMetricsTieBreakers>
 </document>

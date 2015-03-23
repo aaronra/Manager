@@ -44,6 +44,8 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("--->>> \(staffID)")
+        
         let staffDetail = Staff.objectsWhere("id == \(staffID)")
         
         for staff: RLMObject in staffDetail {
@@ -183,14 +185,12 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
 
     
     
-    @IBAction func done(sender: AnyObject) {
+    @IBAction func done(this: UIBarButtonItem) {
         
         if cameFrom == "DashBoard" {
-//            performSegueWithIdentifier("backtoDashboard", sender: sender)
             println("True - CameFrom DashBoard")
-        }else {
-            println("False - CameFrom MyTeam")
-//            performSegueWithIdentifier("toMyTeam", sender: sender) 
+//            performSegueWithIdentifier("ibtnbacktoDashboard", sender: this)
+            
         }
 
         

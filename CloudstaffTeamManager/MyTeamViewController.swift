@@ -40,6 +40,8 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         sideBar = SideBar(sourceView: self.view, menuItems:
             ["dashboard",
                 "my team",
@@ -51,6 +53,9 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     }
     
     func getMyTeam() {
+        
+        
+        
         var staff = Staff()
         var staffDetails = Staff.allObjects()
         
@@ -73,6 +78,9 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             let fave = staffInfo["favorite"] as String
             
             arrayOfIds.append(id)
+            
+             println("arrayyOfIDs \(arrayOfIds)")
+            
             arrayofStaffsImg.append(photo)
             arrayofLogin.append(login + "list")
             arrayofUsername.append(username)
@@ -170,7 +178,9 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         clickedIndex = indexPath.row
-        performSegueWithIdentifier("toStaffDetails", sender: tableView)
+//        performSegueWithIdentifier("toStaffDetails", sender: tableView)
+        
+        println("From MyTeam \(clickedIndex)")
         
     }
     
@@ -301,8 +311,11 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         
         if segue.identifier == "toStaffDetails" {
             
-            let navigationController  = segue.destinationViewController as UINavigationController
-            var staffTVController = navigationController.topViewController as StaffTableViewController
+//            let navigationController  = segue.destinationViewController as UINavigationController
+//            var staffTVController = navigationController.topViewController as StaffTableViewController
+            
+            let staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
+            
             staffTVController.cameFrom = "MyTeam"
             staffTVController.staffID = clickedIndex
             staffTVController.userSegue = userSegue
