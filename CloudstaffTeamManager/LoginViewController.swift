@@ -12,13 +12,16 @@ class LoginViewController: UIViewController {
     
 
     var json = JsonToRealm()
+    var alert = AlertDialogs()
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var forgot: UIButton!
-    
+
+    let myID = UIDevice.currentDevice().identifierForVendor.UUIDString
+    let secureID = "manager"
     
     ///////////////////////  KEYBOARD DISMISS  /////////////////////////
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
@@ -58,44 +61,32 @@ class LoginViewController: UIViewController {
         if ConnectionDetector.isConnectedToNetwork() {
             loginfunc()
         }else {
-           alertLogin("No Internet Connection")
+           alert.alertLogin("No Internet Connection", viewController: self)
         }
     }
 
     func loginfunc() {
         
-        let urlAsString = "http://10.1.51.130/cakephp/Accounts/login/\(username.text)/\(password.text.md5).json"
-        let url: NSURL  = NSURL(string: urlAsString)!
-        let urlSession = NSURLSession.sharedSession()
+        println("UDID === \(myID)")
+        println("secureID == \(secureID.md5)")
         
-        let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
-            if (error != nil) {
-                println(error.localizedDescription)
-            }
-            var err: NSError?
-            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
-            if (err != nil) {
-                println("JSON Error \(err!.localizedDescription)")
+        JsonToRealm.post(["username":username.text, "password":password.text.md5, "device_key":myID, "secure_key":secureID.md5], url: "http://10.1.51.213/mobile-api/Accounts/login.json") { (loginStatus: String, msg: String) -> () in
+
+            
+            println("---->>>>> \(msg)")
+            
+            if msg == "Username does no exist" {
+                self.alert.alertLogin(msg, viewController: self)
+            }else if msg == "Incorrect password" {
+                self.alert.alertLogin(msg, viewController: self)
+                
+            }else if msg == "Username or password is blank." {
+                self.alert.alertLogin(msg, viewController: self)
+            }else {
+                self.performSegueWithIdentifier("toDashboard", sender: self.btnLogin)
             }
             
-            dispatch_async(dispatch_get_main_queue(), {
-                let loginStatus = jsonResult["LoginStatus"] as String
-                
-                if loginStatus == "Success" {
-                    JsonToRealm.parseData("\(self.username.text)/\(self.password.text.md5)")
-                    self.performSegueWithIdentifier("toDashboard", sender: self.btnLogin)
-                    
-                    
-                }else if loginStatus == "Wrong Password"{
-                    self.alertLogin(loginStatus)
-                    println("LoginStatus --->>> \(loginStatus)")
-                }else {
-                    self.alertLogin(loginStatus)
-                    println("LoginStatus --->>> \(loginStatus)")
-                }
-            })
-        })
-        jsonQuery.resume()
+        }
         
     }
     
@@ -108,27 +99,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func alertLogin(apiMessage: String) {
-        
-        let getname = username.text
-        let gettnum = password.text
-        
-        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-        case .OrderedSame, .OrderedDescending:
-            println("8 above")
-            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: apiMessage, preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            })
-            alertController.addAction(ok)
-            presentViewController(alertController, animated: true, completion: nil)
-        case .OrderedAscending:
-            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: apiMessage, delegate: self, cancelButtonTitle: "OK")
-            alertView.alertViewStyle = .Default
-            alertView.show()
-            println("8 below")
-        }
-        
-    }
     
     func registerForKeyboardNotifications() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)

@@ -283,7 +283,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         }
     }
 
-    
 
     func reloadMetrics(stf: RLMResults) {
         arrayOfMetrics.removeAll(keepCapacity: true)
@@ -332,7 +331,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     
     @IBAction func refresh(sender: UIBarButtonItem) {
         dispatch_async(dispatch_get_main_queue(), {
-            JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
+//            JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
         })
         self.tblView.reloadData()
         println("REFRESH --->>>> \(userSegue)")

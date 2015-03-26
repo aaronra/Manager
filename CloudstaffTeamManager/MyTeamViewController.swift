@@ -290,7 +290,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     @IBAction func refresh(sender: UIBarButtonItem) {
         
         dispatch_async(dispatch_get_main_queue(), {
-            JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
+//            JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
         })
         self.tableView.reloadData()
         println("REFRESH --->>>> \(userSegue)")

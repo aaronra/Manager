@@ -720,7 +720,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNX-qT-FyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3186" y="966"/>
+            <point key="canvasLocation" x="-3209" y="902"/>
         </scene>
         <!--Ping-->
         <scene sceneID="U1Q-zA-qa8">
@@ -915,8 +915,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TMY-Qq-VTP">
-                                <rect key="frame" x="0.0" y="46" width="600" height="453"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="499"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="499" id="lg5-2M-sVF"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="95" id="YFx-98-gJk" customClass="DashboardCell" customModule="CloudstaffTeamManager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -1056,30 +1059,16 @@
                                     <outlet property="delegate" destination="ux0-bj-0t6" id="Q4t-n4-Hpf"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-O7-vLL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="38"/>
-                                <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="CA4-1t-Fhe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="TMY-Qq-VTP" secondAttribute="centerX" id="2bw-b9-d3Q"/>
-                            <constraint firstItem="EFO-O7-vLL" firstAttribute="leading" secondItem="TMY-Qq-VTP" secondAttribute="leading" id="2qf-UE-NoX"/>
-                            <constraint firstItem="EFO-O7-vLL" firstAttribute="top" secondItem="hFg-k2-k0J" secondAttribute="topMargin" id="43o-BS-Fch"/>
                             <constraint firstItem="JZB-GE-Sil" firstAttribute="leading" secondItem="hFg-k2-k0J" secondAttribute="leadingMargin" constant="-16" id="6Jg-Un-WOT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JZB-GE-Sil" secondAttribute="trailing" constant="-16" id="6eo-GE-h1O"/>
                             <constraint firstItem="JZB-GE-Sil" firstAttribute="top" secondItem="TMY-Qq-VTP" secondAttribute="bottom" constant="1" id="K11-14-7id"/>
                             <constraint firstAttribute="centerX" secondItem="JZB-GE-Sil" secondAttribute="centerX" id="MxQ-wL-vtk"/>
-                            <constraint firstAttribute="width" secondItem="EFO-O7-vLL" secondAttribute="width" id="OMi-zR-pNl"/>
                             <constraint firstItem="TMY-Qq-VTP" firstAttribute="leading" secondItem="JZB-GE-Sil" secondAttribute="leading" id="Yr5-gh-8lL"/>
                             <constraint firstItem="wMh-me-m8r" firstAttribute="top" secondItem="JZB-GE-Sil" secondAttribute="bottom" id="ne9-LC-66a"/>
-                            <constraint firstItem="TMY-Qq-VTP" firstAttribute="top" secondItem="EFO-O7-vLL" secondAttribute="bottom" constant="8" symbolic="YES" id="raX-En-i2I"/>
                             <constraint firstItem="JZB-GE-Sil" firstAttribute="width" secondItem="hFg-k2-k0J" secondAttribute="height" multiplier="1:1" id="uTn-sm-RZw"/>
                         </constraints>
                     </view>
@@ -1109,7 +1098,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBb-k5-nCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5019" y="-623"/>
+            <point key="canvasLocation" x="-5019" y="-633"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DAf-Sp-Grc">
@@ -1568,10 +1557,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="KVJ-TI-tUS"/>
         <segue reference="bGC-p1-8ln"/>
-        <segue reference="kfx-WR-1cy"/>
-        <segue reference="Pgy-e2-03c"/>
+        <segue reference="til-pa-fig"/>
+        <segue reference="TJt-V4-tIN"/>
         <segue reference="Gv3-IP-ZiX"/>
         <segue reference="hsw-5w-jez"/>
-        <segue reference="til-pa-fig"/>
+        <segue reference="Pgy-e2-03c"/>
     </inferredMetricsTieBreakers>
 </document>
