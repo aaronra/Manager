@@ -8,6 +8,7 @@
 
 import Foundation
 import Realm
+import UIKit
 
 
 class PingMessage: RLMObject {
@@ -55,7 +56,7 @@ class Staff: RLMObject {
 public class JsonToRealm {
     
 
-    class func post(params : Dictionary<String, String>, url : String, postCompleted : (loginStatus: String, msg: String) -> ()) {
+    class func post(params : Dictionary<String, AnyObject!>, url : String, postCompleted : (loginStatus: Int, msg: String) -> ()) {
         var request = NSMutableURLRequest(URL: NSURL(string: url)!)
         var session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
@@ -78,18 +79,16 @@ public class JsonToRealm {
                 println(err!.localizedDescription)
                 let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
                 println("Error could not parse JSON: '\(jsonStr)'")
-                postCompleted(loginStatus: "Failed", msg: "Error")
+                postCompleted(loginStatus: 500, msg: "Error")
             }else {
                 // The JSONObjectWithData constructor didn't return an error. But, we should still
                 // check and make sure that json has a value using optional binding.
                 if let parseJSON = json {
                     // Okay, the parsedJSON is here, let's get the value for 'success' out of it
-                    if let loginStatus = parseJSON["status"] as? String {
-                        if let errorMsg = parseJSON["error"] as? [String] {
-                            for error in errorMsg {
-                                println("loginStatus -->>> \(loginStatus) || errorMessage -->>> \(error)")
-                                postCompleted(loginStatus: loginStatus, msg: error)
-                            }
+                    if let status = parseJSON["status"] as? Int {
+                        if let errorMsg = parseJSON["message"] as? String {
+                                println("loginStatus -->>> \(status) || errorMessage -->>> \(errorMsg)")
+                                postCompleted(loginStatus: status, msg: errorMsg)
                         }
                         
                         // INSERTING JSONOBJECTS ON REALM
@@ -106,7 +105,7 @@ public class JsonToRealm {
 //                        let ping = PingMessage()
 //                        ping.ping = "Sample Ping"
 //                        realm.commitWriteTransaction()
-//                        println("PATH --->>> \(RLMRealm.defaultRealm().path)")
+                        println("PATH --->>> \(RLMRealm.defaultRealm().path)")
 
                     }
 
@@ -114,7 +113,7 @@ public class JsonToRealm {
                     // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
                     let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
                     println("Error could not parse JSON: \(jsonStr)")
-                    postCompleted(loginStatus: "Failed", msg: "Error")
+                    postCompleted(loginStatus: 500, msg: "Error")
                 }
             }
             
@@ -123,6 +122,9 @@ public class JsonToRealm {
         task.resume()
         
     }
+    
+    
+    
     
 
 }

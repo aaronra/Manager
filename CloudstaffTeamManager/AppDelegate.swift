@@ -44,13 +44,28 @@ extension String  {
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    
+    
+//    func application(application: UIApplication!, performFetchWithCompletionHandler completionHandler: ((UIBackgroundFetchResult) -> Void)!) {
+//        loadShows() {
+//            completionHandler(UIBackgroundFetchResult.NewData)
+//            println("Background Fetch Complete")
+//        }
+//    }
+//    
+//    func loadShows(completionHandler: (() -> Void)!) {
+//        //....
+//        //DO IT
+//        //....
+//        completionHandler()
+//    }
 
 
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
 
-    BITHockeyManager.sharedHockeyManager().configureWithIdentifier("d4f20f855814e22a29f7adb69decee16")
+        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("d4f20f855814e22a29f7adb69decee16")
         BITHockeyManager.sharedHockeyManager().startManager()
         BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
         BITHockeyManager.sharedHockeyManager().testIdentifier()

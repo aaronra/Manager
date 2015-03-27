@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UIApplicationDelegate {
     
 
     var json = JsonToRealm()
@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
 
     let myID = UIDevice.currentDevice().identifierForVendor.UUIDString
     let secureID = "manager"
+    
     
     ///////////////////////  KEYBOARD DISMISS  /////////////////////////
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
@@ -63,6 +64,7 @@ class LoginViewController: UIViewController {
         }else {
            alert.alertLogin("No Internet Connection", viewController: self)
         }
+        
     }
 
     func loginfunc() {
@@ -70,7 +72,7 @@ class LoginViewController: UIViewController {
         println("UDID === \(myID)")
         println("secureID == \(secureID.md5)")
         
-        JsonToRealm.post(["username":username.text, "password":password.text.md5, "device_key":myID, "secure_key":secureID.md5], url: "http://10.1.51.213/mobile-api/Accounts/login.json") { (loginStatus: String, msg: String) -> () in
+        JsonToRealm.post(["username":username.text, "password":password.text, "device_key":myID, "secure_key":secureID.md5, "device_name": "totep malibi", "overwrite": 1], url: "http://10.1.51.213/mobile-api/Accounts/login.json") { (loginStatus: Int, msg: String) -> () in
 
             
             println("---->>>>> \(msg)")
@@ -83,12 +85,20 @@ class LoginViewController: UIViewController {
             }else if msg == "Username or password is blank." {
                 self.alert.alertLogin(msg, viewController: self)
             }else {
-                self.performSegueWithIdentifier("toDashboard", sender: self.btnLogin)
+                var time = dispatch_time(DISPATCH_TIME_NOW, 1 * Int64(NSEC_PER_SEC))
+                dispatch_after(time, dispatch_get_main_queue()) {
+                    self.performSegueWithIdentifier("toDashboard", sender: self.btnLogin)
+                    println("2 sec DONE")
+                }
+                println("Successful")
+                
+                
             }
             
         }
         
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
             if segue.identifier == "toDashboard" {
