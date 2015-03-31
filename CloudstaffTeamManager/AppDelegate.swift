@@ -39,16 +39,15 @@ extension String  {
 }
 
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let prefs = NSUserDefaults.standardUserDefaults()
 
-
-    
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
+        
 
     BITHockeyManager.sharedHockeyManager().configureWithIdentifier("d4f20f855814e22a29f7adb69decee16")
         BITHockeyManager.sharedHockeyManager().startManager()
@@ -60,6 +59,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(hex: 0xffffff)]
 //        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "Tahoma", size: 11)!]
 //        UIBarButtonItem.appearance().tintColor = UIColor(hex: 0xffffff)
+        
+        
+        if let prefKey = prefs.stringForKey("initialInstall"){
+            println("SECOND RUN: " + prefKey)
+        }else{
+            //Nothing stored in NSUserDefaults yet. Set a value.
+            prefs.setValue("t0tep", forKey: "initialInstall")
+            println("INITIAL INSTALL: " + prefs.description)
+        }
         
         return true
     }

@@ -265,7 +265,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
                     let value  =  mtxInfo["value"]  as  Int
                     var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
                     arrayOfMetrics.append(metrics)
-                    println("----->>> \(arrayOfMetrics)")
                     self.tblView.reloadData()
                 }
             }else {

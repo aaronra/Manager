@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     
 
     var json = JsonToRealm()
+    var alert = AlertDialogs()
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var username: UITextField!
@@ -58,8 +59,16 @@ class LoginViewController: UIViewController {
         if ConnectionDetector.isConnectedToNetwork() {
             loginfunc()
         }else {
-           alertLogin("No Internet Connection")
+           alert.alertLogin("No Internet Connection", viewController: self)
         }
+        
+        
+        if Preferences.isInitialInstall() {
+            println("TRUE")
+        }else {
+            println("FALSE")
+        }
+        
     }
 
     func loginfunc() {
@@ -90,10 +99,10 @@ class LoginViewController: UIViewController {
                     
                     
                 }else if loginStatus == "Wrong Password"{
-                    self.alertLogin(loginStatus)
+                    self.alert.alertLogin(loginStatus, viewController: self)
                     println("LoginStatus --->>> \(loginStatus)")
                 }else {
-                    self.alertLogin(loginStatus)
+                    self.alert.alertLogin(loginStatus, viewController: self)
                     println("LoginStatus --->>> \(loginStatus)")
                 }
             })
@@ -111,27 +120,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func alertLogin(apiMessage: String) {
-        
-        let getname = username.text
-        let gettnum = password.text
-        
-        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-        case .OrderedSame, .OrderedDescending:
-            println("8 above")
-            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: apiMessage, preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            })
-            alertController.addAction(ok)
-            presentViewController(alertController, animated: true, completion: nil)
-        case .OrderedAscending:
-            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: apiMessage, delegate: self, cancelButtonTitle: "OK")
-            alertView.alertViewStyle = .Default
-            alertView.show()
-            println("8 below")
-        }
-        
-    }
+
     
     func registerForKeyboardNotifications() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)

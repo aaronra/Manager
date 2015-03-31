@@ -11,18 +11,41 @@ import Foundation
 
 class AlertDialogs: NSObject, UIAlertViewDelegate {
     
-    func showTableAlertController(viewController : UITableViewController) -> Void {
-            var alertController = UIAlertController(title: "Enter Ping Message", message: "", preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in})
-            let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in}
-            
+    
+    
+    func alertLogin(apiMessage: String, viewController : UIViewController) {
+        
+        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+        case .OrderedSame, .OrderedDescending:
+            println("8 above")
+            var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: apiMessage, preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            })
             alertController.addAction(ok)
-            alertController.addAction(cancel)
-            
-            alertController.addTextFieldWithConfigurationHandler { (name) -> Void in
-                name.text = "Default Ping Message..!"
-            }
             viewController.presentViewController(alertController, animated: true, completion: nil)
+        case .OrderedAscending:
+            let alertView = UIAlertView(title: "Cloudstaff Team Manager", message: apiMessage, delegate: self, cancelButtonTitle: "OK")
+            alertView.alertViewStyle = .Default
+            alertView.show()
+            println("8 below")
+        }
+        
+    }
+    
+    
+    
+    func showTableAlertController(viewController : UITableViewController) -> Void {
+        var alertController = UIAlertController(title: "Enter Ping Message", message: "", preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in})
+        let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in}
+        
+        alertController.addAction(ok)
+        alertController.addAction(cancel)
+        
+        alertController.addTextFieldWithConfigurationHandler { (name) -> Void in
+            name.text = "Default Ping Message..!"
+        }
+        viewController.presentViewController(alertController, animated: true, completion: nil)
     }
     
     
@@ -52,7 +75,6 @@ class AlertDialogs: NSObject, UIAlertViewDelegate {
         alert.addButtonWithTitle("Cancel")
         alert.show()
     }
-    
     
     
     internal func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
