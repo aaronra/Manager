@@ -1,0 +1,694 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D005DBF1A6F831900D66B79 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D005DBE1A6F831900D66B79 /* PinViewController.swift */; };
+		5D1EDDD31A76FA9E005A92B3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */; };
+		5D1EDDD81A79A786005A92B3 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1EDDD71A79A786005A92B3 /* DashboardCell.swift */; };
+		5D1EDDDA1A79C74B005A92B3 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1EDDD91A79C74B005A92B3 /* Metrics.swift */; };
+		5D49236A1A8993D500EB8EB6 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4923691A8993D500EB8EB6 /* SettingsTableViewController.swift */; };
+		5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */; };
+		5D568E2C1AAD804D00021B59 /* WorkingOnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D568E2B1AAD804D00021B59 /* WorkingOnCell.swift */; };
+		5D6323261A8D888C00E893C5 /* StaffTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6323251A8D888C00E893C5 /* StaffTableViewController.swift */; };
+		5D9A5C6E1A9D3E4F003F94B9 /* PingStaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */; };
+		5DBD31021AB6B945001D8F44 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBD31011AB6B945001D8F44 /* AssetsLibrary.framework */; };
+		5DBD31041AB6B951001D8F44 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBD31031AB6B951001D8F44 /* CoreText.framework */; };
+		5DBD31061AB6B95F001D8F44 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBD31051AB6B95F001D8F44 /* MobileCoreServices.framework */; };
+		5DBD31081AB6B969001D8F44 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBD31071AB6B969001D8F44 /* QuartzCore.framework */; };
+		5DBD310A1AB6B970001D8F44 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBD31091AB6B970001D8F44 /* QuickLook.framework */; };
+		5DBD310C1AB6B978001D8F44 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBD310B1AB6B978001D8F44 /* Security.framework */; };
+		5DBD31121AB6B99D001D8F44 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBD310E1AB6B99D001D8F44 /* HockeySDK.framework */; };
+		5DBD31131AB6B99D001D8F44 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5DBD31101AB6B99D001D8F44 /* HockeySDK.xcconfig */; };
+		5DBD31141AB6B99D001D8F44 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5DBD31111AB6B99D001D8F44 /* HockeySDKResources.bundle */; };
+		5DC120761AAE8DA300226DD0 /* WorkingOnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC120751AAE8DA300226DD0 /* WorkingOnViewController.swift */; };
+		5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC172611A7F07980056F6DA /* StaffCell.swift */; };
+		6E2341601A7B6F3B009D856E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E23415E1A7B6F3B009D856E /* Main.storyboard */; };
+		6E51042C1AB2B0EC00395952 /* AlertDialogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E51042B1AB2B0EC00395952 /* AlertDialogs.swift */; };
+		6E5755C31AA53EF80067B67C /* MyTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5755C21AA53EF80067B67C /* MyTeamViewController.swift */; };
+		6E5755C51AA53F220067B67C /* PingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5755C41AA53F220067B67C /* PingViewController.swift */; };
+		6E5E561C1A9BEFBE000DF2EC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5E561B1A9BEFBE000DF2EC /* Realm.framework */; };
+		6E5E561E1A9BEFCA000DF2EC /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E561D1A9BEFCA000DF2EC /* RLMSupport.swift */; };
+		6E90146A1A9569D0001DA99F /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9014691A9569D0001DA99F /* libc++.dylib */; };
+		6E9014711A956B91001DA99F /* JsonToRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9014701A956B91001DA99F /* JsonToRealm.swift */; };
+		6EA216601AA7FCC500F957EE /* SendMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2165F1AA7FCC500F957EE /* SendMessageTableViewController.swift */; };
+		6EBC23311A78CC1E0043C743 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC23301A78CC1E0043C743 /* CustomCell.swift */; };
+		6EBC23331A78D4040043C743 /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC23321A78D4040043C743 /* Employees.swift */; };
+		6EBC23361A7900D40043C743 /* ConnectionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC23351A7900D40043C743 /* ConnectionDetector.swift */; };
+		E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707D9E41A653BE5000D75FE /* LoginViewController.swift */; };
+		E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728621A5F879A00D92301 /* AppDelegate.swift */; };
+		E727286A1A5F879B00D92301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E72728691A5F879B00D92301 /* Images.xcassets */; };
+		E727286D1A5F879B00D92301 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E727286B1A5F879B00D92301 /* LaunchScreen.xib */; };
+		E72728791A5F879B00D92301 /* CloudstaffTeamManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728781A5F879B00D92301 /* CloudstaffTeamManagerTests.swift */; };
+		E72B9E461A619C450083BE2A /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9E441A619C450083BE2A /* SideBar.swift */; };
+		E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E72728731A5F879B00D92301 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E72728551A5F879900D92301 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E727285C1A5F879900D92301;
+			remoteInfo = CloudstaffTeamManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5D005DBE1A6F831900D66B79 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
+		5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		5D1EDDD71A79A786005A92B3 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
+		5D1EDDD91A79C74B005A92B3 /* Metrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
+		5D4923691A8993D500EB8EB6 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeamCell.swift; sourceTree = "<group>"; };
+		5D568E2B1AAD804D00021B59 /* WorkingOnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingOnCell.swift; sourceTree = "<group>"; };
+		5D6323251A8D888C00E893C5 /* StaffTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTableViewController.swift; sourceTree = "<group>"; };
+		5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingStaffCell.swift; sourceTree = "<group>"; };
+		5DBD31011AB6B945001D8F44 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		5DBD31031AB6B951001D8F44 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		5DBD31051AB6B95F001D8F44 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5DBD31071AB6B969001D8F44 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5DBD31091AB6B970001D8F44 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		5DBD310B1AB6B978001D8F44 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5DBD310E1AB6B99D001D8F44 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
+		5DBD31101AB6B99D001D8F44 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
+		5DBD31111AB6B99D001D8F44 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
+		5DC120751AAE8DA300226DD0 /* WorkingOnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingOnViewController.swift; sourceTree = "<group>"; };
+		5DC172611A7F07980056F6DA /* StaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCell.swift; sourceTree = "<group>"; };
+		6E23415F1A7B6F3B009D856E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6E4FBA7D1AA01633003076DE /* CloudstaffTeamManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudstaffTeamManager-Bridging-Header.h"; sourceTree = "<group>"; };
+		6E4FBA801AA0165D003076DE /* CommonCryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonCryptor.h; sourceTree = "<group>"; };
+		6E51042B1AB2B0EC00395952 /* AlertDialogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertDialogs.swift; sourceTree = "<group>"; };
+		6E5755C21AA53EF80067B67C /* MyTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeamViewController.swift; sourceTree = "<group>"; };
+		6E5755C41AA53F220067B67C /* PingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingViewController.swift; sourceTree = "<group>"; };
+		6E5E561B1A9BEFBE000DF2EC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = CloudstaffTeamManager/Frameworks/Realm.framework; sourceTree = "<group>"; };
+		6E5E561D1A9BEFCA000DF2EC /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RLMSupport.swift; path = CloudstaffTeamManager/Frameworks/RLMSupport.swift; sourceTree = "<group>"; };
+		6E9014691A9569D0001DA99F /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		6E9014701A956B91001DA99F /* JsonToRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonToRealm.swift; sourceTree = "<group>"; };
+		6EA2165F1AA7FCC500F957EE /* SendMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMessageTableViewController.swift; sourceTree = "<group>"; };
+		6EBC23301A78CC1E0043C743 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		6EBC23321A78D4040043C743 /* Employees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
+		6EBC23351A7900D40043C743 /* ConnectionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionDetector.swift; sourceTree = "<group>"; };
+		E707D9E41A653BE5000D75FE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E727285D1A5F879900D92301 /* CloudstaffTeamManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudstaffTeamManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E72728611A5F879A00D92301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E72728621A5F879A00D92301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E72728691A5F879B00D92301 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E727286C1A5F879B00D92301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		E72728721A5F879B00D92301 /* CloudstaffTeamManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudstaffTeamManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E72728771A5F879B00D92301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E72728781A5F879B00D92301 /* CloudstaffTeamManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudstaffTeamManagerTests.swift; sourceTree = "<group>"; };
+		E72B9E441A619C450083BE2A /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideBar.swift; path = SidebarLibrary/SideBar.swift; sourceTree = "<group>"; };
+		E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideBarTableViewController.swift; path = SidebarLibrary/SideBarTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E727285A1A5F879900D92301 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DBD310C1AB6B978001D8F44 /* Security.framework in Frameworks */,
+				5DBD310A1AB6B970001D8F44 /* QuickLook.framework in Frameworks */,
+				5DBD31081AB6B969001D8F44 /* QuartzCore.framework in Frameworks */,
+				5DBD31061AB6B95F001D8F44 /* MobileCoreServices.framework in Frameworks */,
+				5DBD31041AB6B951001D8F44 /* CoreText.framework in Frameworks */,
+				5DBD31121AB6B99D001D8F44 /* HockeySDK.framework in Frameworks */,
+				5DBD31021AB6B945001D8F44 /* AssetsLibrary.framework in Frameworks */,
+				6E5E561C1A9BEFBE000DF2EC /* Realm.framework in Frameworks */,
+				6E90146A1A9569D0001DA99F /* libc++.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E727286F1A5F879B00D92301 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5D1EDDD61A79A5D3005A92B3 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				5D1EDDD21A76FA9E005A92B3 /* DashboardViewController.swift */,
+				5D1EDDD71A79A786005A92B3 /* DashboardCell.swift */,
+				5D1EDDD91A79C74B005A92B3 /* Metrics.swift */,
+				5DC172611A7F07980056F6DA /* StaffCell.swift */,
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		5D4AA9491A8B1281004DE759 /* MyTeam */ = {
+			isa = PBXGroup;
+			children = (
+				6E5755C21AA53EF80067B67C /* MyTeamViewController.swift */,
+				5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */,
+				5D6323251A8D888C00E893C5 /* StaffTableViewController.swift */,
+				6EA2165F1AA7FCC500F957EE /* SendMessageTableViewController.swift */,
+				5D568E2B1AAD804D00021B59 /* WorkingOnCell.swift */,
+				5DC120751AAE8DA300226DD0 /* WorkingOnViewController.swift */,
+			);
+			name = MyTeam;
+			sourceTree = "<group>";
+		};
+		5D9A5C6A1A9D3CDF003F94B9 /* Ping */ = {
+			isa = PBXGroup;
+			children = (
+				6E5755C41AA53F220067B67C /* PingViewController.swift */,
+				5D9A5C6D1A9D3E4E003F94B9 /* PingStaffCell.swift */,
+			);
+			name = Ping;
+			sourceTree = "<group>";
+		};
+		5DBD310D1AB6B99D001D8F44 /* HockeySDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				5DBD310E1AB6B99D001D8F44 /* HockeySDK.framework */,
+				5DBD310F1AB6B99D001D8F44 /* Resources */,
+			);
+			name = HockeySDK.embeddedframework;
+			path = "HockeySDK-iOS/HockeySDK.embeddedframework";
+			sourceTree = "<group>";
+		};
+		5DBD310F1AB6B99D001D8F44 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5DBD31101AB6B99D001D8F44 /* HockeySDK.xcconfig */,
+				5DBD31111AB6B99D001D8F44 /* HockeySDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6E4FBA811AA03910003076DE /* Encryptor */ = {
+			isa = PBXGroup;
+			children = (
+				6E4FBA801AA0165D003076DE /* CommonCryptor.h */,
+				6E4FBA7D1AA01633003076DE /* CloudstaffTeamManager-Bridging-Header.h */,
+			);
+			name = Encryptor;
+			sourceTree = "<group>";
+		};
+		6E5331171AA69D3C008F24EE /* Isolated */ = {
+			isa = PBXGroup;
+			children = (
+				5D005DBE1A6F831900D66B79 /* PinViewController.swift */,
+			);
+			name = Isolated;
+			path = CloudstaffTeamManager;
+			sourceTree = "<group>";
+		};
+		6E90146B1A9569E5001DA99F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DBD310D1AB6B99D001D8F44 /* HockeySDK.embeddedframework */,
+				5DBD310B1AB6B978001D8F44 /* Security.framework */,
+				5DBD31091AB6B970001D8F44 /* QuickLook.framework */,
+				5DBD31071AB6B969001D8F44 /* QuartzCore.framework */,
+				5DBD31051AB6B95F001D8F44 /* MobileCoreServices.framework */,
+				5DBD31031AB6B951001D8F44 /* CoreText.framework */,
+				5DBD31011AB6B945001D8F44 /* AssetsLibrary.framework */,
+				6E5E561D1A9BEFCA000DF2EC /* RLMSupport.swift */,
+				6E5E561B1A9BEFBE000DF2EC /* Realm.framework */,
+				6E9014691A9569D0001DA99F /* libc++.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6EBC23341A78D4140043C743 /* TableItems */ = {
+			isa = PBXGroup;
+			children = (
+				6EBC23301A78CC1E0043C743 /* CustomCell.swift */,
+				6EBC23321A78D4040043C743 /* Employees.swift */,
+			);
+			name = TableItems;
+			sourceTree = "<group>";
+		};
+		6EBC23391A7903890043C743 /* HTTPFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				6EBC23351A7900D40043C743 /* ConnectionDetector.swift */,
+				6E9014701A956B91001DA99F /* JsonToRealm.swift */,
+			);
+			name = HTTPFunctions;
+			sourceTree = "<group>";
+		};
+		E72728541A5F879900D92301 = {
+			isa = PBXGroup;
+			children = (
+				E727285F1A5F879900D92301 /* CloudstaffTeamManager */,
+				E72728751A5F879B00D92301 /* CloudstaffTeamManagerTests */,
+				E727285E1A5F879900D92301 /* Products */,
+				6E90146B1A9569E5001DA99F /* Frameworks */,
+				6E5331171AA69D3C008F24EE /* Isolated */,
+			);
+			sourceTree = "<group>";
+		};
+		E727285E1A5F879900D92301 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E727285D1A5F879900D92301 /* CloudstaffTeamManager.app */,
+				E72728721A5F879B00D92301 /* CloudstaffTeamManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E727285F1A5F879900D92301 /* CloudstaffTeamManager */ = {
+			isa = PBXGroup;
+			children = (
+				5D9A5C6A1A9D3CDF003F94B9 /* Ping */,
+				5D4AA9491A8B1281004DE759 /* MyTeam */,
+				5D1EDDD61A79A5D3005A92B3 /* Dashboard */,
+				E72728621A5F879A00D92301 /* AppDelegate.swift */,
+				E707D9E41A653BE5000D75FE /* LoginViewController.swift */,
+				5D4923691A8993D500EB8EB6 /* SettingsTableViewController.swift */,
+				6E51042B1AB2B0EC00395952 /* AlertDialogs.swift */,
+				6EBC23391A7903890043C743 /* HTTPFunctions */,
+				6EBC23341A78D4140043C743 /* TableItems */,
+				E72B9E481A619C4C0083BE2A /* Sidebar */,
+				6E4FBA811AA03910003076DE /* Encryptor */,
+				E72728691A5F879B00D92301 /* Images.xcassets */,
+				6E23415E1A7B6F3B009D856E /* Main.storyboard */,
+				E727286B1A5F879B00D92301 /* LaunchScreen.xib */,
+				E72728601A5F879A00D92301 /* Supporting Files */,
+			);
+			path = CloudstaffTeamManager;
+			sourceTree = "<group>";
+		};
+		E72728601A5F879A00D92301 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E72728611A5F879A00D92301 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E72728751A5F879B00D92301 /* CloudstaffTeamManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				E72728781A5F879B00D92301 /* CloudstaffTeamManagerTests.swift */,
+				E72728761A5F879B00D92301 /* Supporting Files */,
+			);
+			path = CloudstaffTeamManagerTests;
+			sourceTree = "<group>";
+		};
+		E72728761A5F879B00D92301 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E72728771A5F879B00D92301 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E72B9E481A619C4C0083BE2A /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				E72B9E441A619C450083BE2A /* SideBar.swift */,
+				E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */,
+			);
+			name = Sidebar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E727285C1A5F879900D92301 /* CloudstaffTeamManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E727287C1A5F879B00D92301 /* Build configuration list for PBXNativeTarget "CloudstaffTeamManager" */;
+			buildPhases = (
+				E72728591A5F879900D92301 /* Sources */,
+				E727285A1A5F879900D92301 /* Frameworks */,
+				E727285B1A5F879900D92301 /* Resources */,
+				5DBD31001AB6B919001D8F44 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CloudstaffTeamManager;
+			productName = CloudstaffTeamManager;
+			productReference = E727285D1A5F879900D92301 /* CloudstaffTeamManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E72728711A5F879B00D92301 /* CloudstaffTeamManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E727287F1A5F879B00D92301 /* Build configuration list for PBXNativeTarget "CloudstaffTeamManagerTests" */;
+			buildPhases = (
+				E727286E1A5F879B00D92301 /* Sources */,
+				E727286F1A5F879B00D92301 /* Frameworks */,
+				E72728701A5F879B00D92301 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E72728741A5F879B00D92301 /* PBXTargetDependency */,
+			);
+			name = CloudstaffTeamManagerTests;
+			productName = CloudstaffTeamManagerTests;
+			productReference = E72728721A5F879B00D92301 /* CloudstaffTeamManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E72728551A5F879900D92301 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = CLOUDSTAFF;
+				TargetAttributes = {
+					E727285C1A5F879900D92301 = {
+						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 826GYCV8FQ;
+					};
+					E72728711A5F879B00D92301 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = E727285C1A5F879900D92301;
+					};
+				};
+			};
+			buildConfigurationList = E72728581A5F879900D92301 /* Build configuration list for PBXProject "CloudstaffTeamManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E72728541A5F879900D92301;
+			productRefGroup = E727285E1A5F879900D92301 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E727285C1A5F879900D92301 /* CloudstaffTeamManager */,
+				E72728711A5F879B00D92301 /* CloudstaffTeamManagerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E727285B1A5F879900D92301 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E2341601A7B6F3B009D856E /* Main.storyboard in Resources */,
+				E727286D1A5F879B00D92301 /* LaunchScreen.xib in Resources */,
+				5DBD31141AB6B99D001D8F44 /* HockeySDKResources.bundle in Resources */,
+				5DBD31131AB6B99D001D8F44 /* HockeySDK.xcconfig in Resources */,
+				E727286A1A5F879B00D92301 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E72728701A5F879B00D92301 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5DBD31001AB6B919001D8F44 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E72728591A5F879900D92301 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E5755C31AA53EF80067B67C /* MyTeamViewController.swift in Sources */,
+				5D005DBF1A6F831900D66B79 /* PinViewController.swift in Sources */,
+				5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */,
+				5D1EDDD31A76FA9E005A92B3 /* DashboardViewController.swift in Sources */,
+				E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */,
+				E72B9E471A619C450083BE2A /* SideBarTableViewController.swift in Sources */,
+				6EA216601AA7FCC500F957EE /* SendMessageTableViewController.swift in Sources */,
+				6E9014711A956B91001DA99F /* JsonToRealm.swift in Sources */,
+				6E5755C51AA53F220067B67C /* PingViewController.swift in Sources */,
+				5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */,
+				E72B9E461A619C450083BE2A /* SideBar.swift in Sources */,
+				5D568E2C1AAD804D00021B59 /* WorkingOnCell.swift in Sources */,
+				6EBC23361A7900D40043C743 /* ConnectionDetector.swift in Sources */,
+				5D6323261A8D888C00E893C5 /* StaffTableViewController.swift in Sources */,
+				5D1EDDD81A79A786005A92B3 /* DashboardCell.swift in Sources */,
+				5D1EDDDA1A79C74B005A92B3 /* Metrics.swift in Sources */,
+				6E51042C1AB2B0EC00395952 /* AlertDialogs.swift in Sources */,
+				6E5E561E1A9BEFCA000DF2EC /* RLMSupport.swift in Sources */,
+				5D49236A1A8993D500EB8EB6 /* SettingsTableViewController.swift in Sources */,
+				6EBC23331A78D4040043C743 /* Employees.swift in Sources */,
+				6EBC23311A78CC1E0043C743 /* CustomCell.swift in Sources */,
+				5DC120761AAE8DA300226DD0 /* WorkingOnViewController.swift in Sources */,
+				5D9A5C6E1A9D3E4F003F94B9 /* PingStaffCell.swift in Sources */,
+				E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E727286E1A5F879B00D92301 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E72728791A5F879B00D92301 /* CloudstaffTeamManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E72728741A5F879B00D92301 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E727285C1A5F879900D92301 /* CloudstaffTeamManager */;
+			targetProxy = E72728731A5F879B00D92301 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6E23415E1A7B6F3B009D856E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E23415F1A7B6F3B009D856E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E727286B1A5F879B00D92301 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E727286C1A5F879B00D92301 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E727287A1A5F879B00D92301 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E727287B1A5F879B00D92301 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E727287D1A5F879B00D92301 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CloudstaffTeamManager/Frameworks",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
+				INFOPLIST_FILE = CloudstaffTeamManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CloudstaffTeamManager/CloudstaffTeamManager-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E727287E1A5F879B00D92301 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CloudstaffTeamManager/Frameworks",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
+				INFOPLIST_FILE = CloudstaffTeamManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CloudstaffTeamManager/CloudstaffTeamManager-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		E72728801A5F879B00D92301 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CloudstaffTeamManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CloudstaffTeamManager.app/CloudstaffTeamManager";
+			};
+			name = Debug;
+		};
+		E72728811A5F879B00D92301 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CloudstaffTeamManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CloudstaffTeamManager.app/CloudstaffTeamManager";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E72728581A5F879900D92301 /* Build configuration list for PBXProject "CloudstaffTeamManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E727287A1A5F879B00D92301 /* Debug */,
+				E727287B1A5F879B00D92301 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E727287C1A5F879B00D92301 /* Build configuration list for PBXNativeTarget "CloudstaffTeamManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E727287D1A5F879B00D92301 /* Debug */,
+				E727287E1A5F879B00D92301 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E727287F1A5F879B00D92301 /* Build configuration list for PBXNativeTarget "CloudstaffTeamManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E72728801A5F879B00D92301 /* Debug */,
+				E72728811A5F879B00D92301 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E72728551A5F879900D92301 /* Project object */;
+}
