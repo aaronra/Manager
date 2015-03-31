@@ -83,7 +83,10 @@ class LoginViewController: UIViewController {
                 
                 if loginStatus == "Success" {
                     JsonToRealm.parseData("\(self.username.text)/\(self.password.text.md5)")
-                    self.performSegueWithIdentifier("toDashboard", sender: self.btnLogin)
+                    var time = dispatch_time(DISPATCH_TIME_NOW, 1 * Int64(NSEC_PER_SEC))
+                    dispatch_after(time, dispatch_get_main_queue()) {
+                        self.performSegueWithIdentifier("toDashboard", sender: self.btnLogin)
+                    }
                     
                     
                 }else if loginStatus == "Wrong Password"{

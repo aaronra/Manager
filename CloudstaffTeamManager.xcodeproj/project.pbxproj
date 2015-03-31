@@ -23,7 +23,6 @@
 		5DBD310A1AB6B970001D8F44 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBD31091AB6B970001D8F44 /* QuickLook.framework */; };
 		5DBD310C1AB6B978001D8F44 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBD310B1AB6B978001D8F44 /* Security.framework */; };
 		5DBD31121AB6B99D001D8F44 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBD310E1AB6B99D001D8F44 /* HockeySDK.framework */; };
-		5DBD31131AB6B99D001D8F44 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5DBD31101AB6B99D001D8F44 /* HockeySDK.xcconfig */; };
 		5DBD31141AB6B99D001D8F44 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5DBD31111AB6B99D001D8F44 /* HockeySDKResources.bundle */; };
 		5DC120761AAE8DA300226DD0 /* WorkingOnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC120751AAE8DA300226DD0 /* WorkingOnViewController.swift */; };
 		5DC172621A7F07980056F6DA /* StaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC172611A7F07980056F6DA /* StaffCell.swift */; };
@@ -359,7 +358,7 @@
 		E72728551A5F879900D92301 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = CLOUDSTAFF;
 				TargetAttributes = {
 					E727285C1A5F879900D92301 = {
@@ -399,7 +398,6 @@
 				6E2341601A7B6F3B009D856E /* Main.storyboard in Resources */,
 				E727286D1A5F879B00D92301 /* LaunchScreen.xib in Resources */,
 				5DBD31141AB6B99D001D8F44 /* HockeySDKResources.bundle in Resources */,
-				5DBD31131AB6B99D001D8F44 /* HockeySDK.xcconfig in Resources */,
 				E727286A1A5F879B00D92301 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,9 +590,10 @@
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = CloudstaffTeamManager/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d7f2b7f8-f818-4ce5-af40-c170ab86e6e9";
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudstaffTeamManager/CloudstaffTeamManager-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -613,9 +612,10 @@
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = CloudstaffTeamManager/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d7f2b7f8-f818-4ce5-af40-c170ab86e6e9";
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudstaffTeamManager/CloudstaffTeamManager-Bridging-Header.h";
 			};
 			name = Release;
