@@ -12,6 +12,7 @@ import Foundation
 
 class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
 
+    
     @IBOutlet weak var imgStaff: UIImageView!
     @IBOutlet weak var imgStatus: UIImageView!
     @IBOutlet weak var lblName: UILabel!
@@ -181,21 +182,12 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
             }
         }
     }
-    
 
     
-    
-    @IBAction func done(this: UIBarButtonItem) {
-        
-        if cameFrom == "DashBoard" {
-            println("True - CameFrom DashBoard")
-//            performSegueWithIdentifier("ibtnbacktoDashboard", sender: this)
-            
-        }
-
-        
+    @IBAction func back(sender: UIBarButtonItem) {
+        navigationController?.popViewControllerAnimated(true)
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "backtoDashboard" {
             let navigationController  = segue.destinationViewController as UINavigationController

@@ -14,6 +14,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     
     let borderWidth = 1.0
     
+    @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     var arrayOfMetrics: [Metrics] = [Metrics]()
@@ -79,6 +80,8 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         let stf = Staff.objectsWhere("id == \(mtrID)")
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
+            let name = mtrixInfo["name"] as String
+            lblName.text = name
             let mtrix = mtrixInfo["metrics"] as RLMArray
             if mtrix.count != 0 {
                 for mtxstf:RLMObject in mtrix {
@@ -89,7 +92,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
                     let value  =  mtxInfo["value"]  as  Int
                     var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
                     arrayOfMetrics.append(metrics)
-                    println("----->>> \(arrayOfMetrics)")
                     self.tblView.reloadData()
                 }
             }else {
@@ -159,11 +161,8 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
 //        arrayofStaffs.append(arrayofStaffs[1])
 //        arrayofLogin.insert(arrayofLogin.last!, atIndex: 0)
 //        arrayofLogin.append(arrayofLogin[1])
-        
-        println("list \(arrayofStaffs.description)")
-        println("login \(arrayofLogin.description)")
-        
 
+    
     }
     
     
@@ -171,42 +170,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         return arrayofStaffs.count
     }
 
-    
-//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-//        // Calculate where the collection view should be at the right-hand end item
-//        var contentOffsetWhenFullyScrolledRight:CGFloat = self.collectionView.frame.size.width * (CGFloat)(self.arrayofStaffs.count-1)
-//        
-//        
-//        println("self.collectionView.frame.size.width \(self.collectionView.frame.size.width)")
-//        
-//        println("self.arrayofStaffs.count-1 \(self.arrayofStaffs.count-1)")
-//        println("scrolled to RIGHT \(contentOffsetWhenFullyScrolledRight)")
-//        println("scrollView.contentOffset.x \(scrollView.contentOffset.x)")
-//        
-//        
-//        if (scrollView.contentOffset.x == 1152.0) {
-//            // user is scrolling to the right from the last item to the 'fake' item 1.
-//            // reposition offset to show the 'real' item 1 at the left-hand end of the collection view
-//            var newIndexPath:NSIndexPath = NSIndexPath(forItem: 1, inSection: 0)
-//            self.collectionView.scrollToItemAtIndexPath(newIndexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: false)
-//        }else if(scrollView.contentOffset.x == 0){
-//            // user is scrolling to the left from the first item to the fake 'item N'.
-//            // reposition offset to show the 'real' item N at the right end end of the collection view
-//            var newIndexPath:NSIndexPath = NSIndexPath(forItem: (self.arrayofStaffs.count-2), inSection: 0)
-//            self.collectionView.scrollToItemAtIndexPath(newIndexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: false)
-//        }
-//    }
-    
-
-//    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        let offsetY = scrollView.contentOffset.y
-//        let contentHeight = scrollView.contentSize.height
-//        
-//        if offsetY > contentHeight - scrollView.frame.size.height {
-//            getImageforCollectionView()
-//            self.collectionView.reloadData()
-//        }
-//    }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
@@ -289,6 +252,8 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         arrayOfMetrics.removeAll(keepCapacity: true)
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
+            let name = mtrixInfo["name"] as String
+            lblName.text = name
             let mtrix = mtrixInfo["metrics"] as RLMArray
             
             if mtrix.count != 0 {

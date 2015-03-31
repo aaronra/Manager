@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
 
     func loginfunc() {
         
-        let urlAsString = "http://10.1.51.130/cakephp/Accounts/login/\(username.text)/\(password.text.md5).json"
+        let urlAsString = "http://10.1.51.185/Project/Accounts/login/\(username.text)/\(password.text.md5).json"
         let url: NSURL  = NSURL(string: urlAsString)!
         let urlSession = NSURLSession.sharedSession()
         
