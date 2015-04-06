@@ -33,10 +33,9 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     var clickedIndex: Int = 0
     var arrayOfFave = Array<Int>()
     
-    var userSegue = ""
-    var passSegue = ""
-    
     var alert = AlertDialogs()
+    
+    let prefKey = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -289,13 +288,16 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     @IBAction func refresh(sender: UIBarButtonItem) {
         
+        let prefValue = prefKey.stringForKey("holdingData")
+        let tags = prefValue!.componentsSeparatedByString(":")
+        let user = tags[0]
+        let pass = tags[1]
+        
         dispatch_async(dispatch_get_main_queue(), {
-            JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
+            JsonToRealm.parseData("\(user)/\(pass)")
+            
         })
         self.tableView.reloadData()
-        println("REFRESH --->>>> \(userSegue)")
-        println("REFRESH --->>>> \(passSegue)")
-        
     }
     
     @IBAction func filter(sender: AnyObject) {
@@ -303,51 +305,18 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     }
     
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        println("prepareForSegue >>> From MyTeam \(clickedIndex)")
-        
-        
         if segue.identifier == "toStaffDetails" {
-            
-//            let navigationController  = segue.destinationViewController as UINavigationController
-//            var staffTVController = navigationController.topViewController as StaffTableViewController
-            
             let staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
             
             staffTVController.cameFrom = "MyTeam"
             staffTVController.staffID = clickedIndex
-            staffTVController.userSegue = userSegue
-            staffTVController.passSegue = passSegue
-            
-        }else if segue.identifier == "toDashboard" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let myTeamTv = navigationController.topViewController as DashboardViewController
-            
-            myTeamTv.userSegue = userSegue
-            myTeamTv.passSegue = passSegue
-            
-        }else if segue.identifier == "toPing" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let pingTv = navigationController.topViewController as PingViewController
-            
-            pingTv.userSegue = userSegue
-            pingTv.passSegue = passSegue
-            
-        }else if segue.identifier == "toSettings" {
-            
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let settingsTv = navigationController.topViewController as SettingsTableViewController
-            
-            settingsTv.userSegue = userSegue
-            settingsTv.passSegue = passSegue
             
         }else if segue.identifier == "toSendMessage" {
             var sendMTVController : SendMessageTableViewController = segue.destinationViewController as SendMessageTableViewController
             sendMTVController.staffID = clickedIndex
-            sendMTVController.userSegue = userSegue
-            sendMTVController.passSegue = passSegue
+
             
         }
         

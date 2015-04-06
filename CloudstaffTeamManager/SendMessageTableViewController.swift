@@ -11,8 +11,7 @@ import UIKit
 class SendMessageTableViewController: UITableViewController {
     
     var staffID = Int()
-    var userSegue = ""
-    var passSegue = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,20 +47,7 @@ class SendMessageTableViewController: UITableViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "toMyTeam" {
-            
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let myTeamVC = navigationController.topViewController as MyTeamViewController
-            myTeamVC.userSegue = userSegue
-            myTeamVC.passSegue = passSegue
-            
-        }
-        
-    }
-    
-    
+
     
     
 }

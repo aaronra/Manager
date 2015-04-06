@@ -58,7 +58,7 @@ public class JsonToRealm {
     class func parseData(loginInfo: String){
         
         // CALL the API
-        let urlAsString = "http://10.1.51.185/Project/Accounts/login/\(loginInfo).json"
+        let urlAsString = "http://localhost:619/cakephp/Accounts/login/\(loginInfo).json"
         let url: NSURL  = NSURL(string: urlAsString)!
         let urlSession = NSURLSession.sharedSession()
         

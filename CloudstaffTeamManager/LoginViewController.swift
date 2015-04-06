@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
 
     var json = JsonToRealm()
     var alert = AlertDialogs()
+    let prefKey = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var username: UITextField!
@@ -56,24 +57,33 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func login(sender: AnyObject) {
-        if ConnectionDetector.isConnectedToNetwork() {
+//        if ConnectionDetector.isConnectedToNetwork() {
             loginfunc()
+//        }else {
+//           alert.alertLogin("No Internet Connection", viewController: self)
+//        }
+    
+        
+        if let prefValue = prefKey.stringForKey("holdingData") {
+            println("INSTALLED: " + prefValue)
+            
+            if prefValue != "\(username.text):\(password.text.md5)" {
+                prefKey.setValue("\(username.text):\(password.text.md5)", forKey: "holdingData")
+                println("VALUE CHANGED")
+            }
+            
         }else {
-           alert.alertLogin("No Internet Connection", viewController: self)
+            prefKey.setValue("\(username.text):\(password.text.md5)", forKey: "holdingData")
+            println("INSTALLED: " + prefKey.description)
         }
         
-        
-        if Preferences.isInitialInstall() {
-            println("TRUE")
-        }else {
-            println("FALSE")
-        }
-        
-    }
 
+
+    }
+ 
     func loginfunc() {
         
-        let urlAsString = "http://10.1.51.185/Project/Accounts/login/\(username.text)/\(password.text.md5).json"
+        let urlAsString = "http://localhost:619/cakephp/Accounts/login/\(username.text)/\(password.text.md5).json"
         let url: NSURL  = NSURL(string: urlAsString)!
         let urlSession = NSURLSession.sharedSession()
         
@@ -96,8 +106,7 @@ class LoginViewController: UIViewController {
                     dispatch_after(time, dispatch_get_main_queue()) {
                         self.performSegueWithIdentifier("toDashboard", sender: self.btnLogin)
                     }
-                    
-                    
+
                 }else if loginStatus == "Wrong Password"{
                     self.alert.alertLogin(loginStatus, viewController: self)
                     println("LoginStatus --->>> \(loginStatus)")
@@ -111,16 +120,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-            if segue.identifier == "toDashboard" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-                let dashBTv = navigationController.topViewController as DashboardViewController
-            dashBTv.userSegue = username.text
-            dashBTv.passSegue = password.text.md5
-        }
-    }
-    
-
     
     func registerForKeyboardNotifications() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)

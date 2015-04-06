@@ -36,9 +36,6 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
     var staffID = Int()
     var cameFrom = ""
     
-    var userSegue = ""
-    var passSegue = ""
-    
     var alert = AlertDialogs()
     
     
@@ -193,25 +190,10 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
             let navigationController  = segue.destinationViewController as UINavigationController
             let dashboardController = navigationController.topViewController as DashboardViewController
             dashboardController.mtrID = staffID
-                dashboardController.userSegue = userSegue
-                dashboardController.passSegue = passSegue
 
-        }else if segue.identifier == "toMyTeam" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let toMyTeamTV = navigationController.topViewController as MyTeamViewController
-                toMyTeamTV.userSegue = userSegue
-                toMyTeamTV.passSegue = passSegue
-            
         }else if segue.identifier == "toWorkingOn" {
             var workingMTVController : WorkingOnTableViewController = segue.destinationViewController as WorkingOnTableViewController
             workingMTVController.staffID = staffID
-            workingMTVController.userSegue = userSegue
-            workingMTVController.passSegue = passSegue
-            
-        } else if segue.identifier == "toSendMessage" {
-            var sendMTVController : SendMessageTableViewController = segue.destinationViewController as SendMessageTableViewController
-            sendMTVController.userSegue = userSegue
-            sendMTVController.passSegue = passSegue
             
         }
     }

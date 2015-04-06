@@ -26,11 +26,10 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     var refreshControl: UIRefreshControl!
     var mtrID: Int = 0
     
-    var userSegue = ""
-    var passSegue = ""
-    
     var longPressTarget: (cell: UICollectionViewCell, indexPath: NSIndexPath)!
     var longPressTargetIndex: Int = 0
+    
+    let prefKey = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -295,52 +294,31 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
 
     
     @IBAction func refresh(sender: UIBarButtonItem) {
+        
+        let prefValue = prefKey.stringForKey("holdingData")
+        let tags = prefValue!.componentsSeparatedByString(":")
+        let user = tags[0]
+        let pass = tags[1]
+
         dispatch_async(dispatch_get_main_queue(), {
-            JsonToRealm.parseData("\(self.userSegue)/\(self.passSegue)")
+            JsonToRealm.parseData("\(user)/\(pass)")
+            
         })
         self.tblView.reloadData()
-        println("REFRESH --->>>> \(userSegue)")
-        println("REFRESH --->>>> \(passSegue)")
+
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "toMyTeam" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let myTeamTv = navigationController.topViewController as MyTeamViewController
-            
-            myTeamTv.userSegue = userSegue
-            myTeamTv.passSegue = passSegue
-            
-        }else if segue.identifier == "toPing" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let pingTv = navigationController.topViewController as PingViewController
-            
-            pingTv.userSegue = userSegue
-            pingTv.passSegue = passSegue
-            
-        }else if segue.identifier == "toSettings" {
-            
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let settingsTv = navigationController.topViewController as SettingsTableViewController
-            
-            settingsTv.userSegue = userSegue
-            settingsTv.passSegue = passSegue
-            
-        }else if segue.identifier == "toStaffDetails" {
+        if segue.identifier == "toStaffDetails" {
 //            let navigationController  = segue.destinationViewController as UINavigationController
 //            var staffTVController = navigationController.topViewController as StaffTableViewController
             
             let staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
             staffTVController.cameFrom = "DashBoard"
             staffTVController.staffID = longPressTargetIndex
-            staffTVController.userSegue = userSegue
-            staffTVController.passSegue = passSegue
         }
     }
 }
-
-
 
 
 //    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

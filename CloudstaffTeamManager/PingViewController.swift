@@ -31,8 +31,6 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
     
     var arrayofPingIds = Array<Int>()
     
-    var userSegue = ""
-    var passSegue = ""
     
     var alert = AlertDialogs()
     
@@ -249,30 +247,6 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "toMyTeam" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let myTeamTv = navigationController.topViewController as MyTeamViewController
-            
-            myTeamTv.userSegue = userSegue
-            myTeamTv.passSegue = passSegue
-            
-        }else if segue.identifier == "toDashboard" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let pingTv = navigationController.topViewController as DashboardViewController
-            
-            pingTv.userSegue = userSegue
-            pingTv.passSegue = passSegue
-            
-        }else if segue.identifier == "toSettings" {
-            
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let settingsTv = navigationController.topViewController as SettingsTableViewController
-            
-            settingsTv.userSegue = userSegue
-            settingsTv.passSegue = passSegue
-            
-        }
-    }
+
     
 }

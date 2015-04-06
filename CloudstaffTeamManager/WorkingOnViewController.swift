@@ -17,8 +17,7 @@ class WorkingOnTableViewController: UITableViewController {
     var arrayOfWorking: [WorkingDetails] = [WorkingDetails]()
     
     var staffID = Int()
-    var userSegue = ""
-    var passSegue = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,14 +64,5 @@ class WorkingOnTableViewController: UITableViewController {
         performSegueWithIdentifier("toMyTeam", sender: self)
     }
     
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-       if segue.identifier == "toMyTeam" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let toMyTeamTV = navigationController.topViewController as MyTeamViewController
-            toMyTeamTV.userSegue = userSegue
-            toMyTeamTV.passSegue = passSegue
-        }
-    }
     
 }
