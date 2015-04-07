@@ -38,6 +38,7 @@
 		6EBC23311A78CC1E0043C743 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC23301A78CC1E0043C743 /* CustomCell.swift */; };
 		6EBC23331A78D4040043C743 /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC23321A78D4040043C743 /* Employees.swift */; };
 		6EBC23361A7900D40043C743 /* ConnectionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC23351A7900D40043C743 /* ConnectionDetector.swift */; };
+		9CD1AAC61AD381320092ABD2 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD1AAC51AD381320092ABD2 /* PopUpViewController.swift */; };
 		E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707D9E41A653BE5000D75FE /* LoginViewController.swift */; };
 		E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728621A5F879A00D92301 /* AppDelegate.swift */; };
 		E727286A1A5F879B00D92301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E72728691A5F879B00D92301 /* Images.xcassets */; };
@@ -92,6 +93,7 @@
 		6EBC23301A78CC1E0043C743 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		6EBC23321A78D4040043C743 /* Employees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
 		6EBC23351A7900D40043C743 /* ConnectionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionDetector.swift; sourceTree = "<group>"; };
+		9CD1AAC51AD381320092ABD2 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		E707D9E41A653BE5000D75FE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E727285D1A5F879900D92301 /* CloudstaffTeamManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudstaffTeamManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72728611A5F879A00D92301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				E72B9E441A619C450083BE2A /* SideBar.swift */,
 				E72B9E451A619C450083BE2A /* SideBarTableViewController.swift */,
+				9CD1AAC51AD381320092ABD2 /* PopUpViewController.swift */,
 			);
 			name = Sidebar;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				6E9014711A956B91001DA99F /* JsonToRealm.swift in Sources */,
 				6E5755C51AA53F220067B67C /* PingViewController.swift in Sources */,
 				5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */,
+				9CD1AAC61AD381320092ABD2 /* PopUpViewController.swift in Sources */,
 				E72B9E461A619C450083BE2A /* SideBar.swift in Sources */,
 				5D568E2C1AAD804D00021B59 /* WorkingOnCell.swift in Sources */,
 				6EBC23361A7900D40043C743 /* ConnectionDetector.swift in Sources */,

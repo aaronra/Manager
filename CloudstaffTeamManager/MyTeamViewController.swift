@@ -9,7 +9,7 @@
 import UIKit
 import Realm
 
-class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelegate {
+class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var dept: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -300,14 +300,26 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         self.tableView.reloadData()
     }
     
+    
+    
+    @IBAction func btnDept(sender: AnyObject) {
+        println("department")
+    }
+    
     @IBAction func filter(sender: AnyObject) {
         println("shjggdffgdfdfdfdf")
     }
     
     
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "toStaffDetails" {
+        if let popupView = segue.destinationViewController as? UIViewController {
+            if let popup = popupView.popoverPresentationController {
+                popup.delegate = self
+            }
+        } else if segue.identifier == "toStaffDetails" {
             let staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
             
             staffTVController.cameFrom = "MyTeam"
@@ -316,10 +328,17 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         }else if segue.identifier == "toSendMessage" {
             var sendMTVController : SendMessageTableViewController = segue.destinationViewController as SendMessageTableViewController
             sendMTVController.staffID = clickedIndex
-
-            
         }
-        
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
     }
     
 }
+
+
+
+
+
+
