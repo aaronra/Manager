@@ -67,7 +67,7 @@ public class JsonToRealm {
                 println(error.localizedDescription)
             }
             var err: NSError?
-            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
             if (err != nil) {
                 println("JSON Error \(err!.localizedDescription)")
             }
@@ -75,7 +75,7 @@ public class JsonToRealm {
             // INSERTING JSONOBJECTS ON REALM
             let realm = RLMRealm.defaultRealm()
             
-            let staffList = jsonResult["myTeam"] as [NSDictionary]
+            let staffList = jsonResult["myTeam"] as! [NSDictionary]
             realm.beginWriteTransaction()
             
             for staff in staffList {

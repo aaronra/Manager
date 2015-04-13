@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1C3C3B2C6DE70DCA018EAC979B6B1BFA2AF1746D</key>
-		<string>https://github.com/neon0619/CloudstaffTeamManager.git</string>
+		<string>https://github.com/neon0619/CloudstaffteamManager.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CloudstaffTeamManager.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/neon0619/CloudstaffTeamManager.git</string>
+	<string>https://github.com/neon0619/CloudstaffteamManager.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>1C3C3B2C6DE70DCA018EAC979B6B1BFA2AF1746D</string>
 			<key>IDESourceControlWCCName</key>
-			<string>CloudstaffTeamManager</string>
+			<string>CloudstaffteamManager</string>
 		</dict>
 	</array>
 </dict>

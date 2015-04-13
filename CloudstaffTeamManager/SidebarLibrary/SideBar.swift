@@ -17,7 +17,7 @@ import UIKit
 class SideBar: NSObject, SideBarTableViewControllerDelegate {
    
     let barWidth:CGFloat = 165.0
-    let barHeight:CGFloat = 10.0
+    let barHeight:CGFloat = 3.0
     let sideBarTableViewTopInset:CGFloat = 74.0
     let sideBarContainerView:UIView = UIView()
     let sideBarTableViewController:SideBarTableViewController = SideBarTableViewController()
@@ -28,16 +28,17 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
     var isSideBarOpen:Bool = false
     
     override init() {
+        self.originView = nil
         super.init()
     }
     
-    init(sourceView:UIView, menuItems:Array<String>){
-        super.init()
+        init(sourceView:UIView, menuItems:Array<String>){
+        
         originView = sourceView
+        super.init()
         sideBarTableViewController.tableData = menuItems
         
         setupSideBar()
-        
         animator = UIDynamicAnimator(referenceView: originView)
         
         let showGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
@@ -48,7 +49,6 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         originView.addGestureRecognizer(hideGestureRecognizer)
 
-        
     }
     
     
@@ -81,7 +81,6 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
     
     }
     
-    
     func handleSwipe(recognizer:UISwipeGestureRecognizer){
         if recognizer.direction == UISwipeGestureRecognizerDirection.Left{
             showSideBar(false)
@@ -111,7 +110,6 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         let collisionBehavior:UICollisionBehavior = UICollisionBehavior(items: [sideBarContainerView])
         collisionBehavior.addBoundaryWithIdentifier("sideBarBoundary", fromPoint: CGPointMake(boundaryX, 30), toPoint: CGPointMake(boundaryX, originView.frame.size.height))
         animator.addBehavior(collisionBehavior)
-        
         
         let pushBehavior:UIPushBehavior = UIPushBehavior(items: [sideBarContainerView], mode: UIPushBehaviorMode.Instantaneous)
         pushBehavior.magnitude = magnitude

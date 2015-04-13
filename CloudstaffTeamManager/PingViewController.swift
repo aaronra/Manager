@@ -55,11 +55,11 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
         
         for myStaff:RLMObject in staffDetails {
             let staffInfo = myStaff as RLMObject
-            let id = staffInfo["id"] as Int
-            let photo = staffInfo["photo"] as String
-            let login = staffInfo["login"] as String
-            let username = staffInfo["username"] as String
-            let name = staffInfo["name"] as String
+            let id = staffInfo["id"] as! Int
+            let photo = staffInfo["photo"] as! String
+            let login = staffInfo["login"] as! String
+            let username = staffInfo["username"] as! String
+            let name = staffInfo["name"] as! String
             
             arrayOfIds.append(id)
             arrayofStaffsImg.append(photo)
@@ -75,7 +75,7 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: PingStaffCell = tableView.dequeueReusableCellWithIdentifier("pingStaffCell") as PingStaffCell
+        let cell: PingStaffCell = tableView.dequeueReusableCellWithIdentifier("pingStaffCell") as! PingStaffCell
         
         let selectedView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height))
         selectedView.backgroundColor = UIColor.whiteColor()

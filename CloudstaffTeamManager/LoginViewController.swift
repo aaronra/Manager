@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
         textField.resignFirstResponder()
         return true
     }
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
     ////////////////////////////////////////////////////////////////////
@@ -92,13 +92,13 @@ class LoginViewController: UIViewController {
                 println(error.localizedDescription)
             }
             var err: NSError?
-            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
             if (err != nil) {
                 println("JSON Error \(err!.localizedDescription)")
             }
             
             dispatch_async(dispatch_get_main_queue(), {
-                let loginStatus = jsonResult["LoginStatus"] as String
+                let loginStatus = jsonResult["LoginStatus"] as! String
                 
                 if loginStatus == "Success" {
                     JsonToRealm.parseData("\(self.username.text)/\(self.password.text.md5)")

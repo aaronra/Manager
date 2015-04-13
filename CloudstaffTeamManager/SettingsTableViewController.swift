@@ -17,7 +17,7 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
 
     
     ///////////////////////  KEYBOARD DISMISS  /////////////////////////
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -25,7 +25,7 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
         textView.resignFirstResponder()
         return true
     }
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         timeInterval.resignFirstResponder()
         defaultMessage.resignFirstResponder()
         self.view.endEditing(true)
@@ -71,14 +71,14 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "bToDashboardDone" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let myTeamTv = navigationController.topViewController as DashboardViewController
+            let navigationController  = segue.destinationViewController as! UINavigationController
+            let myTeamTv = navigationController.topViewController as! DashboardViewController
             
 
             
         }else if segue.identifier == "bToDashboardCanceled" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let pingTv = navigationController.topViewController as DashboardViewController
+            let navigationController  = segue.destinationViewController as! UINavigationController
+            let pingTv = navigationController.topViewController as! DashboardViewController
             
 
             

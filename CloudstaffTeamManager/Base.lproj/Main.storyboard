@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PD5-NW-iGU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PD5-NW-iGU">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -255,9 +254,6 @@
                                 </state>
                                 <connections>
                                     <action selector="filter:" destination="fK0-o1-rF0" eventType="touchUpInside" id="uSU-pX-Ek0"/>
-                                    <segue destination="jQ3-WJ-KQY" kind="popoverPresentation" identifier="showPopup" popoverAnchorView="z3c-wY-EBO" id="MwN-Qw-FAh">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TSZ-Ur-qYw">
@@ -943,7 +939,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1y2-sK-h09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2871" y="-623"/>
+            <point key="canvasLocation" x="-2849" y="-623"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zKF-Y1-dhg">
@@ -1389,104 +1385,6 @@
             </objects>
             <point key="canvasLocation" x="-3971" y="129"/>
         </scene>
-        <!--Pop Up View Controller-->
-        <scene sceneID="dU5-sT-z1t">
-            <objects>
-                <viewController id="jQ3-WJ-KQY" customClass="PopUpViewController" customModule="CloudstaffTeamManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Arm-dP-BTO"/>
-                        <viewControllerLayoutGuide type="bottom" id="fko-j7-Eh8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zTS-NA-ZJE">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="280"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJm-qc-k2R">
-                                <rect key="frame" x="-25" y="23" width="250" height="40"/>
-                                <color key="backgroundColor" red="0.28860000000000002" green="0.78000000000000003" blue="0.40326000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="Deq-Sk-wRd"/>
-                                    <constraint firstAttribute="height" constant="40" id="bMh-6a-Oa6"/>
-                                </constraints>
-                                <state key="normal" title="Feeling Great!">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a49-Dr-kDw">
-                                <rect key="frame" x="-25" y="119" width="250" height="40"/>
-                                <color key="backgroundColor" red="0.78000000000000003" green="0.75543000000000005" blue="0.28860000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="yNA-vW-QFT"/>
-                                </constraints>
-                                <state key="normal" title="Can't complain">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwu-uS-P7k">
-                                <rect key="frame" x="-25" y="167" width="250" height="40"/>
-                                <color key="backgroundColor" red="0.78000000000000003" green="0.64076999999999995" blue="0.28860000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="AAe-yz-iN2"/>
-                                </constraints>
-                                <state key="normal" title="Meh, been better">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5t-Zn-C2b">
-                                <rect key="frame" x="-25" y="215" width="250" height="40"/>
-                                <color key="backgroundColor" red="0.78000000000000003" green="0.42782999999999999" blue="0.28860000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="7pB-Ic-Bcg"/>
-                                </constraints>
-                                <state key="normal" title="Feeling Terrible!">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNv-Bz-yl0">
-                                <rect key="frame" x="-25" y="71" width="250" height="40"/>
-                                <color key="backgroundColor" red="0.59982000000000002" green="0.78000000000000003" blue="0.28860000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="KXJ-rH-oRS"/>
-                                </constraints>
-                                <state key="normal" title="Pretty good">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="RNv-Bz-yl0" firstAttribute="trailing" secondItem="fJm-qc-k2R" secondAttribute="trailing" id="2sS-Ng-9el"/>
-                            <constraint firstItem="h5t-Zn-C2b" firstAttribute="trailing" secondItem="dwu-uS-P7k" secondAttribute="trailing" id="AK7-3Y-KOa"/>
-                            <constraint firstItem="h5t-Zn-C2b" firstAttribute="top" secondItem="dwu-uS-P7k" secondAttribute="bottom" constant="8" symbolic="YES" id="AzJ-eq-3tn"/>
-                            <constraint firstItem="RNv-Bz-yl0" firstAttribute="leading" secondItem="fJm-qc-k2R" secondAttribute="leading" id="B5L-lG-81C"/>
-                            <constraint firstItem="a49-Dr-kDw" firstAttribute="trailing" secondItem="dwu-uS-P7k" secondAttribute="trailing" id="JE6-AW-3dJ"/>
-                            <constraint firstItem="fJm-qc-k2R" firstAttribute="centerX" secondItem="zTS-NA-ZJE" secondAttribute="centerX" id="QQE-6r-gDm"/>
-                            <constraint firstItem="RNv-Bz-yl0" firstAttribute="top" secondItem="fJm-qc-k2R" secondAttribute="bottom" constant="8" symbolic="YES" id="VKG-hU-zdp"/>
-                            <constraint firstItem="a49-Dr-kDw" firstAttribute="top" secondItem="RNv-Bz-yl0" secondAttribute="bottom" constant="8" symbolic="YES" id="fOW-yr-iP9"/>
-                            <constraint firstItem="a49-Dr-kDw" firstAttribute="trailing" secondItem="RNv-Bz-yl0" secondAttribute="trailing" id="l57-1p-x2D"/>
-                            <constraint firstItem="dwu-uS-P7k" firstAttribute="leading" secondItem="a49-Dr-kDw" secondAttribute="leading" id="nQK-Vg-8f7"/>
-                            <constraint firstItem="a49-Dr-kDw" firstAttribute="leading" secondItem="RNv-Bz-yl0" secondAttribute="leading" id="rbg-Ll-u00"/>
-                            <constraint firstItem="dwu-uS-P7k" firstAttribute="top" secondItem="a49-Dr-kDw" secondAttribute="bottom" constant="8" symbolic="YES" id="sfa-cI-6oA"/>
-                            <constraint firstItem="fJm-qc-k2R" firstAttribute="top" secondItem="Arm-dP-BTO" secondAttribute="bottom" constant="23" id="tiw-ha-eQ6"/>
-                            <constraint firstItem="dwu-uS-P7k" firstAttribute="leading" secondItem="h5t-Zn-C2b" secondAttribute="leading" id="u5C-VX-Myg"/>
-                        </constraints>
-                    </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="200" height="280"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="200" height="280"/>
-                    <connections>
-                        <outlet property="popuplayout" destination="zTS-NA-ZJE" id="d5M-O0-bOt"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pha-pr-WSM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2996" y="-504"/>
-        </scene>
     </scenes>
     <resources>
         <image name="back" width="29" height="29"/>
@@ -1503,12 +1401,12 @@
         <image name="whitebox" width="800" height="483"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kfx-WR-1cy"/>
-        <segue reference="bGC-p1-8ln"/>
-        <segue reference="KVJ-TI-tUS"/>
-        <segue reference="e4B-Ee-Tz2"/>
-        <segue reference="Pgy-e2-03c"/>
-        <segue reference="P5g-My-Q0m"/>
         <segue reference="ZqU-ml-1UO"/>
+        <segue reference="jgQ-We-WHT"/>
+        <segue reference="e4B-Ee-Tz2"/>
+        <segue reference="P5g-My-Q0m"/>
+        <segue reference="kfx-WR-1cy"/>
+        <segue reference="Pgy-e2-03c"/>
+        <segue reference="wDJ-K0-uJN"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -49,16 +49,16 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
         for staff: RLMObject in staffDetail {
             let stfInfo = staff as RLMObject
             
-                let username     =   stfInfo["username"]  as  String
-                let name         =   stfInfo["name"]  as  String
-                let photo        =   stfInfo["photo"] as  String
-                let shift_start  =   stfInfo["shift_start"]  as  String
-                let shift_end    =   stfInfo["shift_end"]  as  String
-                let team         =   stfInfo["team"]  as  String
-                let position     =   stfInfo["position"] as  String
-                let status       =   stfInfo["status"]  as  String
-                let favorite     =   stfInfo["favorite"]  as  String
-                let login        =   stfInfo["login"]  as  String
+                let username     =   stfInfo["username"]  as!  String
+                let name         =   stfInfo["name"]  as!  String
+                let photo        =   stfInfo["photo"] as!  String
+                let shift_start  =   stfInfo["shift_start"]  as!  String
+                let shift_end    =   stfInfo["shift_end"]  as!  String
+                let team         =   stfInfo["team"]  as!  String
+                let position     =   stfInfo["position"] as!  String
+                let status       =   stfInfo["status"]  as!  String
+                let favorite     =   stfInfo["favorite"]  as!  String
+                let login        =   stfInfo["login"]  as!  String
             
             
             imgStatus.image = UIImage(named: login+"list")
@@ -144,7 +144,7 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
             for myPing:RLMObject in pingMsg {
                 let staffInfo  = myPing as RLMObject
                 
-                let ping = staffInfo["ping"] as String
+                let ping = staffInfo["ping"] as! String
                 
                 println("----->>>> \(ping)")
                 
@@ -187,12 +187,12 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "backtoDashboard" {
-            let navigationController  = segue.destinationViewController as UINavigationController
-            let dashboardController = navigationController.topViewController as DashboardViewController
+            let navigationController  = segue.destinationViewController as! UINavigationController
+            let dashboardController = navigationController.topViewController as! DashboardViewController
             dashboardController.mtrID = staffID
 
         }else if segue.identifier == "toWorkingOn" {
-            var workingMTVController : WorkingOnTableViewController = segue.destinationViewController as WorkingOnTableViewController
+            var workingMTVController : WorkingOnTableViewController = segue.destinationViewController as! WorkingOnTableViewController
             workingMTVController.staffID = staffID
             
         }

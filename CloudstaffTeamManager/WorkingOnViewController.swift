@@ -25,11 +25,11 @@ class WorkingOnTableViewController: UITableViewController {
         let stf = Staff.objectsWhere("id == \(staffID)")
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
-            let mtrix = mtrixInfo["working"] as RLMArray
+            let mtrix = mtrixInfo["working"] as! RLMArray
             for mtxstf:RLMObject in mtrix {
                 let mtxInfo = mtxstf as RLMObject
-                let task = mtxInfo["task"] as String
-                let date = mtxInfo["date"] as String
+                let task = mtxInfo["task"] as! String
+                let date = mtxInfo["date"] as! String
 
                 var working = WorkingDetails(task: String(task), date: String(date))
             
@@ -51,7 +51,7 @@ class WorkingOnTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: WorkingOnCell = tableView.dequeueReusableCellWithIdentifier("taskCell") as WorkingOnCell
+        let cell: WorkingOnCell = tableView.dequeueReusableCellWithIdentifier("taskCell") as! WorkingOnCell
         
         let working = arrayOfWorking[indexPath.row]
         cell.setCell(working.date, lblTask: working.task)

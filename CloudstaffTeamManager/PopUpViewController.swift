@@ -9,7 +9,6 @@
 import UIKit
 
 class PopUpViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-
     
     @IBOutlet var popuplayout: UIView!
     

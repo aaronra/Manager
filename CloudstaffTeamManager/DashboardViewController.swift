@@ -79,16 +79,16 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         let stf = Staff.objectsWhere("id == \(mtrID)")
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
-            let name = mtrixInfo["name"] as String
+            let name = mtrixInfo["name"] as! String
             lblName.text = name
-            let mtrix = mtrixInfo["metrics"] as RLMArray
+            let mtrix = mtrixInfo["metrics"] as! RLMArray
             if mtrix.count != 0 {
                 for mtxstf:RLMObject in mtrix {
                     let mtxInfo = mtxstf as RLMObject
-                    let title  =  mtxInfo["title"]  as  String
-                    let daily  =  mtxInfo["daily"]  as  Int
-                    let weekly =  mtxInfo["weekly"] as  Int
-                    let value  =  mtxInfo["value"]  as  Int
+                    let title  =  mtxInfo["title"]  as!  String
+                    let daily  =  mtxInfo["daily"]  as!  Int
+                    let weekly =  mtxInfo["weekly"] as!  Int
+                    let value  =  mtxInfo["value"]  as!  Int
                     var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
                     arrayOfMetrics.append(metrics)
                     self.tblView.reloadData()
@@ -123,7 +123,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: DashboardCell = tableView.dequeueReusableCellWithIdentifier("Cell") as DashboardCell
+        let cell: DashboardCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! DashboardCell
         
         if indexPath.row % 2 == 0
         {
@@ -147,8 +147,8 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         for myStaff:RLMObject in staffDetails {
             let staffInfo  = myStaff as RLMObject
             
-            let photo = staffInfo["photo"] as String
-            let login = staffInfo["login"] as String
+            let photo = staffInfo["photo"] as! String
+            let login = staffInfo["login"] as! String
             
             
             arrayofStaffs.append(photo)
@@ -172,7 +172,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell: StaffCell = collectionView.dequeueReusableCellWithReuseIdentifier("staffCell", forIndexPath: indexPath) as StaffCell
+        let cell: StaffCell = collectionView.dequeueReusableCellWithReuseIdentifier("staffCell", forIndexPath: indexPath) as! StaffCell
         
         cell.statusCell.image = UIImage(named: arrayofLogin[indexPath.row])
         
@@ -251,17 +251,17 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         arrayOfMetrics.removeAll(keepCapacity: true)
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
-            let name = mtrixInfo["name"] as String
+            let name = mtrixInfo["name"] as! String
             lblName.text = name
-            let mtrix = mtrixInfo["metrics"] as RLMArray
+            let mtrix = mtrixInfo["metrics"] as! RLMArray
             
             if mtrix.count != 0 {
                 for mtxstf:RLMObject in mtrix {
                     let mtxInfo = mtxstf as RLMObject
-                    let title  =  mtxInfo["title"]  as  String
-                    let daily  =  mtxInfo["daily"]  as  Int
-                    let weekly =  mtxInfo["weekly"] as  Int
-                    let value  =  mtxInfo["value"]  as  Int
+                    let title  =  mtxInfo["title"]  as!  String
+                    let daily  =  mtxInfo["daily"]  as!  Int
+                    let weekly =  mtxInfo["weekly"] as!  Int
+                    let value  =  mtxInfo["value"]  as!  Int
                     var metrics = Metrics(title: String(title), lbldaily:"daily average", lblweekly:"weekly average", daily: daily, weekly: weekly, value: value)
                     arrayOfMetrics.append(metrics)
                     self.tblView.reloadData()
@@ -313,7 +313,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
 //            let navigationController  = segue.destinationViewController as UINavigationController
 //            var staffTVController = navigationController.topViewController as StaffTableViewController
             
-            let staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
+            let staffTVController : StaffTableViewController = segue.destinationViewController as! StaffTableViewController
             staffTVController.cameFrom = "DashBoard"
             staffTVController.staffID = longPressTargetIndex
         }

@@ -24,11 +24,11 @@ class PinViewController: UIViewController, UITextFieldDelegate {
     let yourPIN = "1234"
     
     ///////////////////////  KEYBOARD DISMISS  /////////////////////////
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
     /////////////////////////////////////////////////////////////////////

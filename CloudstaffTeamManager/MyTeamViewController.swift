@@ -63,17 +63,17 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         for myStaff:RLMObject in staffDetails {
             let staffInfo  = myStaff as RLMObject
             
-            let id = staffInfo["id"] as Int
-            let photo = staffInfo["photo"] as String
-            let login = staffInfo["login"] as String
-            let username = staffInfo["username"] as String
-            let name = staffInfo["name"] as String
-            let shift_start = staffInfo["shift_start"] as String
-            let shift_end = staffInfo["shift_end"] as String
-            let team = staffInfo["team"] as String
-            let position = staffInfo["position"] as String
-            let status = staffInfo["status"] as String
-            let fave = staffInfo["favorite"] as String
+            let id = staffInfo["id"] as! Int
+            let photo = staffInfo["photo"] as! String
+            let login = staffInfo["login"] as! String
+            let username = staffInfo["username"] as! String
+            let name = staffInfo["name"] as! String
+            let shift_start = staffInfo["shift_start"] as! String
+            let shift_end = staffInfo["shift_end"] as! String
+            let team = staffInfo["team"] as! String
+            let position = staffInfo["position"] as! String
+            let status = staffInfo["status"] as! String
+            let fave = staffInfo["favorite"] as! String
             
             arrayOfIds.append(id)
             arrayofStaffsImg.append(photo)
@@ -109,7 +109,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: MyTeamCell = tableView.dequeueReusableCellWithIdentifier("teamCell") as MyTeamCell
+        let cell: MyTeamCell = tableView.dequeueReusableCellWithIdentifier("teamCell") as! MyTeamCell
         
         let selectedView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height))
         selectedView.backgroundColor = UIColor.whiteColor()
@@ -261,7 +261,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         
         for staff: RLMObject in staffDetail {
             let stfInfo = staff as RLMObject
-            let favorite = stfInfo["favorite"] as String
+            let favorite = stfInfo["favorite"] as! String
             
             println("REALM -->> \(favorite.uppercaseString)")
             realm.commitWriteTransaction()
@@ -315,18 +315,19 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let popupView = segue.destinationViewController as? UIViewController {
-            if let popup = popupView.popoverPresentationController {
-                popup.delegate = self
-            }
-        } else if segue.identifier == "toStaffDetails" {
-            let staffTVController : StaffTableViewController = segue.destinationViewController as StaffTableViewController
+//        if let popupView = segue.destinationViewController as? UIViewController {
+//            if let popup = popupView.popoverPresentationController {
+//                popup.delegate = self
+//            }
+//        } else
+            if segue.identifier == "toStaffDetails" {
+            let staffTVController : StaffTableViewController = segue.destinationViewController as! StaffTableViewController
             
             staffTVController.cameFrom = "MyTeam"
             staffTVController.staffID = clickedIndex
             
         }else if segue.identifier == "toSendMessage" {
-            var sendMTVController : SendMessageTableViewController = segue.destinationViewController as SendMessageTableViewController
+            var sendMTVController : SendMessageTableViewController = segue.destinationViewController as! SendMessageTableViewController
             sendMTVController.staffID = clickedIndex
         }
     }
