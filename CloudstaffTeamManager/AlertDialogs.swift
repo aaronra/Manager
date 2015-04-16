@@ -32,8 +32,10 @@ class AlertDialogs: NSObject, UIAlertViewDelegate {
         
     }
     
+///////  alertController for TableViewController with TextField --> SETTINGS /////////////
     
     
+///////  alertController for TableViewController with TextField /////////////
     func showTableAlertController(viewController : UITableViewController) -> Void {
         var alertController = UIAlertController(title: "Enter Ping Message", message: "", preferredStyle: .Alert)
         let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in})
@@ -48,7 +50,7 @@ class AlertDialogs: NSObject, UIAlertViewDelegate {
         viewController.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    
+///////  alertController for ViewController with TextField /////////////
     func showAlertController(viewController : UIViewController) -> Void {
         var alertController = UIAlertController(title: "Enter Ping Message", message: "", preferredStyle: .Alert)
         let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in})

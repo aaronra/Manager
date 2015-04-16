@@ -13,6 +13,7 @@ import Realm
 class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UICollectionViewDelegate {
     
     let borderWidth = 1.0
+    var onBackground = OnBackground()
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var tblView: UITableView!
@@ -30,6 +31,15 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     var longPressTargetIndex: Int = 0
     
     let prefKey = NSUserDefaults.standardUserDefaults()
+    let settKey = NSUserDefaults.standardUserDefaults()
+    
+    
+    // dummy API return data
+    var timeInterval = "2"
+    var defaultMessage = "This is sample Message for Settings...."
+    var autoUpdate = "true"
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +66,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             sideBar.showSideBar(true)
         }
     }
+
     
     func sideBarDidSelectButtonAtIndex(index: Int) {
         if index == 0{
@@ -117,6 +128,37 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
             }
         }
     }
+    
+    
+//////////////////////////////////////////////////////////////////
+    
+    func setAutoUpdate() {
+    
+       // insert Parsed data to NSUserDefault as 1 String
+       settKey.setValue("\(timeInterval):\(defaultMessage):\(autoUpdate)", forKey: "isOn")
+        
+        // breakdown String to get autoSwitch value
+        let settValue = settKey.stringForKey("isOn")
+        let stringArray = settValue!.componentsSeparatedByString(":")
+        let autoSwitch: String = stringArray [2]
+        var settValString = NSString(string: autoSwitch)
+        
+//        if settValString.boolValue == true {
+//            onBackground.autoUpdate()
+//        }else {
+//            onBackground.stopUpdate()
+//        }
+        
+    }
+    
+    
+    
+    
+//////////////////////////////////////////////////////////////////
+    
+    
+    
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfMetrics.count

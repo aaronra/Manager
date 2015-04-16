@@ -29,6 +29,7 @@ class LoginViewController: UIViewController {
     }
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
+
     }
     ////////////////////////////////////////////////////////////////////
     
@@ -37,17 +38,14 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
-        
         // prevents the scroll view from swallowing up the touch event of child buttons
         tapGesture.cancelsTouchesInView = false
-        
         scrollView.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.registerForKeyboardNotifications()
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -57,16 +55,14 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func login(sender: AnyObject) {
-//        if ConnectionDetector.isConnectedToNetwork() {
+        if ConnectionDetector.isConnectedToNetwork() {
             loginfunc()
-//        }else {
-//           alert.alertLogin("No Internet Connection", viewController: self)
-//        }
+        }else {
+           alert.alertLogin("No Internet Connection", viewController: self)
+        }
     
-        
         if let prefValue = prefKey.stringForKey("holdingData") {
             println("INSTALLED: " + prefValue)
-            
             if prefValue != "\(username.text):\(password.text.md5)" {
                 prefKey.setValue("\(username.text):\(password.text.md5)", forKey: "holdingData")
                 println("VALUE CHANGED")
@@ -76,15 +72,13 @@ class LoginViewController: UIViewController {
             prefKey.setValue("\(username.text):\(password.text.md5)", forKey: "holdingData")
             println("INSTALLED: " + prefKey.description)
         }
-        
-
 
     }
  
     func loginfunc() {
         
         let urlAsString = "http://localhost:619/cakephp/Accounts/login/\(username.text)/\(password.text.md5).json"
-        let url: NSURL  = NSURL(string: urlAsString)!
+        let url: NSURL = NSURL(string: urlAsString)!
         let urlSession = NSURLSession.sharedSession()
         
         let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
@@ -117,7 +111,6 @@ class LoginViewController: UIViewController {
             })
         })
         jsonQuery.resume()
-        
     }
     
     
@@ -145,7 +138,6 @@ class LoginViewController: UIViewController {
         if (!CGRectContainsPoint(visibleRect, buttonOrigin)) {
             var scrollPoint: CGPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight + 4)
             self.scrollView.setContentOffset(scrollPoint, animated: true)
-            
         }
     }
     

@@ -43,12 +43,11 @@ extension String  {
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let prefValue = NSUserDefaults.standardUserDefaults()
+    let settKey = NSUserDefaults.standardUserDefaults()
     
 
-    func application(application: UIApplication, _didFinishLaunchingWithOptions launchOptions: NSDictionary) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
 
         BITHockeyManager.sharedHockeyManager().configureWithIdentifier("d4f20f855814e22a29f7adb69decee16")
         BITHockeyManager.sharedHockeyManager().startManager()
@@ -62,14 +61,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIBarButtonItem.appearance().tintColor = UIColor(hex: 0xffffff)
         
         
-//        if let prefKey = prefValue.stringForKey("initialInstall"){
-//            println("INSTALLED: " + prefKey)
-//        }else{
-//            //Nothing stored in NSUserDefaults yet. Set a value.
-//            prefValue.setValue("installed2", forKey: "initialInstall2")
-//            println("INITIAL INSTALL: " + prefValue.description)
-//            
-//        }
+        
+//      Initial install set the value for Settings AutoUpdate
+        if let settValue = settKey.stringForKey("isOn"){
+            println("INSTALLED Settings: " + settValue)
+        }else{
+            //Nothing stored in NSUserDefaults yet. Set a value.
+            settKey.setValue("0:You can save your default message for sending Ping message.:false", forKey: "isOn")
+            println("INITIAL INSTALL Settings: " + settKey.description)
+            
+        }
         
         return true
     }
@@ -82,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        NSNotificationCenter.defaultCenter().postNotificationName("kSaveSwitchesStatesNotification", object: nil);
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
