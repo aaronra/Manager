@@ -48,6 +48,9 @@ class AlertDialogs: NSObject, UIAlertViewDelegate {
         switch buttonIndex {
         case 0:
             println("OK \(buttonIndex)")
+            
+            // Send PING MESSAGE function here
+            
             break;
         case 1:
             println("CANCEL \(buttonIndex)")

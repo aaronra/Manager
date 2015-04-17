@@ -32,7 +32,6 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
         
     }
     
-
     func hideKeyboard() {
         timeInterval.resignFirstResponder()
         defaultMessage.resignFirstResponder()
@@ -117,7 +116,4 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
         }
     }
     
-
-
-
 }
