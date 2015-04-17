@@ -11,6 +11,7 @@ import UIKit
 class SendMessageTableViewController: UITableViewController {
     
     var staffID = Int()
+    var alert = AlertDialogs()
     
     
     override func viewDidLoad() {
@@ -33,18 +34,31 @@ class SendMessageTableViewController: UITableViewController {
     }
     
     @IBAction func send(sender: UIBarButtonItem) {
-        var alertController = UIAlertController(title: "Cloudstaff Team Manager", message: "Send Message", preferredStyle: .Alert)
-        
-        
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            self.performSegueWithIdentifier("toMyTeam", sender: alertController)
-        })
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in}
-        
-        alertController.addAction(ok)
-        alertController.addAction(cancel)
-        
-        presentViewController(alertController, animated: true, completion: nil)
+        showMessageAlertView("Cloudstaf Team Manager", message: "Send Message", viewController: self)
+    }
+    
+    
+    func showMessageAlertView(title: String, message: String, viewController: UIViewController) {
+        var alert = UIAlertView()
+        alert.delegate = self
+        alert.title = title
+        alert.message = message
+        alert.alertViewStyle = .Default
+        alert.addButtonWithTitle("OK")
+        alert.addButtonWithTitle("Cancel")
+        alert.show()
+    }
+    internal func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        switch buttonIndex {
+        case 0:
+            self.performSegueWithIdentifier("toMyTeam", sender: alertView)
+            break;
+        case 1:
+            println("CANCEL \(buttonIndex)")
+            break;
+        default: ()
+        println("DEFAULT \(buttonIndex)")
+        }
     }
     
 

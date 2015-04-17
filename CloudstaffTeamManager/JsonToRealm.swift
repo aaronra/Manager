@@ -21,6 +21,7 @@ class Metric: RLMObject {
     dynamic var daily: Int = 0
     dynamic var weekly: Int = 0
     dynamic var value: Int = 0
+    
 }
 
 

@@ -275,13 +275,12 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     
     @IBAction func ping(sender: AnyObject) {
-        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-        case .OrderedSame, .OrderedDescending:
-            
-            alert.showAlertController(self)
-        case .OrderedAscending:
-            alert.showAlertView()
-        }
+        let settKey = NSUserDefaults.standardUserDefaults()
+        let settValue = settKey.stringForKey("isOn")
+        let stringArray = settValue!.componentsSeparatedByString(":")
+        let defaultMsg: String = stringArray [1]
+        
+        alert.showPingAlertView("Enter Ping Message", message: defaultMsg, viewController: self)
     }
     
     

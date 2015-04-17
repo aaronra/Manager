@@ -39,10 +39,12 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     var defaultMessage = "This is sample Message for Settings...."
     var autoUpdate = "true"
 
-    
+    let myID = UIDevice.currentDevice().identifierForVendor.UUIDString
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         sideBar = SideBar(sourceView: self.view, menuItems:
             ["dashboard",
                 "my team",

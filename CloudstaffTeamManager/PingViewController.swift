@@ -235,15 +235,12 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
     }
     
     
-    
     @IBAction func ping(sender: AnyObject) {
-        
-        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-        case .OrderedSame, .OrderedDescending:
-            alert.showAlertController(self)
-        case .OrderedAscending:
-            alert.showAlertView()
-        }
+        let settKey = NSUserDefaults.standardUserDefaults()
+        let settValue = settKey.stringForKey("isOn")
+        let stringArray = settValue!.componentsSeparatedByString(":")
+        let defaultMsg: String = stringArray [1]
+        alert.showPingAlertView("Enter Ping Mesage", message: defaultMsg, viewController: self)
         
     }
     

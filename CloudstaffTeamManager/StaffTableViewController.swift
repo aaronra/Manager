@@ -113,9 +113,6 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
     
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -151,14 +148,11 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
             }
             realm.commitWriteTransaction()
             
-            
-            switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-            case .OrderedSame, .OrderedDescending:
-
-                alert.showTableAlertController(self)
-            case .OrderedAscending:
-                alert.showAlertView()
-            }
+            let settKey = NSUserDefaults.standardUserDefaults()
+            let settValue = settKey.stringForKey("isOn")
+            let stringArray = settValue!.componentsSeparatedByString(":")
+            let defaultMsg: String = stringArray [1]
+            alert.showPingAlertView("Enter Ping Message", message: defaultMsg, viewController: self)
 
         } else if (indexPath.row == 2) {
             

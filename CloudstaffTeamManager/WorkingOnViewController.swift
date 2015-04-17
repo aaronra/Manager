@@ -22,6 +22,8 @@ class WorkingOnTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("--->> \(staffID)")
+        
         let stf = Staff.objectsWhere("id == \(staffID)")
         for mtrc_stf:RLMObject in stf {
             let mtrixInfo = mtrc_stf as RLMObject
@@ -32,9 +34,7 @@ class WorkingOnTableViewController: UITableViewController {
                 let date = mtxInfo["date"] as! String
 
                 var working = WorkingDetails(task: String(task), date: String(date))
-            
                 arrayOfWorking.append(working)
-                
                 println("------->>> \(working.date)")
             }
         }

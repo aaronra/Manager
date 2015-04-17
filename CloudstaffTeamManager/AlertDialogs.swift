@@ -12,7 +12,6 @@ import Foundation
 class AlertDialogs: NSObject, UIAlertViewDelegate {
     
     
-    
     func alertLogin(apiMessage: String, viewController : UIViewController) {
         
         switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
@@ -31,54 +30,20 @@ class AlertDialogs: NSObject, UIAlertViewDelegate {
         }
         
     }
+
     
-///////  alertController for TableViewController with TextField --> SETTINGS /////////////
-    
-    
-///////  alertController for TableViewController with TextField /////////////
-    func showTableAlertController(viewController : UITableViewController) -> Void {
-        var alertController = UIAlertController(title: "Enter Ping Message", message: "", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in})
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in}
-        
-        alertController.addAction(ok)
-        alertController.addAction(cancel)
-        
-        alertController.addTextFieldWithConfigurationHandler { (name) -> Void in
-            name.text = "Default Ping Message..!"
-        }
-        viewController.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-///////  alertController for ViewController with TextField /////////////
-    func showAlertController(viewController : UIViewController) -> Void {
-        var alertController = UIAlertController(title: "Enter Ping Message", message: "", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in})
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in}
-        
-        alertController.addAction(ok)
-        alertController.addAction(cancel)
-        
-        alertController.addTextFieldWithConfigurationHandler { (name) -> Void in
-            name.text = "Default Ping Message..!"
-        }
-        viewController.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    
-    func showAlertView() {
+    // ALERT WITH TEXTFIELD FOR iOs7 and iOs8
+    func showPingAlertView(title: String, message: String, viewController: UIViewController) {
         var alert = UIAlertView()
         alert.delegate = self
-        alert.title = "Enter Ping Message"
+        alert.title = title
         alert.alertViewStyle = .PlainTextInput
         let textField = alert.textFieldAtIndex(0)
         alert.addButtonWithTitle("OK")
-        textField?.text = "Default Ping Message"
+        textField?.text = message
         alert.addButtonWithTitle("Cancel")
         alert.show()
     }
-    
-    
     internal func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         switch buttonIndex {
         case 0:

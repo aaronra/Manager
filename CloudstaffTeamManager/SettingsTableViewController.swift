@@ -76,16 +76,23 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
     
     
     @IBAction func done(sender: UIBarButtonItem) {
-        showAlertForSettings("Save Settings", viewController: self)
+        showAlertView("Save Settings", message: "", viewController: self)
     }
     
     
-    func showAlertForSettings(title : String, viewController : UITableViewController) -> Void {
-        var alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
-            }
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            
+    func showAlertView(title: String, message: String, viewController: UIViewController) {
+        var alert = UIAlertView()
+        alert.delegate = self
+        alert.title = title
+        alert.alertViewStyle = .Default
+        alert.addButtonWithTitle("OK")
+        alert.addButtonWithTitle("Cancel")
+        alert.show()
+    }
+    internal func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        switch buttonIndex {
+        case 0:
+            println("OK \(buttonIndex)")
             self.settKey.setValue("\(self.timeInterval.text):\(self.defaultMessage.text):\(self.autoUpdate.on.description)", forKey: "isOn")
             
             if self.autoUpdate.on == false {
@@ -96,21 +103,19 @@ class SettingsTableViewController: UITableViewController, UITextViewDelegate, UI
                 println("TRUE  :  autoUpdate now")
             }
             
-//            OnBackground.stopUpdate(self)
+            //            OnBackground.stopUpdate(self)
             
             println(self.autoUpdate.on.description)
             
-            self.performSegueWithIdentifier("toDashBoard", sender: alertController)
-        })
-        
-        
-        
-        alertController.addAction(cancel)
-        alertController.addAction(ok)
-        
-        viewController.presentViewController(alertController, animated: true, completion: nil)
+            self.performSegueWithIdentifier("toDashBoard", sender: alertView)
+            break;
+        case 1:
+            println("CANCEL \(buttonIndex)")
+            break;
+        default: ()
+        println("DEFAULT \(buttonIndex)")
+        }
     }
-    
     
 
 
