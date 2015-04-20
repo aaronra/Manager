@@ -19,15 +19,22 @@
 #import <Foundation/Foundation.h>
 
 @class RLMRealm;
-@class RLMSchema;
-@class RLMObjectSchema;
 
-@interface RLMObjectBase : NSObject
+// Add a Realm to the weak cache
+FOUNDATION_EXPORT void RLMCacheRealm(RLMRealm *realm);
+// Get a Realm for the given path which can be used on the current thread
+FOUNDATION_EXPORT RLMRealm *RLMGetThreadLocalCachedRealmForPath(NSString *path);
+// Get a Realm for the given path
+FOUNDATION_EXPORT RLMRealm *RLMGetAnyCachedRealmForPath(NSString *path);
+// Clear the weak cache of Realms
+FOUNDATION_EXPORT void RLMClearRealmCache();
 
-@property (nonatomic, readonly, getter = isInvalidated) BOOL invalidated;
-
-- (instancetype)init;
-
-+ (NSString *)className;
-
+@interface RLMNotifier : NSObject
+// listens to changes to the realm's file and notifies it when they occur
+// does not retain the Realm
+- (instancetype)initWithRealm:(RLMRealm *)realm error:(NSError **)error;
+// stop listening for changes
+- (void)stop;
+// notify other Realm instances for the same path that a change has occurred
+- (void)notifyOtherRealms;
 @end

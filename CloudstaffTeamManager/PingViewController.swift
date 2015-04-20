@@ -31,7 +31,6 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
     
     var arrayofPingIds = Array<Int>()
     
-    
     var alert = AlertDialogs()
     
     override func viewDidLoad() {
@@ -221,7 +220,6 @@ class PingViewController: UIViewController, SideBarDelegate, UITableViewDelegate
         }
         
         tblView.reloadData()
-        
         selectedFew = false
     }
     

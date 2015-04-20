@@ -160,7 +160,7 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
             performSegueWithIdentifier("toSendMessage", sender: tableView)
             
         } else if (indexPath.row == 3) {
-            
+            performSegueWithIdentifier("toWorkingOn", sender: tableView)
             
         } else if (indexPath.row == 4) {
             performSegueWithIdentifier("backtoDashboard", sender: tableView)
@@ -186,8 +186,10 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
             dashboardController.mtrID = staffID
 
         }else if segue.identifier == "toWorkingOn" {
-            var workingMTVController : WorkingOnTableViewController = segue.destinationViewController as! WorkingOnTableViewController
-            workingMTVController.staffID = staffID
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let workingController = navigationController.topViewController as! WorkingOnViewController
+            workingController.staffID = staffID
+
             
         }
     }

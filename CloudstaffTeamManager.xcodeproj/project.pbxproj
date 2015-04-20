@@ -229,8 +229,8 @@
 		9CDF077D1AE0993600554997 /* workingOnToday */ = {
 			isa = PBXGroup;
 			children = (
-				5D568E2B1AAD804D00021B59 /* WorkingOnCell.swift */,
 				5DC120751AAE8DA300226DD0 /* WorkingOnViewController.swift */,
+				5D568E2B1AAD804D00021B59 /* WorkingOnCell.swift */,
 			);
 			name = workingOnToday;
 			sourceTree = "<group>";

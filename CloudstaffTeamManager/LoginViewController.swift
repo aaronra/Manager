@@ -21,6 +21,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var forgot: UIButton!
     
+    var salt = "j6FpJpYmshTNNdpqBVrt49Mj4yDZBCeRgkMMzX9p"
+    var test = "test"
+    
     
     ///////////////////////  KEYBOARD DISMISS  /////////////////////////
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
@@ -41,6 +44,12 @@ class LoginViewController: UIViewController {
         // prevents the scroll view from swallowing up the touch event of child buttons
         tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)
+        
+        
+        var this = test+salt
+        println(this.sha1())
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {

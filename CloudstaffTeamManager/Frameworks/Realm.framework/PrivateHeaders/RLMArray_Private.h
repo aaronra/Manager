@@ -16,18 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
+#import <Realm/RLMArray.h>
 
-@class RLMRealm;
-@class RLMSchema;
-@class RLMObjectSchema;
-
-@interface RLMObjectBase : NSObject
-
-@property (nonatomic, readonly, getter = isInvalidated) BOOL invalidated;
-
-- (instancetype)init;
-
-+ (NSString *)className;
-
+@interface RLMArray ()
+- (instancetype)initWithObjectClassName:(NSString *)objectClassName;
+- (NSString *)descriptionWithMaxDepth:(NSUInteger)depth;
 @end

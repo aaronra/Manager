@@ -10,9 +10,9 @@ import Foundation
 
 
 class Metrics {
-    var title = "title"
-    var lbldaily = "daily average"
-    var lblweekly = "weekly average"
+    var title = ""
+    var lbldaily = ""
+    var lblweekly = ""
     var daily = 0
     var weekly = 0
     var value = 0

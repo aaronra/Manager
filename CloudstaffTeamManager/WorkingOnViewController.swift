@@ -9,20 +9,26 @@
 import UIKit
 import Realm
 
-class WorkingOnTableViewController: UITableViewController {
 
-//    var arrayOfTask = Array<String>()
-//    var arrayOfDate = Array<String>()
+class WorkingOnViewController: UIViewController, UITableViewDelegate {
     
-    var arrayOfWorking: [WorkingDetails] = [WorkingDetails]()
+//    @IBOutlet weak var tblview: UITableView!
+    @IBOutlet weak var tblView: UITableView!
+
+    var arrayofUsername = Array<String>()
+    var arrayofName = Array<String>()
     
     var staffID = Int()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println("--->> \(staffID)")
+        getStaffList()
+    }
+    
+    func getStaffList() {
+
+        let realm = RLMRealm.defaultRealm()
+        realm.beginWriteTransaction()
         
         let stf = Staff.objectsWhere("id == \(staffID)")
         for mtrc_stf:RLMObject in stf {
@@ -32,37 +38,43 @@ class WorkingOnTableViewController: UITableViewController {
                 let mtxInfo = mtxstf as RLMObject
                 let task = mtxInfo["task"] as! String
                 let date = mtxInfo["date"] as! String
-
-                var working = WorkingDetails(task: String(task), date: String(date))
-                arrayOfWorking.append(working)
-                println("------->>> \(working.date)")
+                
+                arrayofUsername.append(task)
+                arrayofName.append(date)
             }
         }
+        realm.commitWriteTransaction()
+        
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayofUsername.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfWorking.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: WorkingOnCell = tableView.dequeueReusableCellWithIdentifier("taskCell") as! WorkingOnCell
         
-        let working = arrayOfWorking[indexPath.row]
-        cell.setCell(working.date, lblTask: working.task)
-        
-        return cell
+        cell.lblName.text = arrayofUsername[indexPath.row]
+        cell.lblFullName.text = arrayofName[indexPath.row]
 
+        return cell
+        
     }
+
     
-    @IBAction func back(sender: AnyObject) {
-        performSegueWithIdentifier("toMyTeam", sender: self)
-    }
+
+    
+    
+
+
+    
+    
+
+    
+    
+
+    
     
     
 }
