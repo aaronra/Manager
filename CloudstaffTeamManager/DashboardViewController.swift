@@ -44,7 +44,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         sideBar = SideBar(sourceView: self.view, menuItems:
             ["dashboard",
                 "my team",
@@ -340,8 +339,7 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         let pass = tags[1]
 
         dispatch_async(dispatch_get_main_queue(), {
-            JsonToRealm.parseData("\(user)/\(pass)")
-            
+//            JsonToRealm.parseData("\(user)/\(pass)")
         })
         self.tblView.reloadData()
 

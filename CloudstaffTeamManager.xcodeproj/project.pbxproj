@@ -37,6 +37,7 @@
 		6EA216601AA7FCC500F957EE /* SendMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2165F1AA7FCC500F957EE /* SendMessageTableViewController.swift */; };
 		6EBC23361A7900D40043C743 /* ConnectionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC23351A7900D40043C743 /* ConnectionDetector.swift */; };
 		9CD1AAC61AD381320092ABD2 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD1AAC51AD381320092ABD2 /* PopUpViewController.swift */; };
+		9CD5C4501AEA2D47007FA4C8 /* PopoverFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD5C44F1AEA2D47007FA4C8 /* PopoverFilter.swift */; };
 		9CEC9BCA1ADDFB840090E7E3 /* OnBackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC9BC91ADDFB840090E7E3 /* OnBackgroundTask.swift */; };
 		E707D9E51A653BE5000D75FE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707D9E41A653BE5000D75FE /* LoginViewController.swift */; };
 		E72728631A5F879A00D92301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72728621A5F879A00D92301 /* AppDelegate.swift */; };
@@ -91,6 +92,7 @@
 		6EA2165F1AA7FCC500F957EE /* SendMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMessageTableViewController.swift; sourceTree = "<group>"; };
 		6EBC23351A7900D40043C743 /* ConnectionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionDetector.swift; sourceTree = "<group>"; };
 		9CD1AAC51AD381320092ABD2 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		9CD5C44F1AEA2D47007FA4C8 /* PopoverFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverFilter.swift; sourceTree = "<group>"; };
 		9CEC9BC91ADDFB840090E7E3 /* OnBackgroundTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBackgroundTask.swift; sourceTree = "<group>"; };
 		E707D9E41A653BE5000D75FE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E727285D1A5F879900D92301 /* CloudstaffTeamManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudstaffTeamManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +150,7 @@
 			children = (
 				6E5755C21AA53EF80067B67C /* MyTeamViewController.swift */,
 				5D4AA94C1A8B1CA8004DE759 /* MyTeamCell.swift */,
+				9CD5C44F1AEA2D47007FA4C8 /* PopoverFilter.swift */,
 				9CDF077E1AE0995300554997 /* staffTableView */,
 				9CDF077D1AE0993600554997 /* workingOnToday */,
 			);
@@ -451,6 +454,7 @@
 				6E9014711A956B91001DA99F /* JsonToRealm.swift in Sources */,
 				6E5755C51AA53F220067B67C /* PingViewController.swift in Sources */,
 				5D4AA94D1A8B1CA8004DE759 /* MyTeamCell.swift in Sources */,
+				9CD5C4501AEA2D47007FA4C8 /* PopoverFilter.swift in Sources */,
 				9CD1AAC61AD381320092ABD2 /* PopUpViewController.swift in Sources */,
 				E72B9E461A619C450083BE2A /* SideBar.swift in Sources */,
 				5D568E2C1AAD804D00021B59 /* WorkingOnCell.swift in Sources */,

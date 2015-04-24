@@ -133,21 +133,6 @@ class StaffTableViewController: UITableViewController, UIAlertViewDelegate {
         
         if (indexPath.row == 1) {
             
-            let pingMsg = PingMessage.allObjects()
-            
-            let realm = RLMRealm.defaultRealm()
-            realm.beginWriteTransaction()
-            
-            for myPing:RLMObject in pingMsg {
-                let staffInfo  = myPing as RLMObject
-                
-                let ping = staffInfo["ping"] as! String
-                
-                println("----->>>> \(ping)")
-                
-            }
-            realm.commitWriteTransaction()
-            
             let settKey = NSUserDefaults.standardUserDefaults()
             let settValue = settKey.stringForKey("isOn")
             let stringArray = settValue!.componentsSeparatedByString(":")

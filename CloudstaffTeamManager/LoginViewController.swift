@@ -21,8 +21,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var forgot: UIButton!
     
-    var salt = "j6FpJpYmshTNNdpqBVrt49Mj4yDZBCeRgkMMzX9p"
-    var test = "test"
+
+    let secureID = "manager"
+    let deviceName = UIDevice.currentDevice().name
+    let deviceID = UIDevice.currentDevice().identifierForVendor.UUIDString
+    var salt = "5d534e77a8c480d924bb75dd46a216bc08a587a7"
     
     
     ///////////////////////  KEYBOARD DISMISS  /////////////////////////
@@ -44,12 +47,7 @@ class LoginViewController: UIViewController {
         // prevents the scroll view from swallowing up the touch event of child buttons
         tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)
-        
-        
-        var this = test+salt
-        println(this.sha1())
-        
-        
+    
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -76,7 +74,6 @@ class LoginViewController: UIViewController {
                 prefKey.setValue("\(username.text):\(password.text.md5)", forKey: "holdingData")
                 println("VALUE CHANGED")
             }
-            
         }else {
             prefKey.setValue("\(username.text):\(password.text.md5)", forKey: "holdingData")
             println("INSTALLED: " + prefKey.description)
@@ -86,54 +83,46 @@ class LoginViewController: UIViewController {
  
     func loginfunc() {
         
-        let urlAsString = "http://localhost:619/cakephp/Accounts/login/\(username.text)/\(password.text.md5).json"
-        let url: NSURL = NSURL(string: urlAsString)!
-        let urlSession = NSURLSession.sharedSession()
-        
-        let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
-            if (error != nil) {
-                println(error.localizedDescription)
-            }
-            var err: NSError?
-            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
-            if (err != nil) {
-                println("JSON Error \(err!.localizedDescription)")
-            }
+        JsonToRealm.post(["username":username.text,
+                          "password":(salt+password.text).sha1(),
+                          "secureID":secureID.md5,
+                          "devicename": deviceName,
+                          "deviceID": deviceID],
+            url: "http://10.1.100.69:90/clients/login.json") { (code: Int, msg: String) -> () in
             
-            dispatch_async(dispatch_get_main_queue(), {
-                let loginStatus = jsonResult["LoginStatus"] as! String
+                println("--->>>> \(self.username.text)")
+                println("--->>>> \((self.salt+self.password.text).sha1())")
+                println("--->>>> \(self.secureID.md5)")
+                println("--->>>> \(self.deviceName)")
+                println("--->>>> \(self.deviceID)")
                 
-                if loginStatus == "Success" {
-                    JsonToRealm.parseData("\(self.username.text)/\(self.password.text.md5)")
-                    var time = dispatch_time(DISPATCH_TIME_NOW, 1 * Int64(NSEC_PER_SEC))
-                    dispatch_after(time, dispatch_get_main_queue()) {
-                        self.performSegueWithIdentifier("toDashboard", sender: self.btnLogin)
-                    }
-
-                }else if loginStatus == "Wrong Password"{
-                    self.alert.alertLogin(loginStatus, viewController: self)
-                    println("LoginStatus --->>> \(loginStatus)")
-                }else {
-                    self.alert.alertLogin(loginStatus, viewController: self)
-                    println("LoginStatus --->>> \(loginStatus)")
+            if code == 500 {
+                println(msg)
+                self.alert.alertLogin(msg, viewController: self)
+//            } else if code == 200 {
+//                if msg == "You are currently logged in from your iPhone Simulator. Logging in on this device will log you out from your other device. Would you like to proceed?" {
+//                    self.alert.overWrite(msg, viewController: self)
+//                }
+            }else {
+                var time = dispatch_time(DISPATCH_TIME_NOW, 1 * Int64(NSEC_PER_SEC))
+                dispatch_after(time, dispatch_get_main_queue()) {
+                    self.performSegueWithIdentifier("toDashboard", sender: self.btnLogin)
                 }
-            })
-        })
-        jsonQuery.resume()
+                println("Successful")
+            }
+        }
     }
     
     
     func registerForKeyboardNotifications() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
-        
     }
     
     func deregisterFromKeyboardNotifications() -> Void {
         println("Deregistering!")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillHideNotification, object: nil)
-        
     }
     
     func keyboardWasShown(notification: NSNotification) {

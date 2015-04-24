@@ -283,8 +283,6 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         alert.showPingAlertView("Enter Ping Message", message: defaultMsg, viewController: self)
     }
     
-    
-    
     @IBAction func refresh(sender: UIBarButtonItem) {
         
         let prefValue = prefKey.stringForKey("holdingData")
@@ -293,7 +291,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         let pass = tags[1]
         
         dispatch_async(dispatch_get_main_queue(), {
-            JsonToRealm.parseData("\(user)/\(pass)")
+//            JsonToRealm.parseData("\(user)/\(pass)")
             
         })
         self.tableView.reloadData()

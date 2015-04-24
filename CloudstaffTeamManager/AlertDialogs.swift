@@ -30,6 +30,16 @@ class AlertDialogs: NSObject, UIAlertViewDelegate {
         }
         
     }
+    
+    
+    func overWrite(apiMessage: String, viewController: UIViewController) {
+        var alert = UIAlertView()
+        alert.delegate = self
+        alert.message = apiMessage
+        alert.addButtonWithTitle("OK")
+        alert.addButtonWithTitle("Cancel")
+        alert.show()
+    }
 
     
     // ALERT WITH TEXTFIELD FOR iOs7 and iOs8

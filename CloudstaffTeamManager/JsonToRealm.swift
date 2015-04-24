@@ -10,12 +10,6 @@ import Foundation
 import Realm
 
 
-class PingMessage: RLMObject {
-    dynamic var ping = ""
-    dynamic var message = ""
-    //    dynamic var interval = NSTimer()
-}
-
 class Metric: RLMObject {
     dynamic var title = ""
     dynamic var daily: Int = 0
@@ -55,46 +49,75 @@ class Staff: RLMObject {
 public class JsonToRealm {
     
     
-    class func parseData(loginInfo: String){
+    class func post(params : Dictionary<String, AnyObject!>, url : String, postCompleted : (code: Int, msg: String) -> ()) {
+        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        var session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
         
-        // CALL the API
-        let urlAsString = "http://localhost:619/cakephp/Accounts/login/\(loginInfo).json"
-        let url: NSURL  = NSURL(string: urlAsString)!
-        let urlSession = NSURLSession.sharedSession()
+        var err: NSError?
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
-            if (error != nil) {
-                println(error.localizedDescription)
-            }
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            println("Response: \(response)")
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
             var err: NSError?
-            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
-            if (err != nil) {
-                println("JSON Error \(err!.localizedDescription)")
+            var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &err) as? NSDictionary
+            
+            var msg = "No message"
+            
+            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+            if(err != nil) {
+                println(err!.localizedDescription)
+                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error could not parse JSON: '\(jsonStr!.description)'")
+                postCompleted(code: 500, msg: "Error")
+            }else {
+                // The JSONObjectWithData constructor didn't return an error. But, we should still
+                // check and make sure that json has a value using optional binding.
+                if let parseJSON = json {
+                    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
+                    if let code = parseJSON["code"] as? Int {
+                        if let errorMsg = parseJSON["message"] as? String {
+                            println("code -->>> \(code) || errorMessage -->>> \(errorMsg)")
+                            postCompleted(code: code, msg: errorMsg)
+                        }
+                        
+                        // INSERTING JSONOBJECTS ON REALM
+                        //                        let realm = RLMRealm.defaultRealm()
+                        //
+                        //                        let staffList = parseJSON["myTeam"] as [NSDictionary]
+                        //                        println("--> \(staffList)")
+                        //                        realm.beginWriteTransaction()
+                        //
+                        //                        for staff in staffList {
+                        //                            Staff.createOrUpdateInDefaultRealmWithObject(staff)
+                        //                        }
+                        //
+                        //                        let ping = PingMessage()
+                        //                        ping.ping = "Sample Ping"
+                        //                        realm.commitWriteTransaction()
+                        println("PATH --->>> \(RLMRealm.defaultRealm().path)")
+                        
+                    }
+                    
+                }else {
+                    // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
+                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    println("Error could not parse JSON: \(jsonStr)")
+                    postCompleted(code: 500, msg: "Error")
+                }
             }
-            
-            // INSERTING JSONOBJECTS ON REALM
-            let realm = RLMRealm.defaultRealm()
-            
-            let staffList = jsonResult["myTeam"] as! [NSDictionary]
-            realm.beginWriteTransaction()
-            
-            for staff in staffList {
-                Staff.createOrUpdateInDefaultRealmWithObject(staff)
-            }
-            
-            
-            let ping = PingMessage()
-            
-            ping.ping = "Sample Ping"
-            
-            realm.commitWriteTransaction()
-            println("PATH --->>> \(RLMRealm.defaultRealm().path)")
             
         })
-        jsonQuery.resume()
+        
+        task.resume()
         
     }
     
     
-
+    
+    
+    
 }
