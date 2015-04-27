@@ -37,6 +37,8 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     let prefKey = NSUserDefaults.standardUserDefaults()
     
+    var filterSelected = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -48,6 +50,19 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
                 "log out"])
         sideBar.delegate = self
         getMyTeam()
+    }
+    
+    
+    func itemSelected(indexPath: String) {
+        
+        if indexPath == "All" {
+            println("first")
+        }else if indexPath == "Development" {
+            println("second")
+        }else {
+            println("other")
+        }
+        
     }
     
     func getMyTeam() {
@@ -300,24 +315,17 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     
     @IBAction func btnDept(sender: AnyObject) {
-        println("department")
-    }
-    
-    @IBAction func filter(sender: AnyObject) {
-        println("shjggdffgdfdfdfdf")
+        filterSelected = "left"
     }
     
     
+    @IBAction func right(sender: AnyObject) {
+        filterSelected = "right"
+    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-//        if let popupView = segue.destinationViewController as? UIViewController {
-//            if let popup = popupView.popoverPresentationController {
-//                popup.delegate = self
-//            }
-//        } else
-            if segue.identifier == "toStaffDetails" {
+        if segue.identifier == "toStaffDetails" {
             let staffTVController : StaffTableViewController = segue.destinationViewController as! StaffTableViewController
             
             staffTVController.cameFrom = "MyTeam"
@@ -326,6 +334,10 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         }else if segue.identifier == "toSendMessage" {
             var sendMTVController : SendMessageTableViewController = segue.destinationViewController as! SendMessageTableViewController
             sendMTVController.staffID = clickedIndex
+                
+        }else if segue.identifier == "toPopOver" {
+            var dataController : PopOver = segue.destinationViewController as! PopOver
+            dataController.fromRoot = filterSelected
         }
     }
     

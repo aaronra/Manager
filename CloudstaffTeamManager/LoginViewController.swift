@@ -99,10 +99,10 @@ class LoginViewController: UIViewController {
             if code == 500 {
                 println(msg)
                 self.alert.alertLogin(msg, viewController: self)
-//            } else if code == 200 {
-//                if msg == "You are currently logged in from your iPhone Simulator. Logging in on this device will log you out from your other device. Would you like to proceed?" {
-//                    self.alert.overWrite(msg, viewController: self)
-//                }
+            } else if code == 200 {
+                if msg == "You are currently logged in from your iPhone Simulator. Logging in on this device will log you out from your other device. Would you like to proceed?" {
+                    self.alert.overWrite(msg, viewController: self)
+                }
             }else {
                 var time = dispatch_time(DISPATCH_TIME_NOW, 1 * Int64(NSEC_PER_SEC))
                 dispatch_after(time, dispatch_get_main_queue()) {
