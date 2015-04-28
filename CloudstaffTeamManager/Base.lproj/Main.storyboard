@@ -252,12 +252,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3c-wY-EBO">
-                                <rect key="frame" x="555" y="36" width="29" height="29"/>
-                                <state key="normal" title="Filter">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-kE-TiF">
+                                <rect key="frame" x="0.0" y="35" width="375" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uze-6d-xsU"/>
+                                </constraints>
+                                <state key="normal" title="  Department">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnDept:" destination="fK0-o1-rF0" eventType="touchUpInside" id="l5R-w9-4Ds"/>
+                                    <segue destination="xhj-Vz-MYz" kind="popoverPresentation" identifier="toPopOver" popoverAnchorView="Raa-kE-TiF" id="MOD-d9-8W0">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3c-wY-EBO">
+                                <rect key="frame" x="472" y="35" width="120" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="5oa-0l-R9r"/>
+                                    <constraint firstAttribute="height" constant="30" id="UVr-Rs-l2A"/>
+                                </constraints>
+                                <state key="normal" title="Filter"/>
                                 <connections>
                                     <action selector="right:" destination="fK0-o1-rF0" eventType="touchUpInside" id="eMC-ST-rO9"/>
                                     <segue destination="xhj-Vz-MYz" kind="popoverPresentation" identifier="toPopOver" popoverAnchorView="z3c-wY-EBO" id="lSC-CF-LYL">
@@ -265,7 +281,7 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TSZ-Ur-qYw">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TSZ-Ur-qYw">
                                 <rect key="frame" x="0.0" y="73" width="600" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -423,38 +439,17 @@
                                     <outlet property="delegate" destination="fK0-o1-rF0" id="NR5-L0-2tD"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-kE-TiF">
-                                <rect key="frame" x="0.0" y="35" width="547" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="536" id="Sif-G2-Z2f"/>
-                                    <constraint firstAttribute="height" constant="30" id="uze-6d-xsU"/>
-                                </constraints>
-                                <state key="normal" title="        Department">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Sif-G2-Z2f"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="btnDept:" destination="fK0-o1-rF0" eventType="touchUpInside" id="l5R-w9-4Ds"/>
-                                    <segue destination="xhj-Vz-MYz" kind="popoverPresentation" identifier="toPopOver" popoverAnchorView="Raa-kE-TiF" id="MOD-d9-8W0">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Raa-kE-TiF" secondAttribute="width" constant="53" id="8HT-wX-sRL"/>
+                            <constraint firstAttribute="width" secondItem="Raa-kE-TiF" secondAttribute="width" constant="225" id="8HT-wX-sRL"/>
                             <constraint firstItem="TSZ-Ur-qYw" firstAttribute="top" secondItem="N1I-wf-xbq" secondAttribute="bottom" constant="53" id="D5T-B1-TI7"/>
-                            <constraint firstItem="TSZ-Ur-qYw" firstAttribute="top" secondItem="z3c-wY-EBO" secondAttribute="bottom" constant="8" symbolic="YES" id="F9P-o2-vqa"/>
-                            <constraint firstAttribute="centerX" secondItem="Raa-kE-TiF" secondAttribute="centerX" constant="26.5" id="JTi-cd-tt6"/>
+                            <constraint firstAttribute="centerX" secondItem="Raa-kE-TiF" secondAttribute="centerX" constant="112.5" id="JTi-cd-tt6"/>
                             <constraint firstItem="TSZ-Ur-qYw" firstAttribute="top" secondItem="Raa-kE-TiF" secondAttribute="bottom" constant="8" symbolic="YES" id="LGd-gf-qV2"/>
+                            <constraint firstItem="z3c-wY-EBO" firstAttribute="baseline" secondItem="Raa-kE-TiF" secondAttribute="baseline" id="NIb-ch-CJg"/>
                             <constraint firstItem="TSZ-Ur-qYw" firstAttribute="leading" secondItem="BsD-0M-WcX" secondAttribute="leading" id="OYF-zt-YNy"/>
                             <constraint firstItem="TSZ-Ur-qYw" firstAttribute="bottom" secondItem="Wd8-I8-pEh" secondAttribute="top" id="Sdk-SZ-MZ8"/>
-                            <constraint firstItem="z3c-wY-EBO" firstAttribute="trailing" secondItem="BsD-0M-WcX" secondAttribute="trailingMargin" id="acw-2V-hIv"/>
+                            <constraint firstItem="z3c-wY-EBO" firstAttribute="leading" secondItem="Raa-kE-TiF" secondAttribute="trailing" constant="97" id="eRo-qA-uyY"/>
                             <constraint firstAttribute="centerX" secondItem="TSZ-Ur-qYw" secondAttribute="centerX" id="iJV-Oj-sKF"/>
                         </constraints>
                     </view>
@@ -473,6 +468,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="department" destination="Raa-kE-TiF" id="B7z-Si-XQj"/>
+                        <outlet property="filter" destination="z3c-wY-EBO" id="afm-YN-0TN"/>
                         <outlet property="tableView" destination="TSZ-Ur-qYw" id="kCu-JF-ZoL"/>
                         <segue destination="eAK-Us-Zcb" kind="presentation" identifier="toSettings" modalTransitionStyle="crossDissolve" id="ZqU-ml-1UO"/>
                         <segue destination="aWJ-RM-lEq" kind="presentation" identifier="toPing" modalTransitionStyle="crossDissolve" id="e4B-Ee-Tz2"/>
@@ -919,7 +916,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-O7-vLL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-O7-vLL">
                                 <rect key="frame" x="0.0" y="20" width="600" height="45"/>
                                 <color key="backgroundColor" red="0.82933290153079264" green="0.82386486776399814" blue="0.85223327020202011" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -929,7 +926,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TMY-Qq-VTP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TMY-Qq-VTP">
                                 <rect key="frame" x="0.0" y="65" width="600" height="435"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1448,7 +1445,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="X2t-eH-xgQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="X2t-eH-xgQ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1497,10 +1494,10 @@
         <segue reference="ZqU-ml-1UO"/>
         <segue reference="vgv-6R-DQa"/>
         <segue reference="kfx-WR-1cy"/>
+        <segue reference="MOD-d9-8W0"/>
         <segue reference="Pgy-e2-03c"/>
-        <segue reference="KVJ-TI-tUS"/>
-        <segue reference="e4B-Ee-Tz2"/>
-        <segue reference="lSC-CF-LYL"/>
         <segue reference="P5g-My-Q0m"/>
+        <segue reference="e4B-Ee-Tz2"/>
+        <segue reference="KVJ-TI-tUS"/>
     </inferredMetricsTieBreakers>
 </document>

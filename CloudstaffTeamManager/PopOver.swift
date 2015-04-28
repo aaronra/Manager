@@ -24,18 +24,12 @@ class PopOver: UIViewController, UITableViewDataSource, UITableViewDelegate, UIP
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        println("---->>> \(fromRoot)")
-        
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        // popover settings
         modalPresentationStyle = .Popover
         popoverPresentationController!.delegate = self
-        self.preferredContentSize = CGSize(width:320,height:300)
     }
     
     
@@ -60,8 +54,13 @@ class PopOver: UIViewController, UITableViewDataSource, UITableViewDelegate, UIP
         
         if fromRoot == "left" {
             cell.textLabel?.text = leftData[row]
+            self.preferredContentSize = CGSize(width:320,height:225)
+        }else if fromRoot == "right" {
+            cell.textLabel?.text = rightData[row]
+            self.preferredContentSize = CGSize(width:320,height:270)
         }else {
             cell.textLabel?.text = rightData[row]
+            self.preferredContentSize = CGSize(width:320,height:270)
         }
         
         return cell

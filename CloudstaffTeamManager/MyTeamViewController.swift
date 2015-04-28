@@ -11,8 +11,11 @@ import Realm
 
 class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     
-    @IBOutlet weak var dept: UILabel!
+    
+    @IBOutlet weak var department: UIButton!
+    @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    
     
     var sideBar:SideBar = SideBar()
     
@@ -56,11 +59,31 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     func itemSelected(indexPath: String) {
         
         if indexPath == "All" {
-            println("first")
+//            department.titleLabel!.text = "All"
+//            department.addSubview(department)
+            println("All")
         }else if indexPath == "Development" {
-            println("second")
+            println("Development")
+        }else if indexPath == "Management" {
+            println("Management")
+        }else if indexPath == "SQA" {
+            println("SQA")
+        }else if indexPath == "Admin" {
+            println("Admin")
+        }else if indexPath == "None" {
+            println("None")
+        }else if indexPath == "Online Staffs" {
+            println("Online Staffs")
+        }else if indexPath == "Offline Staffs" {
+            println("Offline Staffs")
+        }else if indexPath == "Assigned Staffs" {
+            println("Assigned Staffs")
+        }else if indexPath == "Unassigned Staffs" {
+            println("Unassigned Staffs")
+        }else if indexPath == "My Favorites" {
+            println("My Favorites")
         }else {
-            println("other")
+            println("BUG")
         }
         
     }
@@ -338,6 +361,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
         }else if segue.identifier == "toPopOver" {
             var dataController : PopOver = segue.destinationViewController as! PopOver
             dataController.fromRoot = filterSelected
+            filterSelected = ""
         }
     }
     
