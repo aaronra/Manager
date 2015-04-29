@@ -20,7 +20,6 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     var sideBar:SideBar = SideBar()
     
     var imageCache = [String : UIImage]()
-    
     var arrayOfIds = Array<Int>()
     var arrayofStaffsImg = Array<String>()
     var arrayofLogin = Array<String>()
@@ -42,6 +41,8 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     var filterSelected = ""
     
+    var itemSelected = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -53,14 +54,23 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
                 "log out"])
         sideBar.delegate = self
         getMyTeam()
+        
+//        department.setTitle(titleFromPopOver, forState: UIControlState.Normal)
     }
+    
+//    override func viewWillAppear(animated: Bool) {
+////        filter.setTitle("None", forState: .Normal)
+//        
+//        println("willappear")
+//        tableView.reloadData()
+//        
+//    }
+    
     
     
     func itemSelected(indexPath: String) {
-        
+        itemSelected = indexPath
         if indexPath == "All" {
-//            department.titleLabel!.text = "All"
-//            department.addSubview(department)
             println("All")
         }else if indexPath == "Development" {
             println("Development")

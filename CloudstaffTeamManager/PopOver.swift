@@ -72,8 +72,8 @@ class PopOver: UIViewController, UITableViewDataSource, UITableViewDelegate, UIP
         let row = indexPath.row
         
         root.itemSelected(tableView.cellForRowAtIndexPath(indexPath)!.textLabel!.text!)
-        
         dismissViewControllerAnimated(true, completion:nil)
+        root.viewWillAppear(true)
     }
     
     
