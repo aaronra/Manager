@@ -12,10 +12,12 @@ import Realm
 class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     
     
+
+    @IBOutlet weak var lblEpic: UILabel!
     @IBOutlet weak var department: UIButton!
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    
+
     
     var sideBar:SideBar = SideBar()
     
@@ -41,7 +43,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     var filterSelected = ""
     
-    var itemSelected = String()
+    var selected = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,53 +56,38 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
                 "log out"])
         sideBar.delegate = self
         getMyTeam()
-        
-//        department.setTitle(titleFromPopOver, forState: UIControlState.Normal)
     }
-    
-//    override func viewWillAppear(animated: Bool) {
-////        filter.setTitle("None", forState: .Normal)
-//        
-//        println("willappear")
-//        tableView.reloadData()
-//        
-//    }
-    
     
     
     func itemSelected(indexPath: String) {
-        itemSelected = indexPath
-        if indexPath == "All" {
-            println("All")
-        }else if indexPath == "Development" {
-            println("Development")
-        }else if indexPath == "Management" {
-            println("Management")
-        }else if indexPath == "SQA" {
-            println("SQA")
-        }else if indexPath == "Admin" {
-            println("Admin")
-        }else if indexPath == "None" {
-            println("None")
-        }else if indexPath == "Online Staffs" {
-            println("Online Staffs")
-        }else if indexPath == "Offline Staffs" {
-            println("Offline Staffs")
-        }else if indexPath == "Assigned Staffs" {
-            println("Assigned Staffs")
-        }else if indexPath == "Unassigned Staffs" {
-            println("Unassigned Staffs")
-        }else if indexPath == "My Favorites" {
-            println("My Favorites")
-        }else {
-            println("BUG")
-        }
+        selected = indexPath
+        
+//        let staffDetail = Staff.objectsWhere("team contains '\(indexPath)'")
+//        
+//        for staff: RLMObject in staffDetail {
+//            let stfInfo = staff as RLMObject
+//            
+//            let username     =   stfInfo["username"]  as!  String
+//            let name         =   stfInfo["name"]  as!  String
+//
+//            println(username)
+//            println(name)
+//        }
+
+    }
+
+    
+    override func viewWillAppear(animated: Bool) {
+        println(selected)
+//        alert.overWrite(selected, viewController: self)
+        
+        department.titleLabel!.text = "Sample"
+        lblEpic.text = "qewerfawfasdfadf"
+        
         
     }
     
     func getMyTeam() {
-        
-        
         
         var staff = Staff()
         var staffDetails = Staff.allObjects()

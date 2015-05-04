@@ -28,7 +28,6 @@ class AlertDialogs: NSObject, UIAlertViewDelegate {
             alertView.show()
             println("8 below")
         }
-        
     }
     
     

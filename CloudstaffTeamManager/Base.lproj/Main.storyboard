@@ -268,10 +268,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3c-wY-EBO">
-                                <rect key="frame" x="472" y="35" width="120" height="30"/>
+                                <rect key="frame" x="497" y="35" width="100" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="5oa-0l-R9r"/>
-                                    <constraint firstAttribute="height" constant="30" id="UVr-Rs-l2A"/>
+                                    <constraint firstAttribute="width" constant="100" id="Sfg-Qe-hNh"/>
                                 </constraints>
                                 <state key="normal" title="Filter"/>
                                 <connections>
@@ -439,6 +438,12 @@
                                     <outlet property="delegate" destination="fK0-o1-rF0" id="NR5-L0-2tD"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8i-1E-oTO">
+                                <rect key="frame" x="0.0" y="58" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -446,11 +451,11 @@
                             <constraint firstItem="TSZ-Ur-qYw" firstAttribute="top" secondItem="N1I-wf-xbq" secondAttribute="bottom" constant="53" id="D5T-B1-TI7"/>
                             <constraint firstAttribute="centerX" secondItem="Raa-kE-TiF" secondAttribute="centerX" constant="95.5" id="JTi-cd-tt6"/>
                             <constraint firstItem="TSZ-Ur-qYw" firstAttribute="top" secondItem="Raa-kE-TiF" secondAttribute="bottom" constant="8" symbolic="YES" id="LGd-gf-qV2"/>
-                            <constraint firstItem="z3c-wY-EBO" firstAttribute="baseline" secondItem="Raa-kE-TiF" secondAttribute="baseline" id="NIb-ch-CJg"/>
                             <constraint firstItem="TSZ-Ur-qYw" firstAttribute="leading" secondItem="BsD-0M-WcX" secondAttribute="leading" id="OYF-zt-YNy"/>
                             <constraint firstItem="TSZ-Ur-qYw" firstAttribute="bottom" secondItem="Wd8-I8-pEh" secondAttribute="top" id="Sdk-SZ-MZ8"/>
-                            <constraint firstItem="z3c-wY-EBO" firstAttribute="leading" secondItem="Raa-kE-TiF" secondAttribute="trailing" constant="80" id="eRo-qA-uyY"/>
                             <constraint firstAttribute="centerX" secondItem="TSZ-Ur-qYw" secondAttribute="centerX" id="iJV-Oj-sKF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z3c-wY-EBO" secondAttribute="trailing" constant="-13" id="sQd-7n-Pvy"/>
+                            <constraint firstItem="z3c-wY-EBO" firstAttribute="baseline" secondItem="Raa-kE-TiF" secondAttribute="baseline" id="u9D-4U-mfD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Team" id="0Wr-np-Szv">
@@ -468,8 +473,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="department" destination="Raa-kE-TiF" id="B7z-Si-XQj"/>
-                        <outlet property="filter" destination="z3c-wY-EBO" id="snX-eS-CdZ"/>
+                        <outlet property="department" destination="Raa-kE-TiF" id="CfB-ZV-mAf"/>
+                        <outlet property="filter" destination="z3c-wY-EBO" id="8Rw-64-ykv"/>
+                        <outlet property="lblEpic" destination="T8i-1E-oTO" id="TAx-k6-gfH"/>
                         <outlet property="tableView" destination="TSZ-Ur-qYw" id="kCu-JF-ZoL"/>
                         <segue destination="eAK-Us-Zcb" kind="presentation" identifier="toSettings" modalTransitionStyle="crossDissolve" id="ZqU-ml-1UO"/>
                         <segue destination="aWJ-RM-lEq" kind="presentation" identifier="toPing" modalTransitionStyle="crossDissolve" id="e4B-Ee-Tz2"/>
