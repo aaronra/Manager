@@ -49,7 +49,56 @@ class Staff: RLMObject {
 public class JsonToRealm {
     
     
-    class func post(params : Dictionary<String, AnyObject!>, url : String, postCompleted : (code: Int, msg: String) -> ()) {
+    class func postLogin(params : Dictionary<String, AnyObject!>, url : String, postCompleted : (code: Int, msg: String, sessionID: String, clientID: String) -> ()) {
+        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        var session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
+        
+        var err: NSError?
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            println("Response: \(response)")
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            var err: NSError?
+            var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &err) as? NSDictionary
+            
+            var msg = "No message"
+            
+            if(err != nil) {
+                println(err!.localizedDescription)
+                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error could not parse JSON: '\(jsonStr!.description)'")
+                postCompleted(code: 500, msg: "Error", sessionID: "", clientID: "")
+            }else {
+                
+                if let parseJSON = json {
+                    if let code = parseJSON["code"] as? Int {
+                        if let errorMsg = parseJSON["message"] as? String {
+                            if let sesID = parseJSON["sessionID"] as? String {
+                                if let cliID = parseJSON["clientID"] as? String {
+                                    postCompleted(code: code, msg: errorMsg, sessionID: sesID, clientID: cliID)
+                                }
+                            }
+                        }
+                    }
+                    
+                }else {
+
+                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    println("Error could not parse JSON: \(jsonStr)")
+                    postCompleted(code: 500, msg: "Error", sessionID: "", clientID: "")
+                }
+            }
+            
+        })
+        task.resume()
+    }
+    
+    
+    class func fetchData(params : Dictionary<String, AnyObject!>, url : String) {
         var request = NSMutableURLRequest(URL: NSURL(string: url)!)
         var session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
@@ -72,41 +121,30 @@ public class JsonToRealm {
                 println(err!.localizedDescription)
                 let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
                 println("Error could not parse JSON: '\(jsonStr!.description)'")
-                postCompleted(code: 500, msg: "Error")
             }else {
                 // The JSONObjectWithData constructor didn't return an error. But, we should still
                 // check and make sure that json has a value using optional binding.
                 if let parseJSON = json {
                     // Okay, the parsedJSON is here, let's get the value for 'success' out of it
                     if let code = parseJSON["code"] as? Int {
-                        if let errorMsg = parseJSON["message"] as? String {
-                            println("code -->>> \(code) || errorMessage -->>> \(errorMsg)")
-                            postCompleted(code: code, msg: errorMsg)
+                        if let staffList = parseJSON["myTeam"] as? [NSDictionary] {
+                            
+                            let realm = RLMRealm.defaultRealm()
+                            realm.beginWriteTransaction()
+                            for staff in staffList {
+                                Staff.createOrUpdateInDefaultRealmWithObject(staff)
+                            }
+                            realm.commitWriteTransaction()
+                            println("PATH --->>> \(RLMRealm.defaultRealm().path)")
+                            
+                            println(staffList)
                         }
-                        
-                        // INSERTING JSONOBJECTS ON REALM
-                        //                        let realm = RLMRealm.defaultRealm()
-                        //
-                        //                        let staffList = parseJSON["myTeam"] as [NSDictionary]
-                        //                        println("--> \(staffList)")
-                        //                        realm.beginWriteTransaction()
-                        //
-                        //                        for staff in staffList {
-                        //                            Staff.createOrUpdateInDefaultRealmWithObject(staff)
-                        //                        }
-                        //
-                        //                        let ping = PingMessage()
-                        //                        ping.ping = "Sample Ping"
-                        //                        realm.commitWriteTransaction()
-                        println("PATH --->>> \(RLMRealm.defaultRealm().path)")
-                        
                     }
                     
                 }else {
                     // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
                     let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
                     println("Error could not parse JSON: \(jsonStr)")
-                    postCompleted(code: 500, msg: "Error")
                 }
             }
             
@@ -115,8 +153,6 @@ public class JsonToRealm {
         task.resume()
         
     }
-    
-    
     
     
     

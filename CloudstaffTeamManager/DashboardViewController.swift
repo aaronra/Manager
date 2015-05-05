@@ -57,8 +57,6 @@ class DashboardViewController: UIViewController, SideBarDelegate, UITableViewDel
         
         let longPress = UILongPressGestureRecognizer(target: self, action: "longPressHandler:")
         collectionView.addGestureRecognizer(longPress)
-        
-        println("PATH --->>> \(RLMRealm.defaultRealm().path)")
     }
     
     @IBAction func showMenu(sender: AnyObject) {

@@ -9,7 +9,7 @@
 import UIKit
 import Realm
 
-class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
+class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UIPopoverPresentationControllerDelegate, UIAlertViewDelegate {
     
     
     @IBOutlet weak var department: UIButton!
@@ -86,16 +86,11 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
                 println("")
             }
             getFiltered(key, value: value)
+
         }
-        
-        
     }
     
-    override func viewWillAppear(animated: Bool) {
-//        tableView.reloadData()
-    }
-    
-    
+
     func getFiltered(key: String, value: String) {
         let realm = RLMRealm.defaultRealm()
         realm.beginWriteTransaction()
@@ -142,11 +137,11 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
             }
         }
         realm.commitWriteTransaction()
+
     }
     
     func getMyTeam() {
         
-        var staff = Staff()
         var staffDetails = Staff.allObjects()
         
         let realm = RLMRealm.defaultRealm()
@@ -390,7 +385,6 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     }
     
     
-    
     @IBAction func btnDept(sender: AnyObject) {
         filterSelected = "left"
     }
@@ -398,6 +392,12 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     @IBAction func right(sender: AnyObject) {
         filterSelected = "right"
+    }
+    
+    
+    @IBAction func napili(sender: UIButton) {
+        tableView.reloadData()
+        println("RELOADED")
     }
     
     
