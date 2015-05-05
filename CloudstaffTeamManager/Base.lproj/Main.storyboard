@@ -438,12 +438,6 @@
                                     <outlet property="delegate" destination="fK0-o1-rF0" id="NR5-L0-2tD"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8i-1E-oTO">
-                                <rect key="frame" x="0.0" y="58" width="75" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -475,7 +469,6 @@
                     <connections>
                         <outlet property="department" destination="Raa-kE-TiF" id="CfB-ZV-mAf"/>
                         <outlet property="filter" destination="z3c-wY-EBO" id="8Rw-64-ykv"/>
-                        <outlet property="lblEpic" destination="T8i-1E-oTO" id="TAx-k6-gfH"/>
                         <outlet property="tableView" destination="TSZ-Ur-qYw" id="kCu-JF-ZoL"/>
                         <segue destination="eAK-Us-Zcb" kind="presentation" identifier="toSettings" modalTransitionStyle="crossDissolve" id="ZqU-ml-1UO"/>
                         <segue destination="aWJ-RM-lEq" kind="presentation" identifier="toPing" modalTransitionStyle="crossDissolve" id="e4B-Ee-Tz2"/>

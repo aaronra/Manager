@@ -12,8 +12,6 @@ import Realm
 class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     
     
-
-    @IBOutlet weak var lblEpic: UILabel!
     @IBOutlet weak var department: UIButton!
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -43,7 +41,7 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     
     var filterSelected = ""
     
-    var selected = String()
+//    var selected = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,32 +57,91 @@ class MyTeamViewController: UIViewController, SideBarDelegate, UITableViewDelega
     }
     
     
-    func itemSelected(indexPath: String) {
-        selected = indexPath
+    func itemSelected(salectedData: String) {
+        var key = ""
+        var value = ""
+    
+        if salectedData == "All" || salectedData == "None" {
+            getMyTeam()
+        }else {
+            if salectedData == "Online Staffs" {
+                key = "login"
+                value = "online"
+            }else if salectedData == "Offline Staffs"  {
+                key = "login"
+                value = "offline"
+            }else if salectedData == "Assigned Staffs" {
+                key = "status"
+                value = "Assigned"
+            }else if salectedData == "Unassigned Staffs" {
+                key = "status"
+                value = "Unassigned"
+            }else if salectedData == "My Favorites" {
+                key = "favorite"
+                value = "Yes"
+            }else if salectedData == "Development" || salectedData == "Management" || salectedData == "SQA" || salectedData == "Admin" {
+                key = "team"
+                value = salectedData
+            }else {
+                println("")
+            }
+            getFiltered(key, value: value)
+        }
         
-//        let staffDetail = Staff.objectsWhere("team contains '\(indexPath)'")
-//        
-//        for staff: RLMObject in staffDetail {
-//            let stfInfo = staff as RLMObject
-//            
-//            let username     =   stfInfo["username"]  as!  String
-//            let name         =   stfInfo["name"]  as!  String
-//
-//            println(username)
-//            println(name)
-//        }
-
+        
     }
-
     
     override func viewWillAppear(animated: Bool) {
-        println(selected)
-//        alert.overWrite(selected, viewController: self)
+//        tableView.reloadData()
+    }
+    
+    
+    func getFiltered(key: String, value: String) {
+        let realm = RLMRealm.defaultRealm()
+        realm.beginWriteTransaction()
+        var staffDetail = Staff.objectsWhere("\(key) contains '\(value)'")
         
-        department.titleLabel!.text = "Sample"
-        lblEpic.text = "qewerfawfasdfadf"
-        
-        
+        for myStaff:RLMObject in staffDetail {
+            let staffInfo  = myStaff as RLMObject
+            
+            let id = staffInfo["id"] as! Int
+            let photo = staffInfo["photo"] as! String
+            let login = staffInfo["login"] as! String
+            let username = staffInfo["username"] as! String
+            let name = staffInfo["name"] as! String
+            let shift_start = staffInfo["shift_start"] as! String
+            let shift_end = staffInfo["shift_end"] as! String
+            let team = staffInfo["team"] as! String
+            let position = staffInfo["position"] as! String
+            let status = staffInfo["status"] as! String
+            let fave = staffInfo["favorite"] as! String
+            
+            arrayOfIds.append(id)
+            arrayofStaffsImg.append(photo)
+            arrayofLogin.append(login + "list")
+            arrayofUsername.append(username)
+            arrayofName.append(name)
+            arrayofShift.append(shift_start + " -" + shift_end)
+            arrayofTeam.append(team)
+            arrayofPosition.append(position)
+            arrayofStatus.append(status)
+            arrayofFaveStatus.append(fave)
+            
+            println(username + "  " + key + " :" + value)
+            
+            
+            if fave == "Yes" {
+                if contains(arrayOfFave,id) {
+                } else {
+                    arrayOfFave.append(id)
+                }
+            } else if fave == "No" {
+                if contains(arrayOfFave,id) {
+                    arrayOfFave = arrayOfFave.filter() { $0 != id }
+                }
+            }
+        }
+        realm.commitWriteTransaction()
     }
     
     func getMyTeam() {
